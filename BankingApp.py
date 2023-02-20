@@ -170,7 +170,7 @@ class CsLogin(QMainWindow,Ui_customer_login_window):
             cur.execute(f"SELECT cs_password FROM customer WHERE customer_id={self.CsId}")
             password = cur.fetchone()[0]
             if self.CsPs == password:
-                
+                CSMain.ID = self.CsId
                 print("Successfully logged in")
                 cur.execute("INSERT INTO login VALUES(%s,%s)",(f"{self.CsId}", 2))
         
@@ -261,28 +261,51 @@ class CSMain(QMainWindow, Ui_customer_main_window):
         self.csmainwdw_btn_exit.clicked.connect(self.close_w)
         
     def take_balance(self):
-        file = resource_path(f"customer_database/{self.ID}.csv")
-        with open (file, "r") as f:
-            reader = csv.reader(f)
-            all_rows = list(reader)
-            last_row = all_rows[-1]
-            current_element = last_row[-1]
-            self.balance = current_element.split("€")[0]
+        conn = psycopg2.connect("dbname=BankingApp user= postgres password=1234")
+        cur = conn.cursor()
+        cur.execute(f"SELECT current_balance FROM balance WHERE customer_id={self.ID}")
+        self.balance = cur.fetchone()[0]
+        cur.close()
+        conn.commit()
+        conn.close()
+    #     conn = psycopg2.connect("dbname=BankingApp user= postgres password=1234")
+    #     cur = conn.cursor()
+    #     cur.execute(f"SELECT current_balance FROM balance WHERE customer_id={self.ID}")
+    #     self.first_balance = cur.fetchone()[0]
+    #     cur.close()
+    #     conn.commit()
+    #     conn.close()
+
+        # file = resource_path(f"customer_database/{self.ID}.csv")
+        # with open (file, "r") as f:
+        #     reader = csv.reader(f)
+        #     all_rows = list(reader)
+        #     last_row = all_rows[-1]
+        #     current_element = last_row[-1]
+            # self.balance = current_element.split("€")[0]
         
     def deposit(self):
         self.take_balance()
         try:
             if self.csmainwdw_spinbox_money.value() > 0:
-                b = int(self.balance)
-                b += self.csmainwdw_spinbox_money.value()
+                b = self.balance + self.csmainwdw_spinbox_money.value()
+
+                conn = psycopg2.connect("dbname=BankingApp user= postgres password=1234")
+                cur = conn.cursor()
+                cur.execute("INSERT INTO all_transactions VALUES(%s,%s,%s)",(f"{self.ID}", f"{int(self.csmainwdw_spinbox_money.value())}", 3))
+                cur.execute("UPDATE balance SET current_balance = %s WHERE customer_id = %s", (f"{b}", f"{self.ID}"))
+                cur.close()
+                conn.commit()
+                conn.close()
+                self.csmainwdw_lbl_balanceshow.setText(f"{str(b)} €")
                 self.csmainwdw_lbl_resultmessage.setStyleSheet("color: rgb(0, 84, 147);")
                 self.csmainwdw_lbl_resultmessage.setText("Successful deposit to the account")
 
-                file = resource_path(f"customer_database/{self.ID}.csv")
-                with open (file, "a", newline="\n") as f:
-                    writer = csv.writer(f)
-                    writer.writerow([datetime.datetime.now().strftime("%d/%m/%Y, %H:%M:%S"),"Deposit", str(self.csmainwdw_spinbox_money.value())+"€", str(b)+"€"])
-                    self.csmainwdw_lbl_balanceshow.setText(f"{str(b)} €")
+                # file = resource_path(f"customer_database/{self.ID}.csv")
+                # with open (file, "a", newline="\n") as f:
+                #     writer = csv.writer(f)
+                #     writer.writerow([datetime.datetime.now().strftime("%d/%m/%Y, %H:%M:%S"),"Deposit", str(self.csmainwdw_spinbox_money.value())+"€", str(b)+"€"])
+                # self.csmainwdw_lbl_balanceshow.setText(f"{str(b)} €")
 
             else:
                 self.csmainwdw_lbl_resultmessage.setStyleSheet("color: rgb(255, 0, 0);")
@@ -294,17 +317,26 @@ class CSMain(QMainWindow, Ui_customer_main_window):
         self.take_balance()
         try: 
             if self.csmainwdw_spinbox_money.value() > 0:
-                c = int(self.balance)
-                if c >= self.csmainwdw_spinbox_money.value():
-                    c -= self.csmainwdw_spinbox_money.value()
+                # c = int(self.balance)
+                if self.balance >= self.csmainwdw_spinbox_money.value():
+                    c = self.balance - self.csmainwdw_spinbox_money.value()
+
+                    conn = psycopg2.connect("dbname=BankingApp user= postgres password=1234")
+                    cur = conn.cursor()
+                    cur.execute("INSERT INTO all_transactions VALUES(%s,%s,%s)",(f"{self.ID}", f"{int(self.csmainwdw_spinbox_money.value())}", 4))
+                    cur.execute("UPDATE balance SET current_balance = %s WHERE customer_id = %s", (f"{c}", f"{self.ID}"))
+                    cur.close()
+                    conn.commit()
+                    conn.close()
+                    self.csmainwdw_lbl_balanceshow.setText(f"{str(c)} €")
                     self.csmainwdw_lbl_resultmessage.setStyleSheet("color: rgb(0, 84, 147);")
                     self.csmainwdw_lbl_resultmessage.setText("Successful withdraw from the account")
                     
-                    file = resource_path(f"customer_database/{self.ID}.csv")
-                    with open (file, "a", newline="\n") as f:
-                        writer = csv.writer(f)
-                        writer.writerow([datetime.datetime.now().strftime("%d/%m/%Y, %H:%M:%S"),"Withdraw", str(self.csmainwdw_spinbox_money.value())+"€", str(c)+"€"])
-                        self.csmainwdw_lbl_balanceshow.setText(f"{str(c)} €")
+                    # file = resource_path(f"customer_database/{self.ID}.csv")
+                    # with open (file, "a", newline="\n") as f:
+                    #     writer = csv.writer(f)
+                    #     writer.writerow([datetime.datetime.now().strftime("%d/%m/%Y, %H:%M:%S"),"Withdraw", str(self.csmainwdw_spinbox_money.value())+"€", str(c)+"€"])
+                        # self.csmainwdw_lbl_balanceshow.setText(f"{str(c)} €")
                 else:
                     self.csmainwdw_lbl_resultmessage.setStyleSheet("color: rgb(255, 0, 0);")
                     self.csmainwdw_lbl_resultmessage.setText("Non-sufficient funds in the account..")
@@ -313,7 +345,7 @@ class CSMain(QMainWindow, Ui_customer_main_window):
                 self.csmainwdw_lbl_resultmessage.setStyleSheet("color: rgb(255, 0, 0);")
                 self.csmainwdw_lbl_resultmessage.setText("Please enter an amount to withdraw..")
         except:
-            pass
+            print("error")
         
     def return_back(self):
         cslogin = CsLogin()

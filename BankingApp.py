@@ -1,5 +1,6 @@
 from PyQt5.QtWidgets import *
 import json, csv, datetime, random, sys, os
+import psycopg2
 
 from Ui_main_window import *
 from Ui_customer_login_window import *
@@ -8,10 +9,10 @@ from Ui_admin_createCS_window import *
 from Ui_admin_window import *
 from Ui_customer_statement_window import *
 
-def resource_path(relative_path):
-    """ Get absolute path to resource, works for dev and for PyInstaller """
-    base_path = getattr(sys, '_MEIPASS', os.path.dirname(os.path.abspath(__file__)))
-    return os.path.join(base_path, relative_path)
+# def resource_path(relative_path):
+#     """ Get absolute path to resource, works for dev and for PyInstaller """
+#     base_path = getattr(sys, '_MEIPASS', os.path.dirname(os.path.abspath(__file__)))
+#     return os.path.join(base_path, relative_path)
 
 
 class Main_Window(QMainWindow, Ui_open_window):
@@ -47,19 +48,35 @@ class ADPreLogin(QMainWindow, Ui_admin_window):
         if len(AdminID) == 0 or len(ADpassword) == 0:
             self.adminwdw_lbl_warning.setText("Please fill the required fields!")
         else:
-             
-            file = resource_path("AdminLogInfo/admin.json")
-            with open (file, "r") as f:
-                pyfile = json.load(f)
-            for admin in pyfile:
-                if AdminID == admin["adminID"] and ADpassword == admin["adpassword"]:
-                    print("Successfully logged in")
-                    self.adminAfter = ADAfterLogin()
-                    widget.addWidget(self.adminAfter)
-                    widget.setCurrentIndex(widget.currentIndex()+1)
-                    self.adminAfter.show()
-                else:
-                    self.adminwdw_lbl_warning.setText("Invalid ID or Password!")
+            conn = psycopg2.connect("dbname=BankingApp user= postgres password=1234")
+            cur = conn.cursor()
+            cur.execute(f"SELECT admin_password FROM admin WHERE admin_id={AdminID}")
+            password = cur.fetchone()[0]
+            if ADpassword == password:
+                print("Successfully logged in")
+                self.adminAfter = ADAfterLogin()
+                widget.addWidget(self.adminAfter)
+                widget.setCurrentIndex(widget.currentIndex()+1)
+                self.adminAfter.show()
+                cur.close()
+                conn.commit()
+                conn.close()
+
+            # file = resource_path("AdminLogInfo/admin.json")
+            # with open (file, "r") as f:
+            #     pyfile = json.load(f)
+            # for admin in pyfile:
+            #     if AdminID == admin["adminID"] and ADpassword == admin["adpassword"]:
+            #         print("Successfully logged in")
+            #         self.adminAfter = ADAfterLogin()
+            #         widget.addWidget(self.adminAfter)
+            #         widget.setCurrentIndex(widget.currentIndex()+1)
+            #         self.adminAfter.show()
+            
+            else:
+                self.adminwdw_lbl_warning.setText("Invalid ID or Password!")
+                print(password)
+
     def return_back(self):
         main = Main_Window()
         widget.addWidget(main)
@@ -182,13 +199,22 @@ class CSMain(QMainWindow, Ui_customer_main_window):
         self.amount = self.csmainwdw_spinbox_money.value()
         self.ID
         
-        file = resource_path(f"customer_database/{self.ID}.csv")
-        with open (file, "r") as f:
-            reader = csv.reader(f)
-            all_rows = list(reader)
-            last_row = all_rows[-1]
-            current_element = last_row[-1]
-            self.first_balance = current_element.split("€")[0]
+        conn = psycopg2.connect("dbname=BankingApp user= postgres password=1234")
+        cur = conn.cursor()
+        cur.execute("SELECT * FROM Balance WHERE Custumer_id={self.ID}")
+        self.first_balance = cur.fetchone()
+        cur.close()
+        conn.commit()
+        conn.close()
+        
+
+        # file = resource_path(f"customer_database/{self.ID}.csv")
+        # with open (file, "r") as f:
+        #     reader = csv.reader(f)
+        #     all_rows = list(reader)
+        #     last_row = all_rows[-1]
+        #     current_element = last_row[-1]
+        #     self.first_balance = current_element.split("€")[0]
 
         self.csmainwdw_lbl_balanceshow.setText(f"{str(self.first_balance)} €")
         self.csmainwdw_btn_getcash.clicked.connect(self.get_cash)

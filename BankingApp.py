@@ -101,36 +101,48 @@ class ADAfterLogin(QMainWindow, Ui_admin_CScreate_window):
         Name = self.admincswdw_linedit_name.text()
         Email = self.admincswdw_linedit_email.text()
         Password = self.admincswdw_linedit_CSpassword_2.text()
-        CurrentBalance = self.admincswdw_spinBox_balance.text()
+        CurrentBalance = int(self.admincswdw_spinBox_balance.text().split("€")[0])
         if  len(Name) == 0 or len(Email) == 0 or len(Password) == 0:
             self.admincswdw_lbl_result.setText("Please fill all the fields!")
-        if CustomerID and Name and Email and Password:
-            file = resource_path("customer_database/customers.json")
-            customers = {}
-            with open (file, "r") as f:
-                pyfile = json.load(f)
-            customers["Customer_ID"] = str(CustomerID)
-            customers["Name"] = Name
-            customers["Email"] = Email
-            customers["Password"] = Password
-            customers["Opening Balance"] = CurrentBalance
-            customers["Current Balance"] = CurrentBalance
-            try:
-                for customer in pyfile:
-                    if str(CustomerID) in customer["Customer_ID"]:
-                        raise Exception("There is already a customer with the same ID")
-            except Exception():
-                pass
-            else:
-                self.admincswdw_lbl_result.setText(f"NEW CUSTOMER CREATED:\n{CustomerID}")
-                pyfile.append(customers)
-            with open (file, "w") as f:
-                json.dump(pyfile, f, indent=2)
-            filepath = resource_path(f'customer_database/{CustomerID}.csv')
-            with open(filepath,"w", newline="\n") as x:
-                statement = csv.writer(x)
-                statement.writerow(["Date", "Transaction Type", "Amount", "Current Balance"])
-                statement.writerow([datetime.datetime.now().strftime("%d/%m/%Y, %H:%M:%S"),"New Account", CurrentBalance, CurrentBalance])   # type: ignore
+        elif CustomerID and Name and Email and Password:
+            conn = psycopg2.connect("dbname=BankingApp user= postgres password=1234")
+            cur = conn.cursor()
+            cur.execute("INSERT INTO customer VALUES(%s,%s,%s,%s,%s)",(f"{CustomerID}", f"{Name}", f"{Email}", f"{Password}", f"{CurrentBalance}"))
+            cur.execute("INSERT INTO balance VALUES(%s,%s,%s,%s)",(f"{CustomerID}", f"{CurrentBalance}", "Opening Account", 1))
+            cur.close()
+            conn.commit()
+            conn.close()
+            self.admincswdw_lbl_result.setText(f"New customer created:\n{CustomerID}")
+
+            # # file = resource_path("customer_database/customers.json")
+            # # customers = {}
+            # # with open (file, "r") as f:
+            # #     pyfile = json.load(f)
+            # # customers["Customer_ID"] = str(CustomerID)
+            # # customers["Name"] = Name
+            # # customers["Email"] = Email
+            # # customers["Password"] = Password
+            # # customers["Opening Balance"] = CurrentBalance
+            # # customers["Current Balance"] = CurrentBalance
+
+            # try:
+            #     for customer in pyfile:
+            #         if str(CustomerID) in customer["Customer_ID"]:
+            #             raise Exception("There is already a customer with the same ID")
+            # except Exception():
+            #     pass
+            
+        # else:
+            # self.admincswdw_lbl_result.setText(f"NEW CUSTOMER CREATED:\n{CustomerID}")
+            # pyfile.append(customers)
+
+            # with open (file, "w") as f:
+            #     json.dump(pyfile, f, indent=2)
+            # filepath = resource_path(f'customer_database/{CustomerID}.csv')
+            # with open(filepath,"w", newline="\n") as x:
+            #     statement = csv.writer(x)
+            #     statement.writerow(["Date", "Transaction Type", "Amount", "Current Balance"])
+            #     statement.writerow([datetime.datetime.now().strftime("%d/%m/%Y, %H:%M:%S"),"New Account", CurrentBalance, CurrentBalance])   # type: ignore
     def return_back(self):
             ADlogin = ADPreLogin()
             widget.addWidget(ADlogin)
@@ -147,42 +159,67 @@ class CsLogin(QMainWindow,Ui_customer_login_window):
         self.csloginwdw_btn_exit.clicked.connect(self.close_w)
 
     def csafterlogin(self):
-        self.CsId = self.csloginwdw_linedit_ADid.text()  
+        self.CsId = int(self.csloginwdw_linedit_ADid.text()) 
         self.CsPs = self.csloginwdw_linedit_ADpassword.text() 
-        if len(self.CsId) == 0 or len(self.CsPs) == 0:
+        if len(str(self.CsId)) == 0 or len(str(self.CsPs)) == 0:
             self.csloginwdw_lbl_warning.setText("Please fill the required fields!")
         else:
-            file = resource_path("customer_database/customers.json")
-            with open (file, "r") as f:
-                pyfile = json.load(f)
-            for customer in pyfile:    
-                if self.CsId == customer["Customer_ID"] and self.CsPs == customer["Password"]:
-                    try:
-                        CSMain.ID = self.CsId                        
-                        print("Successfully logged in")
-                        file = resource_path(f"customer_database/{self.CsId}.csv")
-                        with open (file, "r") as f:
-                            reader = csv.reader(f)
-                            all_rows = list(reader)
-                            last_row = all_rows[-1]
-                            current_element = last_row[-1]
-                            self.balance = current_element.split("€")[0]
-                        with open (file, "a", newline="\n") as f:
-                            writer = csv.writer(f)
-                            writer.writerow([datetime.datetime.now().strftime("%d/%m/%Y, %H:%M:%S"),"Logged in", "N/A", str(self.balance)+"€"])
-                        try:
-                            self.csAfter = CSMain()
-                            widget.addWidget(self.csAfter)
-                            widget.setCurrentIndex(widget.currentIndex()+1)
-                            self.csAfter.show()
-                            self.csAfter.csmainwdw_lbl_CSname_show.setText(customer["Name"])
-                            self.csAfter.csmainwdw_lbl_CSID_show.setText(customer["Customer_ID"])
-                        except:
-                            print("error")
-                    except:
-                        print("error")
-                else:
-                    self.csloginwdw_lbl_warning.setText("Invalid ID or Password!")
+
+            conn = psycopg2.connect("dbname=BankingApp user= postgres password=1234")
+            cur = conn.cursor()
+            cur.execute(f"SELECT cs_password FROM customer WHERE customer_id={self.CsId}")
+            password = cur.fetchone()[0]
+            if self.CsPs == password:
+                
+                print("Successfully logged in")
+                cur.execute("INSERT INTO login VALUES(%s,%s)",(f"{self.CsId}", 2))
+        
+                self.csAfter = CSMain()
+                widget.addWidget(self.csAfter)
+                widget.setCurrentIndex(widget.currentIndex()+1)
+                self.csAfter.show()
+                cur.execute(f"SELECT cs_name FROM customer WHERE customer_id={self.CsId}")
+                name = cur.fetchone()[0]
+
+                # # self.CsId = self.csAfter.ID
+                self.csAfter.csmainwdw_lbl_CSname_show.setText(name)
+                self.csAfter.csmainwdw_lbl_CSID_show.setText(str(self.CsId))
+                cur.close()
+                conn.commit()
+                conn.close()
+            
+            # file = resource_path("customer_database/customers.json")
+            # with open (file, "r") as f:
+            #     pyfile = json.load(f)
+            # for customer in pyfile:    
+            #     if self.CsId == customer["Customer_ID"] and self.CsPs == customer["Password"]:
+            #         try:
+            #             CSMain.ID = self.CsId                        
+            #             print("Successfully logged in")
+            #             file = resource_path(f"customer_database/{self.CsId}.csv")
+            #             with open (file, "r") as f:
+            #                 reader = csv.reader(f)
+            #                 all_rows = list(reader)
+            #                 last_row = all_rows[-1]
+            #                 current_element = last_row[-1]
+            #                 self.balance = current_element.split("€")[0]
+            #             with open (file, "a", newline="\n") as f:
+            #                 writer = csv.writer(f)
+            #                 writer.writerow([datetime.datetime.now().strftime("%d/%m/%Y, %H:%M:%S"),"Logged in", "N/A", str(self.balance)+"€"])
+            #             try:
+            #                 self.csAfter = CSMain()
+            #                 widget.addWidget(self.csAfter)
+            #                 widget.setCurrentIndex(widget.currentIndex()+1)
+            #                 self.csAfter.show()
+            #                 self.csAfter.csmainwdw_lbl_CSname_show.setText(customer["Name"])
+            #                 self.csAfter.csmainwdw_lbl_CSID_show.setText(customer["Customer_ID"])
+            #             except:
+            #                 print("error")
+            #         except:
+            #             print("error")
+            else:
+                self.csloginwdw_lbl_warning.setText("Invalid ID or Password!")
+
     def return_back(self):
             main = Main_Window()
             widget.addWidget(main)
@@ -201,8 +238,8 @@ class CSMain(QMainWindow, Ui_customer_main_window):
         
         conn = psycopg2.connect("dbname=BankingApp user= postgres password=1234")
         cur = conn.cursor()
-        cur.execute("SELECT * FROM Balance WHERE Custumer_id={self.ID}")
-        self.first_balance = cur.fetchone()
+        cur.execute(f"SELECT current_balance FROM balance WHERE customer_id={self.ID}")
+        self.first_balance = cur.fetchone()[0]
         cur.close()
         conn.commit()
         conn.close()

@@ -9,12 +9,6 @@ from Ui_admin_createCS_window import *
 from Ui_admin_window import *
 from Ui_customer_statement_window import *
 
-# def resource_path(relative_path):
-#     """ Get absolute path to resource, works for dev and for PyInstaller """
-#     base_path = getattr(sys, '_MEIPASS', os.path.dirname(os.path.abspath(__file__)))
-#     return os.path.join(base_path, relative_path)
-
-
 class Main_Window(QMainWindow, Ui_open_window):
     def __init__(self):
         super(Main_Window, self).__init__()
@@ -61,17 +55,6 @@ class ADPreLogin(QMainWindow, Ui_admin_window):
                 cur.close()
                 conn.commit()
                 conn.close()
-
-            # file = resource_path("AdminLogInfo/admin.json")
-            # with open (file, "r") as f:
-            #     pyfile = json.load(f)
-            # for admin in pyfile:
-            #     if AdminID == admin["adminID"] and ADpassword == admin["adpassword"]:
-            #         print("Successfully logged in")
-            #         self.adminAfter = ADAfterLogin()
-            #         widget.addWidget(self.adminAfter)
-            #         widget.setCurrentIndex(widget.currentIndex()+1)
-            #         self.adminAfter.show()
             
             else:
                 self.adminwdw_lbl_warning.setText("Invalid ID or Password!")
@@ -115,36 +98,7 @@ class ADAfterLogin(QMainWindow, Ui_admin_CScreate_window):
             conn.commit()
             conn.close()
             self.admincswdw_lbl_result.setText(f"New customer created:\n{CustomerID}")
-
-            # # file = resource_path("customer_database/customers.json")
-            # # customers = {}
-            # # with open (file, "r") as f:
-            # #     pyfile = json.load(f)
-            # # customers["Customer_ID"] = str(CustomerID)
-            # # customers["Name"] = Name
-            # # customers["Email"] = Email
-            # # customers["Password"] = Password
-            # # customers["Opening Balance"] = CurrentBalance
-            # # customers["Current Balance"] = CurrentBalance
-
-            # try:
-            #     for customer in pyfile:
-            #         if str(CustomerID) in customer["Customer_ID"]:
-            #             raise Exception("There is already a customer with the same ID")
-            # except Exception():
-            #     pass
             
-        # else:
-            # self.admincswdw_lbl_result.setText(f"NEW CUSTOMER CREATED:\n{CustomerID}")
-            # pyfile.append(customers)
-
-            # with open (file, "w") as f:
-            #     json.dump(pyfile, f, indent=2)
-            # filepath = resource_path(f'customer_database/{CustomerID}.csv')
-            # with open(filepath,"w", newline="\n") as x:
-            #     statement = csv.writer(x)
-            #     statement.writerow(["Date", "Transaction Type", "Amount", "Current Balance"])
-            #     statement.writerow([datetime.datetime.now().strftime("%d/%m/%Y, %H:%M:%S"),"New Account", CurrentBalance, CurrentBalance])   # type: ignore
     def return_back(self):
             ADlogin = ADPreLogin()
             widget.addWidget(ADlogin)

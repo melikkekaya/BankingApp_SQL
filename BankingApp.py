@@ -8,6 +8,7 @@ from Ui_customer_main_window import *
 from Ui_admin_createCS_window import *
 from Ui_admin_window import *
 from Ui_customer_statement_window import *
+from Ui_cs_options_window import *
 
 class Main_Window(QMainWindow, Ui_open_window):
     def __init__(self):
@@ -93,7 +94,7 @@ class ADAfterLogin(QMainWindow, Ui_admin_CScreate_window):
             cur.execute("INSERT INTO customer VALUES(%s,%s,%s,%s)",(f"{Name}", f"{Email}", f"{Password}", f"{CurrentBalance}"))
             cur.execute(f"SELECT MAX(customer_id) FROM customer")
             CustomerID = cur.fetchone()[0]
-            cur.execute("INSERT INTO balance VALUES(%s,%s,%s,%s)",(f"{CustomerID}", f"{CurrentBalance}", "Opening Account", 1))
+            cur.execute("INSERT INTO balance VALUES(%s,%s)",(f"{CustomerID}", f"{CurrentBalance}"))
             cur.close()
             conn.commit()
             conn.close()
@@ -126,28 +127,30 @@ class CsLogin(QMainWindow,Ui_customer_login_window):
             cur.execute(f"SELECT cs_password FROM customer WHERE customer_id={self.CsId}")
             password = cur.fetchone()[0]
             if self.CsPs == password:
-                try:
-                    CSMain.ID = self.CsId
-                    print("Successfully logged in")
-                    cur.execute("INSERT INTO login VALUES(%s,%s)",(f"{self.CsId}", 2))
+                # try:
+                CSMain.ID = self.CsId
+                CSOptions.ID = self.CsId
+                print("Successfully logged in")
+                cur.execute("INSERT INTO login VALUES(%s,%s)",(f"{self.CsId}", 2))
 
-                    try:        #öncekinde burayı neden try bloğuna aldığımızı anlamadım yine de ekledim şimdilik sdfj
-                        self.csAfter = CSMain()
-                        widget.addWidget(self.csAfter)
-                        widget.setCurrentIndex(widget.currentIndex()+1)
-                        self.csAfter.show()
-                        cur.execute(f"SELECT cs_name FROM customer WHERE customer_id={self.CsId}")
-                        name = cur.fetchone()[0]
-                    except:
-                        print("error")
+                # try:        #öncekinde burayı neden try bloğuna aldığımızı anlamadım yine de ekledim şimdilik sdfj
+                self.csAfter = CSOptions()
+                widget.addWidget(self.csAfter)
+                widget.setCurrentIndex(widget.currentIndex()+1)
+                self.csAfter.show()
+                cur.execute(f"SELECT cs_name FROM customer WHERE customer_id={self.CsId}")
+                name = cur.fetchone()[0]
+                self.csAfter.csoptwdw_lbl_showname.setText(f"Hello {name}")
+                # except:
+                #     print("error1")
 
-                    self.csAfter.csmainwdw_lbl_CSname_show.setText(name)
-                    self.csAfter.csmainwdw_lbl_CSID_show.setText(str(self.CsId))
-                    cur.close()
-                    conn.commit()
-                    conn.close()
-                except:
-                    print("error")
+                # self.csAfter.csmainwdw_lbl_CSname_show.setText(name)
+                # self.csAfter.csmainwdw_lbl_CSID_show.setText(str(self.CsId))
+                cur.close()
+                conn.commit()
+                conn.close()
+                # except:
+                #     print("error2")
             else:
                 self.csloginwdw_lbl_warning.setText("Invalid ID or Password!")
 
@@ -158,6 +161,33 @@ class CsLogin(QMainWindow,Ui_customer_login_window):
 
     def close_w(self):
         sys.exit()            
+
+class CSOptions(QMainWindow, Ui_cs_options_window):
+    def __init__(self):
+        super(CSOptions, self).__init__()
+        self.setupUi(self)
+        self.ID
+
+        self.optwdw_btn_banktr.clicked.connect(self.opentr)
+        # self.optwdw_btn_transfer.clicked.connect(self.transfer)
+        # self.optwdw_btn_editinf.clicked.connect(self.editinf)
+        # self.optwdw_btn_bankstt.clicked.connect(self.bankstt)
+
+    def opentr(self):
+        self.csAfter = CSMain()
+        widget.addWidget(self.csAfter)
+        widget.setCurrentIndex(widget.currentIndex()+1)
+        self.csAfter.show()
+
+        conn = psycopg2.connect("dbname=BankingApp user= postgres password=1234")
+        cur = conn.cursor()
+        cur.execute(f"SELECT cs_name FROM customer WHERE customer_id={self.ID}")
+        name = cur.fetchone()[0]
+        self.csAfter.csmainwdw_lbl_CSname_show.setText(name)
+        self.csAfter.csmainwdw_lbl_CSID_show.setText(str(self.ID))
+        cur.close()
+        conn.commit()
+        conn.close()
 
 class CSMain(QMainWindow, Ui_customer_main_window):
     def __init__(self):
@@ -179,7 +209,7 @@ class CSMain(QMainWindow, Ui_customer_main_window):
         self.csmainwdw_btn_getcash.clicked.connect(self.get_cash)
         self.csmainwdw_btn_deposit.clicked.connect(self.deposit)
         self.csmainwdw_btn_returnmain.clicked.connect(self.return_back)
-        self.csmainwdw_btn_statement.clicked.connect(self.show_statement)
+        # self.csmainwdw_btn_statement.clicked.connect(self.show_statement)
         self.csmainwdw_btn_exit.clicked.connect(self.close_w)
         
     def take_balance(self):
@@ -212,7 +242,7 @@ class CSMain(QMainWindow, Ui_customer_main_window):
                 self.csmainwdw_lbl_resultmessage.setStyleSheet("color: rgb(255, 0, 0);")
                 self.csmainwdw_lbl_resultmessage.setText("Please enter an amount..")
         except:
-            print("error")
+            print("error3")
 
     def get_cash(self):
         self.take_balance()
@@ -240,7 +270,7 @@ class CSMain(QMainWindow, Ui_customer_main_window):
                 self.csmainwdw_lbl_resultmessage.setStyleSheet("color: rgb(255, 0, 0);")
                 self.csmainwdw_lbl_resultmessage.setText("Please enter an amount to withdraw..")
         except:
-            print("error")
+            print("error4")
         
     def return_back(self):
         cslogin = CsLogin()

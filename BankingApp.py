@@ -97,17 +97,19 @@ class ADAfterLogin(QMainWindow, Ui_admin_CScreate_window):
         self.admincswdw_btn_exit.clicked.connect(self.close_w)
 
     def createcustomer(self):
-        CustomerID = random.randint(100000,999999)
+        # CustomerID = random.randint(100000,999999)
         Name = self.admincswdw_linedit_name.text()
         Email = self.admincswdw_linedit_email.text()
         Password = self.admincswdw_linedit_CSpassword_2.text()
         CurrentBalance = int(self.admincswdw_spinBox_balance.text().split("€")[0])
         if  len(Name) == 0 or len(Email) == 0 or len(Password) == 0:
             self.admincswdw_lbl_result.setText("Please fill all the fields!")
-        elif CustomerID and Name and Email and Password:
+        elif Name and Email and Password:
             conn = psycopg2.connect("dbname=BankingApp user= postgres password=1234")
             cur = conn.cursor()
-            cur.execute("INSERT INTO customer VALUES(%s,%s,%s,%s,%s)",(f"{CustomerID}", f"{Name}", f"{Email}", f"{Password}", f"{CurrentBalance}"))
+            cur.execute("INSERT INTO customer VALUES(%s,%s,%s,%s)",(f"{Name}", f"{Email}", f"{Password}", f"{CurrentBalance}"))
+            cur.execute(f"SELECT MAX(customer_id) FROM customer")
+            CustomerID = cur.fetchone()
             cur.execute("INSERT INTO balance VALUES(%s,%s,%s,%s)",(f"{CustomerID}", f"{CurrentBalance}", "Opening Account", 1))
             cur.close()
             conn.commit()

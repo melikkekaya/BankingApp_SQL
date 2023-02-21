@@ -166,7 +166,7 @@ class CsLogin(QMainWindow,Ui_customer_login_window):
         if len(str(self.CsId)) == 0 or len(str(self.CsPs)) == 0:
             self.csloginwdw_lbl_warning.setText("Please fill the required fields!")
         else:
-
+            # BURAYA TRY GELECEK: YANLIŞ GİRİŞ YA DA OLMAYAN KULLANICIDA ATIYOR!!
             conn = psycopg2.connect("dbname=BankingApp user= postgres password=1234")
             cur = conn.cursor()
             cur.execute(f"SELECT cs_password FROM customer WHERE customer_id={self.CsId}")

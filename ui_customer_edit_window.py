@@ -143,4 +143,3 @@ class Ui_Customer_infoEdit_window(object):
         self.cseditwdw_lbl_headingAcc.setText(_translate("Customer_infoEdit_window", "Account Information"))
         self.cseditwdw_lbl_password.setText(_translate("Customer_infoEdit_window", "Password:"))
         self.cseditwdw_btn_save.setText(_translate("Customer_infoEdit_window", "SAVE"))
- 

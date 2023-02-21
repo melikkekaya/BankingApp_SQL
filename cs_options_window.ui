@@ -17,38 +17,28 @@
    <string notr="true">background-color: rgb(5, 130, 202);</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QLabel" name="csoptwdw_lbl_heading">
+   <widget class="QLabel" name="csoptwdw_lbl_showname">
     <property name="geometry">
      <rect>
-      <x>110</x>
+      <x>150</x>
       <y>20</y>
-      <width>191</width>
+      <width>271</width>
       <height>81</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <family>Bahnschrift SemiBold</family>
-      <pointsize>26</pointsize>
+      <family>Arial</family>
+      <pointsize>24</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
     </property>
     <property name="text">
-     <string>Hello</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="csoptwdw_lbl_showname">
-    <property name="geometry">
-     <rect>
-      <x>300</x>
-      <y>20</y>
-      <width>171</width>
-      <height>81</height>
-     </rect>
-    </property>
-    <property name="text">
      <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
     </property>
    </widget>
    <widget class="QPushButton" name="optwdw_btn_transfer">
@@ -271,7 +261,7 @@ QPushButton:hover {
      <x>0</x>
      <y>0</y>
      <width>600</width>
-     <height>26</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>

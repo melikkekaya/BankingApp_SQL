@@ -109,7 +109,7 @@ class ADAfterLogin(QMainWindow, Ui_admin_CScreate_window):
             cur = conn.cursor()
             cur.execute("INSERT INTO customer VALUES(%s,%s,%s,%s)",(f"{Name}", f"{Email}", f"{Password}", f"{CurrentBalance}"))
             cur.execute(f"SELECT MAX(customer_id) FROM customer")
-            CustomerID = cur.fetchone()
+            CustomerID = cur.fetchone()[0]
             cur.execute("INSERT INTO balance VALUES(%s,%s,%s,%s)",(f"{CustomerID}", f"{CurrentBalance}", "Opening Account", 1))
             cur.close()
             conn.commit()
@@ -172,53 +172,28 @@ class CsLogin(QMainWindow,Ui_customer_login_window):
             cur.execute(f"SELECT cs_password FROM customer WHERE customer_id={self.CsId}")
             password = cur.fetchone()[0]
             if self.CsPs == password:
-                CSMain.ID = self.CsId
-                print("Successfully logged in")
-                cur.execute("INSERT INTO login VALUES(%s,%s)",(f"{self.CsId}", 2))
-        
-                self.csAfter = CSMain()
-                widget.addWidget(self.csAfter)
-                widget.setCurrentIndex(widget.currentIndex()+1)
-                self.csAfter.show()
-                cur.execute(f"SELECT cs_name FROM customer WHERE customer_id={self.CsId}")
-                name = cur.fetchone()[0]
+                try:
+                    CSMain.ID = self.CsId
+                    print("Successfully logged in")
+                    cur.execute("INSERT INTO login VALUES(%s,%s)",(f"{self.CsId}", 2))
 
-                # # self.CsId = self.csAfter.ID
-                self.csAfter.csmainwdw_lbl_CSname_show.setText(name)
-                self.csAfter.csmainwdw_lbl_CSID_show.setText(str(self.CsId))
-                cur.close()
-                conn.commit()
-                conn.close()
-            
-            # file = resource_path("customer_database/customers.json")
-            # with open (file, "r") as f:
-            #     pyfile = json.load(f)
-            # for customer in pyfile:    
-            #     if self.CsId == customer["Customer_ID"] and self.CsPs == customer["Password"]:
-            #         try:
-            #             CSMain.ID = self.CsId                        
-            #             print("Successfully logged in")
-            #             file = resource_path(f"customer_database/{self.CsId}.csv")
-            #             with open (file, "r") as f:
-            #                 reader = csv.reader(f)
-            #                 all_rows = list(reader)
-            #                 last_row = all_rows[-1]
-            #                 current_element = last_row[-1]
-            #                 self.balance = current_element.split("€")[0]
-            #             with open (file, "a", newline="\n") as f:
-            #                 writer = csv.writer(f)
-            #                 writer.writerow([datetime.datetime.now().strftime("%d/%m/%Y, %H:%M:%S"),"Logged in", "N/A", str(self.balance)+"€"])
-            #             try:
-            #                 self.csAfter = CSMain()
-            #                 widget.addWidget(self.csAfter)
-            #                 widget.setCurrentIndex(widget.currentIndex()+1)
-            #                 self.csAfter.show()
-            #                 self.csAfter.csmainwdw_lbl_CSname_show.setText(customer["Name"])
-            #                 self.csAfter.csmainwdw_lbl_CSID_show.setText(customer["Customer_ID"])
-            #             except:
-            #                 print("error")
-            #         except:
-            #             print("error")
+                    try:        #öncekinde burayı neden try bloğuna aldığımızı anlamadım yine de ekledim şimdilik sdfj
+                        self.csAfter = CSMain()
+                        widget.addWidget(self.csAfter)
+                        widget.setCurrentIndex(widget.currentIndex()+1)
+                        self.csAfter.show()
+                        cur.execute(f"SELECT cs_name FROM customer WHERE customer_id={self.CsId}")
+                        name = cur.fetchone()[0]
+                    except:
+                        print("error")
+
+                    self.csAfter.csmainwdw_lbl_CSname_show.setText(name)
+                    self.csAfter.csmainwdw_lbl_CSID_show.setText(str(self.CsId))
+                    cur.close()
+                    conn.commit()
+                    conn.close()
+                except:
+                    print("error")
             else:
                 self.csloginwdw_lbl_warning.setText("Invalid ID or Password!")
 
@@ -245,15 +220,6 @@ class CSMain(QMainWindow, Ui_customer_main_window):
         cur.close()
         conn.commit()
         conn.close()
-        
-
-        # file = resource_path(f"customer_database/{self.ID}.csv")
-        # with open (file, "r") as f:
-        #     reader = csv.reader(f)
-        #     all_rows = list(reader)
-        #     last_row = all_rows[-1]
-        #     current_element = last_row[-1]
-        #     self.first_balance = current_element.split("€")[0]
 
         self.csmainwdw_lbl_balanceshow.setText(f"{str(self.first_balance)} €")
         self.csmainwdw_btn_getcash.clicked.connect(self.get_cash)
@@ -270,21 +236,6 @@ class CSMain(QMainWindow, Ui_customer_main_window):
         cur.close()
         conn.commit()
         conn.close()
-    #     conn = psycopg2.connect("dbname=BankingApp user= postgres password=1234")
-    #     cur = conn.cursor()
-    #     cur.execute(f"SELECT current_balance FROM balance WHERE customer_id={self.ID}")
-    #     self.first_balance = cur.fetchone()[0]
-    #     cur.close()
-    #     conn.commit()
-    #     conn.close()
-
-        # file = resource_path(f"customer_database/{self.ID}.csv")
-        # with open (file, "r") as f:
-        #     reader = csv.reader(f)
-        #     all_rows = list(reader)
-        #     last_row = all_rows[-1]
-        #     current_element = last_row[-1]
-            # self.balance = current_element.split("€")[0]
         
     def deposit(self):
         self.take_balance()
@@ -303,12 +254,6 @@ class CSMain(QMainWindow, Ui_customer_main_window):
                 self.csmainwdw_lbl_resultmessage.setStyleSheet("color: rgb(0, 84, 147);")
                 self.csmainwdw_lbl_resultmessage.setText("Successful deposit to the account")
 
-                # file = resource_path(f"customer_database/{self.ID}.csv")
-                # with open (file, "a", newline="\n") as f:
-                #     writer = csv.writer(f)
-                #     writer.writerow([datetime.datetime.now().strftime("%d/%m/%Y, %H:%M:%S"),"Deposit", str(self.csmainwdw_spinbox_money.value())+"€", str(b)+"€"])
-                # self.csmainwdw_lbl_balanceshow.setText(f"{str(b)} €")
-
             else:
                 self.csmainwdw_lbl_resultmessage.setStyleSheet("color: rgb(255, 0, 0);")
                 self.csmainwdw_lbl_resultmessage.setText("Please enter an amount..")
@@ -319,7 +264,6 @@ class CSMain(QMainWindow, Ui_customer_main_window):
         self.take_balance()
         try: 
             if self.csmainwdw_spinbox_money.value() > 0:
-                # c = int(self.balance)
                 if self.balance >= self.csmainwdw_spinbox_money.value():
                     c = self.balance - self.csmainwdw_spinbox_money.value()
 
@@ -333,12 +277,7 @@ class CSMain(QMainWindow, Ui_customer_main_window):
                     self.csmainwdw_lbl_balanceshow.setText(f"{str(c)} €")
                     self.csmainwdw_lbl_resultmessage.setStyleSheet("color: rgb(0, 84, 147);")
                     self.csmainwdw_lbl_resultmessage.setText("Successful withdraw from the account")
-                    
-                    # file = resource_path(f"customer_database/{self.ID}.csv")
-                    # with open (file, "a", newline="\n") as f:
-                    #     writer = csv.writer(f)
-                    #     writer.writerow([datetime.datetime.now().strftime("%d/%m/%Y, %H:%M:%S"),"Withdraw", str(self.csmainwdw_spinbox_money.value())+"€", str(c)+"€"])
-                        # self.csmainwdw_lbl_balanceshow.setText(f"{str(c)} €")
+               
                 else:
                     self.csmainwdw_lbl_resultmessage.setStyleSheet("color: rgb(255, 0, 0);")
                     self.csmainwdw_lbl_resultmessage.setText("Non-sufficient funds in the account..")

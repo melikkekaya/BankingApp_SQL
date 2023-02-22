@@ -168,8 +168,8 @@ QPushButton:hover {
    <widget class="QPushButton" name="cstrfwdw_btn_send">
     <property name="geometry">
      <rect>
-      <x>210</x>
-      <y>440</y>
+      <x>220</x>
+      <y>450</y>
       <width>180</width>
       <height>50</height>
      </rect>
@@ -255,7 +255,7 @@ QPushButton:hover {
    <widget class="QPushButton" name="cstrfwdw_btn_moneydown">
     <property name="geometry">
      <rect>
-      <x>140</x>
+      <x>150</x>
       <y>380</y>
       <width>41</width>
       <height>41</height>
@@ -290,7 +290,7 @@ QPushButton:hover {
    <widget class="QSpinBox" name="cstrfwdw_spinbox_money">
     <property name="geometry">
      <rect>
-      <x>220</x>
+      <x>230</x>
       <y>380</y>
       <width>160</width>
       <height>40</height>
@@ -517,58 +517,59 @@ background-color: rgb(236, 236, 236);</string>
      </item>
     </layout>
    </widget>
-   <widget class="QLineEdit" name="cstrfwdw_linedit_receivernumber">
+   <widget class="QWidget" name="gridLayoutWidget_2">
     <property name="geometry">
      <rect>
-      <x>300</x>
+      <x>50</x>
       <y>300</y>
-      <width>241</width>
-      <height>41</height>
+      <width>491</width>
+      <height>43</height>
      </rect>
     </property>
-    <property name="styleSheet">
-     <string notr="true">font: 24pt &quot;.AppleSystemUIFont&quot;;
+    <layout class="QGridLayout" name="gridLayout_2">
+     <item row="0" column="2">
+      <widget class="QLineEdit" name="cstrfwdw_linedit_receivernumber">
+       <property name="minimumSize">
+        <size>
+         <width>241</width>
+         <height>41</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>265</width>
+         <height>41</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 24pt &quot;.AppleSystemUIFont&quot;;
 background-color: rgb(236, 236, 236);</string>
-    </property>
-    <property name="inputMethodHints">
-     <set>Qt::ImhDigitsOnly|Qt::ImhPreferNumbers</set>
-    </property>
-    <property name="maxLength">
-     <number>10</number>
-    </property>
+       </property>
+       <property name="inputMethodHints">
+        <set>Qt::ImhDigitsOnly|Qt::ImhPreferNumbers</set>
+       </property>
+       <property name="maxLength">
+        <number>10</number>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QLabel" name="cstrfwdw_lbl_receiverheading">
+       <property name="font">
+        <font>
+         <family>.AppleSystemUIFont</family>
+         <pointsize>18</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Recipient Number</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </widget>
-   <widget class="QLabel" name="cstrfwdw_lbl_receiverheading">
-    <property name="geometry">
-     <rect>
-      <x>70</x>
-      <y>300</y>
-      <width>191</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>.AppleSystemUIFont</family>
-      <pointsize>18</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="text">
-     <string>Recipient Number:</string>
-    </property>
-   </widget>
-   <zorder>cstrfwdw_lbl_heading</zorder>
-   <zorder>cstrfwdw_btn_returnmain</zorder>
-   <zorder>cstrfwdw_btn_exit</zorder>
-   <zorder>cstrfwdw_btn_send</zorder>
-   <zorder>cstrfwdw_btn_moneyup</zorder>
-   <zorder>cstrfwdw_btn_moneydown</zorder>
-   <zorder>cstrfwdw_spinbox_money</zorder>
-   <zorder>cstrfwdw_lbl_resultmessage</zorder>
-   <zorder>gridLayoutWidget</zorder>
-   <zorder>cstrfwdw_lbl_receiverheading</zorder>
-   <zorder>cstrfwdw_linedit_receivernumber</zorder>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>

@@ -117,7 +117,6 @@ class AD_CS_create(QMainWindow, Ui_admin_CScreate_window):
         self.admincswdw_btn_exit.clicked.connect(self.close_w)
 
     def createcustomer(self):
-        # CustomerID = random.randint(100000,999999)
         Name = self.admincswdw_linedit_name.text()
         Email = self.admincswdw_linedit_email.text()
         Password = self.admincswdw_linedit_CSpassword_2.text()
@@ -183,7 +182,7 @@ class CsLogin(QMainWindow,Ui_customer_login_window):
                 print("Successfully logged in")
                 cur.execute("INSERT INTO all_transactions VALUES(%s,%s,%s)",(f"{self.CsId}", 0, "Login"))
                 
-                # try:        #öncekinde burayı neden try bloğuna aldığımızı anlamadım yine de ekledim şimdilik sdfj
+                # try:        #öncekinde burayı neden try bloğuna aldığımızı anlamadım 
                 self.csAfter = CSOptions()
                 widget.addWidget(self.csAfter)
                 widget.setCurrentIndex(widget.currentIndex()+1)
@@ -329,7 +328,7 @@ class CSMain(QMainWindow, Ui_customer_main_window):
         self.csmainwdw_lbl_balanceshow.setText(f"{str(self.first_balance)} €")
         self.csmainwdw_btn_getcash.clicked.connect(self.get_cash)
         self.csmainwdw_btn_deposit.clicked.connect(self.deposit)
-        # TODOself.csmainwdw_btn_returnmain.clicked.connect(self.return_back)
+        self.csmainwdw_btn_returnmain.clicked.connect(self.return_back)
         self.csmainwdw_btn_exit.clicked.connect(self.close_w)
         # self.csmainwdw_btn_statement.clicked.connect(self.show_statement)
         
@@ -393,18 +392,18 @@ class CSMain(QMainWindow, Ui_customer_main_window):
         except:
             print("error4")
         
-    # TODOdef return_back(self):
-    #     csoptions = CSOptions()
-    #     widget.addWidget(csoptions)
-    #     widget.setCurrentIndex(widget.currentIndex()+1)
-    #     conn = psycopg2.connect("dbname=BankingApp user= postgres password=1234")
-    #     cur = conn.cursor() 
-    #     cur.execute(f"SELECT cs_name FROM customer WHERE customer_id={self.ID}")
-    #     name = cur.fetchone()[0]
-    #     self.csoptions.csoptwdw_lbl_showname.setText(f"Hello {name}")
-    #     cur.close()
-    #     conn.commit()
-    #     conn.close()
+    def return_back(self):
+        csoptions = CSOptions()
+        widget.addWidget(csoptions)
+        widget.setCurrentIndex(widget.currentIndex()+1)
+        conn = psycopg2.connect("dbname=BankingApp user= postgres password=1234")
+        cur = conn.cursor() 
+        cur.execute(f"SELECT cs_name FROM customer WHERE customer_id={self.ID}")
+        name = cur.fetchone()[0]
+        csoptions.csoptwdw_lbl_showname.setText(f"Hello {name}")
+        cur.close()
+        conn.commit()
+        conn.close()
     
     def close_w(self):
         sys.exit()  
@@ -443,7 +442,7 @@ class CSTransfer(QMainWindow, Ui_customer_transfer_window):
 
         self.cstrfwdw_lbl_balanceshow.setText(f"{str(self.first_balance)} €")
         self.cstrfwdw_btn_send.clicked.connect(self.send_money)
-        # TODOself.cstrfwdw_btn_returnmain.clicked.connect(self.return_back)
+        self.cstrfwdw_btn_returnmain.clicked.connect(self.return_back)
         self.cstrfwdw_btn_exit.clicked.connect(self.close_w)
     
     def take_balance(self):
@@ -513,18 +512,18 @@ class CSTransfer(QMainWindow, Ui_customer_transfer_window):
             self.cstrfwdw_lbl_resultmessage.setStyleSheet("color: rgb(255, 0, 0);")
             self.cstrfwdw_lbl_resultmessage.setText("Please enter an amount to transfer..")
 
-    # TODOdef return_back(self):
-    #     csoptions = CSOptions()
-    #     widget.addWidget(csoptions)
-    #     widget.setCurrentIndex(widget.currentIndex()+1)
-    #     conn = psycopg2.connect("dbname=BankingApp user= postgres password=1234")
-    #     cur = conn.cursor() 
-    #     cur.execute(f"SELECT cs_name FROM customer WHERE customer_id={self.ID}")
-    #     name = cur.fetchone()[0]
-    #     self.csoptions.csoptwdw_lbl_showname.setText(f"Hello {name}")
-    #     cur.close()
-    #     conn.commit()
-    #     conn.close()
+    def return_back(self):
+        csoptions = CSOptions()
+        widget.addWidget(csoptions)
+        widget.setCurrentIndex(widget.currentIndex()+1)
+        conn = psycopg2.connect("dbname=BankingApp user= postgres password=1234")
+        cur = conn.cursor() 
+        cur.execute(f"SELECT cs_name FROM customer WHERE customer_id={self.ID}")
+        name = cur.fetchone()[0]
+        csoptions.csoptwdw_lbl_showname.setText(f"Hello {name}")
+        cur.close()
+        conn.commit()
+        conn.close()
     
     def close_w(self):
         sys.exit()  

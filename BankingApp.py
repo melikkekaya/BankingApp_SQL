@@ -164,8 +164,8 @@ class CsLogin(QMainWindow,Ui_customer_login_window):
                 CSOptions.ID = self.CsId
                 CSTransfer.ID = self.CsId
                 print("Successfully logged in")
-                cur.execute("INSERT INTO login VALUES(%s,%s)",(f"{self.CsId}", 2))
-
+                cur.execute("INSERT INTO all_transactions VALUES(%s,%s,%s)",(f"{self.CsId}", 0, "Login"))
+                
                 # try:        #öncekinde burayı neden try bloğuna aldığımızı anlamadım yine de ekledim şimdilik sdfj
                 self.csAfter = CSOptions()
                 widget.addWidget(self.csAfter)
@@ -385,11 +385,11 @@ class CSTransfer(QMainWindow, Ui_customer_transfer_window):
                 receiver_list = [i[0] for i in x]
 
 # gönderdiği hesap numarası tabloya eklensin
-                if int(self.cstrfwdw_linedit_receivernumber.text()) in receiver_list:
+                if int(self.cstrfwdw_linedit_receivernumber.text()) in receiver_list and int(self.cstrfwdw_linedit_receivernumber.text()) != self.ID:
                     receiver_id = int(self.cstrfwdw_linedit_receivernumber.text())
                     d = self.balance - self.cstrfwdw_spinbox_money.value()
-                    cur.execute("INSERT INTO all_transactions VALUES(%s,%s,%s)",(f"{self.ID}", f"{int(self.cstrfwdw_spinbox_money.value())}", "Internal Money Transfer"))
-                    cur.execute("INSERT INTO all_transactions VALUES(%s,%s,%s)",(f"{receiver_id}", f"{int(self.cstrfwdw_spinbox_money.value())}", "Money Received"))
+                    cur.execute("INSERT INTO all_transactions VALUES(%s,%s,%s,%s)",(f"{self.ID}", f"{int(self.cstrfwdw_spinbox_money.value())}", "Internal Money Transfer", f"{receiver_id}"))
+                    cur.execute("INSERT INTO all_transactions VALUES(%s,%s,%s,%s)",(f"{receiver_id}", f"{int(self.cstrfwdw_spinbox_money.value())}", "Money Received", f"{self.ID}"))
                     cur.execute("UPDATE balance SET current_balance = %s WHERE customer_id = %s", (f"{d}", f"{self.ID}"))
 
                     cur.execute(f"SELECT current_balance FROM balance WHERE customer_id={receiver_id}")
@@ -405,13 +405,16 @@ class CSTransfer(QMainWindow, Ui_customer_transfer_window):
                     conn.commit()
                     conn.close()
 
+                elif int(self.cstrfwdw_linedit_receivernumber.text()) == self.ID:
+                    self.cstrfwdw_lbl_resultmessage.setStyleSheet("color: rgb(255, 0, 0);")
+                    self.cstrfwdw_lbl_resultmessage.setText("Receiver should be different than sender..")
                 # başka bankaya
 # gönderdiği hesap numarası tabloya eklensin
                 else:
                     e = self.balance - self.cstrfwdw_spinbox_money.value()
                     conn = psycopg2.connect("dbname=BankingApp user= postgres password=1234")
                     cur = conn.cursor()
-                    cur.execute("INSERT INTO all_transactions VALUES(%s,%s,%s)",(f"{self.ID}", f"{int(self.cstrfwdw_spinbox_money.value())}", "External Money Transfer"))
+                    cur.execute("INSERT INTO all_transactions VALUES(%s,%s,%s,%s)",(f"{self.ID}", f"{int(self.cstrfwdw_spinbox_money.value())}", "External Money Transfer",f"{receiver_id}"))
                     cur.execute("UPDATE balance SET current_balance = %s WHERE customer_id = %s", (f"{e}", f"{self.ID}"))
                     cur.close()
                     conn.commit()

@@ -1,6 +1,5 @@
 from PyQt5.QtWidgets import *
-import json, csv, datetime, random, sys, os
-import psycopg2
+import psycopg2, sys
 
 from Ui_main_window import *
 from Ui_customer_login_window import *
@@ -223,6 +222,8 @@ class CSOptions(QMainWindow, Ui_cs_options_window):
         self.optwdw_btn_transfer.clicked.connect(self.open_transfer)
         self.optwdw_btn_editinf.clicked.connect(self.open_edit)
         # self.optwdw_btn_bankstt.clicked.connect(self.bankstt)
+        self.optwdw_btn_back.clicked.connect(self.return_back)
+        self.optwdw_btn_exit.clicked.connect(self.close_w)        
 
     def open_transactions(self):
         self.csAfter = CSMain()
@@ -278,6 +279,14 @@ class CSOptions(QMainWindow, Ui_cs_options_window):
         cur.close()
         conn.commit()
         conn.close()
+    
+    def return_back(self):
+        cslogin = CsLogin()
+        widget.addWidget(cslogin)
+        widget.setCurrentIndex(widget.currentIndex()+1)
+    
+    def close_w(self):
+        sys.exit()  
 
 class CSEdit(QMainWindow, Ui_Customer_infoEdit_window):
     def __init__(self):
@@ -301,9 +310,6 @@ class CSEdit(QMainWindow, Ui_Customer_infoEdit_window):
     def save(self):
         pass  
 
-    
-
-
 class CSMain(QMainWindow, Ui_customer_main_window):
     def __init__(self):
         super(CSMain, self).__init__()
@@ -323,9 +329,9 @@ class CSMain(QMainWindow, Ui_customer_main_window):
         self.csmainwdw_lbl_balanceshow.setText(f"{str(self.first_balance)} €")
         self.csmainwdw_btn_getcash.clicked.connect(self.get_cash)
         self.csmainwdw_btn_deposit.clicked.connect(self.deposit)
-        self.csmainwdw_btn_returnmain.clicked.connect(self.return_back)
-        # self.csmainwdw_btn_statement.clicked.connect(self.show_statement)
+        # TODOself.csmainwdw_btn_returnmain.clicked.connect(self.return_back)
         self.csmainwdw_btn_exit.clicked.connect(self.close_w)
+        # self.csmainwdw_btn_statement.clicked.connect(self.show_statement)
         
     def take_balance(self):
         conn = psycopg2.connect("dbname=BankingApp user= postgres password=1234")
@@ -387,10 +393,21 @@ class CSMain(QMainWindow, Ui_customer_main_window):
         except:
             print("error4")
         
-    def return_back(self):
-        cslogin = CsLogin()
-        widget.addWidget(cslogin)
-        widget.setCurrentIndex(widget.currentIndex()+1)
+    # TODOdef return_back(self):
+    #     csoptions = CSOptions()
+    #     widget.addWidget(csoptions)
+    #     widget.setCurrentIndex(widget.currentIndex()+1)
+    #     conn = psycopg2.connect("dbname=BankingApp user= postgres password=1234")
+    #     cur = conn.cursor() 
+    #     cur.execute(f"SELECT cs_name FROM customer WHERE customer_id={self.ID}")
+    #     name = cur.fetchone()[0]
+    #     self.csoptions.csoptwdw_lbl_showname.setText(f"Hello {name}")
+    #     cur.close()
+    #     conn.commit()
+    #     conn.close()
+    
+    def close_w(self):
+        sys.exit()  
 
     def show_statement(self):
         self.csstatement = CSinfo()
@@ -409,9 +426,6 @@ class CSMain(QMainWindow, Ui_customer_main_window):
         self.take_balance()
         self.csstatement.csstatementwdw_lbl_balanceshow.setText(f"{self.balance} €")
 
-    def close_w(self):
-        sys.exit()  
-
 class CSTransfer(QMainWindow, Ui_customer_transfer_window):
     def __init__(self):
         super(CSTransfer, self).__init__()
@@ -429,6 +443,8 @@ class CSTransfer(QMainWindow, Ui_customer_transfer_window):
 
         self.cstrfwdw_lbl_balanceshow.setText(f"{str(self.first_balance)} €")
         self.cstrfwdw_btn_send.clicked.connect(self.send_money)
+        # TODOself.cstrfwdw_btn_returnmain.clicked.connect(self.return_back)
+        self.cstrfwdw_btn_exit.clicked.connect(self.close_w)
     
     def take_balance(self):
         conn = psycopg2.connect("dbname=BankingApp user= postgres password=1234")
@@ -497,7 +513,21 @@ class CSTransfer(QMainWindow, Ui_customer_transfer_window):
             self.cstrfwdw_lbl_resultmessage.setStyleSheet("color: rgb(255, 0, 0);")
             self.cstrfwdw_lbl_resultmessage.setText("Please enter an amount to transfer..")
 
-
+    # TODOdef return_back(self):
+    #     csoptions = CSOptions()
+    #     widget.addWidget(csoptions)
+    #     widget.setCurrentIndex(widget.currentIndex()+1)
+    #     conn = psycopg2.connect("dbname=BankingApp user= postgres password=1234")
+    #     cur = conn.cursor() 
+    #     cur.execute(f"SELECT cs_name FROM customer WHERE customer_id={self.ID}")
+    #     name = cur.fetchone()[0]
+    #     self.csoptions.csoptwdw_lbl_showname.setText(f"Hello {name}")
+    #     cur.close()
+    #     conn.commit()
+    #     conn.close()
+    
+    def close_w(self):
+        sys.exit()  
 
 class CSinfo(QMainWindow, Ui_customer_statement_window):
     def __init__(self):

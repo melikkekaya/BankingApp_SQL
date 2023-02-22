@@ -313,7 +313,7 @@ class Ui_customer_transfer_window(object):
         _translate = QtCore.QCoreApplication.translate
         customer_transfer_window.setWindowTitle(_translate("customer_transfer_window", "Money Transfer Window"))
         self.cstrfwdw_lbl_heading.setText(_translate("customer_transfer_window", "Money Transfer"))
-        self.cstrfwdw_btn_returnmain.setText(_translate("customer_transfer_window", "Log Out"))
+        self.cstrfwdw_btn_returnmain.setText(_translate("customer_transfer_window", "Back"))
         self.cstrfwdw_btn_exit.setText(_translate("customer_transfer_window", "Exit"))
         self.cstrfwdw_btn_send.setText(_translate("customer_transfer_window", "SEND MONEY"))
         self.cstrfwdw_btn_moneyup.setText(_translate("customer_transfer_window", "+"))

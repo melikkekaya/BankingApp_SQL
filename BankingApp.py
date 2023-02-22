@@ -11,6 +11,7 @@ from Ui_customer_statement_window import *
 from Ui_cs_options_window import *
 from Ui_customer_transfer_window import *
 from Ui_admin_options_window import *
+from Ui_admin_edit_window import *
 
 class Main_Window(QMainWindow, Ui_open_window):
     def __init__(self):
@@ -87,7 +88,10 @@ class Admin_Opt(QMainWindow, Ui_admin_options_window):
         self.cs_create.show()
     
     def scrn_edit_info(self):
-        pass
+        self.ad_cs_edit = AD_CS_Edit()
+        widget.addWidget(self.ad_cs_edit)
+        widget.setCurrentIndex(widget.currentIndex()+1)
+        self.ad_cs_edit.show()
 
     def scrn_statements(self):
         pass
@@ -136,8 +140,20 @@ class AD_CS_create(QMainWindow, Ui_admin_CScreate_window):
             ADlogin = Admin_Opt()
             widget.addWidget(ADlogin)
             widget.setCurrentIndex(widget.currentIndex()+1)
+    
     def close_w(self):
         sys.exit()  
+
+class AD_CS_Edit(QMainWindow, Ui_Admin_infoEdit_window):
+    def __init__(self):
+        super(AD_CS_Edit, self).__init__()
+        self.setupUi(self)
+        self.adeditwdw_btn_back.clicked.connect(self.return_back)
+    
+    def return_back(self):
+            AD_opt = Admin_Opt()
+            widget.addWidget(AD_opt)
+            widget.setCurrentIndex(widget.currentIndex()+1)
 
 class CsLogin(QMainWindow,Ui_customer_login_window):
     def __init__(self):

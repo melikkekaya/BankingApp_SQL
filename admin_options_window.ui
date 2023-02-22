@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>cs_options_window</class>
- <widget class="QMainWindow" name="cs_options_window">
+ <class>admin_options_window</class>
+ <widget class="QMainWindow" name="admin_options_window">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -11,13 +11,13 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Admin Options Window</string>
   </property>
   <property name="styleSheet">
    <string notr="true">background-color: rgb(5, 130, 202);</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QLabel" name="csoptwdw_lbl_showname">
+   <widget class="QLabel" name="adminoptwdw_lbl_heading">
     <property name="geometry">
      <rect>
       <x>30</x>
@@ -41,7 +41,7 @@
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
-   <widget class="QPushButton" name="optwdw_btn_transfer">
+   <widget class="QPushButton" name="adminwdw_btn_createcs">
     <property name="geometry">
      <rect>
       <x>160</x>
@@ -75,7 +75,7 @@ QPushButton:hover {
      <string>Create Customer</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="optwdw_btn_editinf">
+   <widget class="QPushButton" name="adminwdw_btn_editinf">
     <property name="geometry">
      <rect>
       <x>160</x>
@@ -109,7 +109,7 @@ QPushButton:hover {
      <string>Edit Customer Information</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="optwdw_btn_bankstt">
+   <widget class="QPushButton" name="adminwdw_btn_bankstt">
     <property name="geometry">
      <rect>
       <x>160</x>
@@ -143,7 +143,7 @@ QPushButton:hover {
      <string>Statements</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="optwdw_btn_back">
+   <widget class="QPushButton" name="adminwdw_btn_back">
     <property name="geometry">
      <rect>
       <x>100</x>
@@ -181,7 +181,7 @@ QPushButton:hover {
      <string>Back</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="optwdw_btn_exit">
+   <widget class="QPushButton" name="adminwdw_btn_exit">
     <property name="geometry">
      <rect>
       <x>340</x>

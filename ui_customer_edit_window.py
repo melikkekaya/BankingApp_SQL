@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'c:\Users\90506\Documents\GitHub\BankingApp_SQL\customer_edit_window.ui'
+# Form implementation generated from reading ui file '/Users/melike/Documents/GitHub/BankingApp_SQL/customer_edit_window.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.7
 #
@@ -124,6 +124,9 @@ class Ui_Customer_infoEdit_window(object):
 "    \n"
 "   ")
         self.cseditwdw_btn_save.setObjectName("cseditwdw_btn_save")
+        self.lineEdit = QtWidgets.QLineEdit(self.centralwidget)
+        self.lineEdit.setGeometry(QtCore.QRect(430, 170, 151, 71))
+        self.lineEdit.setObjectName("lineEdit")
         Customer_infoEdit_window.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(Customer_infoEdit_window)
         self.statusbar.setObjectName("statusbar")
@@ -143,3 +146,4 @@ class Ui_Customer_infoEdit_window(object):
         self.cseditwdw_lbl_headingAcc.setText(_translate("Customer_infoEdit_window", "Account Information"))
         self.cseditwdw_lbl_password.setText(_translate("Customer_infoEdit_window", "Password:"))
         self.cseditwdw_btn_save.setText(_translate("Customer_infoEdit_window", "SAVE"))
+        self.lineEdit.setText(_translate("Customer_infoEdit_window", "deneme"))

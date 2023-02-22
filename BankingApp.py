@@ -380,7 +380,7 @@ class CSTransfer(QMainWindow, Ui_customer_transfer_window):
                     e = self.balance - self.cstrfwdw_spinbox_money.value()
                     conn = psycopg2.connect("dbname=BankingApp user= postgres password=1234")
                     cur = conn.cursor()
-                    cur.execute("INSERT INTO all_transactions VALUES(%s,%s,%s)",(f"{self.ID}", f"{int(self.cstrfwdw_spinbox_money.value())}", "External Money Transfer"))
+                    cur.execute("INSERT INTO all_transactions VALUES(%s,%s,%s,%s)",(f"{self.ID}", f"{int(self.cstrfwdw_spinbox_money.value())}", "External Money Transfer",f"{receiver_id}"))
                     cur.execute("UPDATE balance SET current_balance = %s WHERE customer_id = %s", (f"{e}", f"{self.ID}"))
                     cur.close()
                     conn.commit()

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'c:\Users\90506\Documents\GitHub\BankingApp_SQL\cs_options_window.ui'
+# Form implementation generated from reading ui file '/Users/melike/Documents/GitHub/BankingApp_SQL/cs_options_window.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.7
 #
@@ -18,18 +18,16 @@ class Ui_cs_options_window(object):
         cs_options_window.setStyleSheet("background-color: rgb(5, 130, 202);")
         self.centralwidget = QtWidgets.QWidget(cs_options_window)
         self.centralwidget.setObjectName("centralwidget")
-        self.csoptwdw_lbl_heading = QtWidgets.QLabel(self.centralwidget)
-        self.csoptwdw_lbl_heading.setGeometry(QtCore.QRect(110, 20, 191, 81))
+        self.csoptwdw_lbl_showname = QtWidgets.QLabel(self.centralwidget)
+        self.csoptwdw_lbl_showname.setGeometry(QtCore.QRect(150, 20, 271, 81))
         font = QtGui.QFont()
-        font.setFamily("Bahnschrift SemiBold")
-        font.setPointSize(26)
+        font.setFamily("Arial")
+        font.setPointSize(24)
         font.setBold(True)
         font.setWeight(75)
-        self.csoptwdw_lbl_heading.setFont(font)
-        self.csoptwdw_lbl_heading.setObjectName("csoptwdw_lbl_heading")
-        self.csoptwdw_lbl_showname = QtWidgets.QLabel(self.centralwidget)
-        self.csoptwdw_lbl_showname.setGeometry(QtCore.QRect(300, 20, 171, 81))
+        self.csoptwdw_lbl_showname.setFont(font)
         self.csoptwdw_lbl_showname.setText("")
+        self.csoptwdw_lbl_showname.setAlignment(QtCore.Qt.AlignCenter)
         self.csoptwdw_lbl_showname.setObjectName("csoptwdw_lbl_showname")
         self.optwdw_btn_transfer = QtWidgets.QPushButton(self.centralwidget)
         self.optwdw_btn_transfer.setGeometry(QtCore.QRect(160, 260, 260, 71))
@@ -164,7 +162,7 @@ class Ui_cs_options_window(object):
         self.statusbar.setObjectName("statusbar")
         cs_options_window.setStatusBar(self.statusbar)
         self.menubar = QtWidgets.QMenuBar(cs_options_window)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 600, 26))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 600, 21))
         self.menubar.setObjectName("menubar")
         cs_options_window.setMenuBar(self.menubar)
 
@@ -174,7 +172,6 @@ class Ui_cs_options_window(object):
     def retranslateUi(self, cs_options_window):
         _translate = QtCore.QCoreApplication.translate
         cs_options_window.setWindowTitle(_translate("cs_options_window", "MainWindow"))
-        self.csoptwdw_lbl_heading.setText(_translate("cs_options_window", "Hello"))
         self.optwdw_btn_transfer.setText(_translate("cs_options_window", "Transfer Money"))
         self.optwdw_btn_banktr.setText(_translate("cs_options_window", "Bank Transactions"))
         self.optwdw_btn_editinf.setText(_translate("cs_options_window", "Edit Information"))

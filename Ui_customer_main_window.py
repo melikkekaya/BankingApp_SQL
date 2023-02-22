@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'c:\Users\90506\Documents\GitHub\BankingApp_SQL\customer_main_window.ui'
+# Form implementation generated from reading ui file '/Users/melike/Documents/GitHub/BankingApp_SQL/customer_main_window.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.7
 #

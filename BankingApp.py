@@ -247,7 +247,7 @@ class CSMain(QMainWindow, Ui_customer_main_window):
 
                 conn = psycopg2.connect("dbname=BankingApp user= postgres password=1234")
                 cur = conn.cursor()
-                cur.execute("INSERT INTO all_transactions VALUES(%s,%s,%s)",(f"{self.ID}", f"{int(self.csmainwdw_spinbox_money.value())}", 3))
+                cur.execute("INSERT INTO all_transactions VALUES(%s,%s,%s)",(f"{self.ID}", f"{int(self.csmainwdw_spinbox_money.value())}", "Deposit Money"))
                 cur.execute("UPDATE balance SET current_balance = %s WHERE customer_id = %s", (f"{b}", f"{self.ID}"))
                 cur.close()
                 conn.commit()
@@ -271,7 +271,7 @@ class CSMain(QMainWindow, Ui_customer_main_window):
 
                     conn = psycopg2.connect("dbname=BankingApp user= postgres password=1234")
                     cur = conn.cursor()
-                    cur.execute("INSERT INTO all_transactions VALUES(%s,%s,%s)",(f"{self.ID}", f"{int(self.csmainwdw_spinbox_money.value())}", 4))
+                    cur.execute("INSERT INTO all_transactions VALUES(%s,%s,%s)",(f"{self.ID}", f"{int(self.csmainwdw_spinbox_money.value())}", "Withdraw Money"))
                     cur.execute("UPDATE balance SET current_balance = %s WHERE customer_id = %s", (f"{c}", f"{self.ID}"))
                     cur.close()
                     conn.commit()
@@ -347,28 +347,16 @@ class CSTransfer(QMainWindow, Ui_customer_transfer_window):
 
         if self.cstrfwdw_spinbox_money.value() > 0:
             if self.balance >= self.cstrfwdw_spinbox_money.value():
-                
-
-                
-                #bizim bankaya transfer
                 conn = psycopg2.connect("dbname=BankingApp user= postgres password=1234")
                 cur = conn.cursor()
                 cur.execute(f"SELECT customer_id FROM customer")
                 x = cur.fetchall()
-                # for i in x:
-                
-                # print(j)
-                # for i in x:
-                #     receivers=[]
-                #     receiver_list = receivers.append(i)
-                #     print(receiver_list)
+                receiver_list = [i[0] for i in x]
 
-
+# gönderdiği hesap numarası tabloya eklensin
                 if int(self.cstrfwdw_linedit_receivernumber.text()) in receiver_list:
                     receiver_id = int(self.cstrfwdw_linedit_receivernumber.text())
-                    print (receiver_id)
                     d = self.balance - self.cstrfwdw_spinbox_money.value()
-                    print(d)
                     cur.execute("INSERT INTO all_transactions VALUES(%s,%s,%s)",(f"{self.ID}", f"{int(self.cstrfwdw_spinbox_money.value())}", "Internal Money Transfer"))
                     cur.execute("INSERT INTO all_transactions VALUES(%s,%s,%s)",(f"{receiver_id}", f"{int(self.cstrfwdw_spinbox_money.value())}", "Money Received"))
                     cur.execute("UPDATE balance SET current_balance = %s WHERE customer_id = %s", (f"{d}", f"{self.ID}"))
@@ -387,7 +375,7 @@ class CSTransfer(QMainWindow, Ui_customer_transfer_window):
                     conn.close()
 
                 # başka bankaya
-                # gönderdiği edit
+# gönderdiği hesap numarası tabloya eklensin
                 else:
                     e = self.balance - self.cstrfwdw_spinbox_money.value()
                     conn = psycopg2.connect("dbname=BankingApp user= postgres password=1234")
@@ -401,9 +389,6 @@ class CSTransfer(QMainWindow, Ui_customer_transfer_window):
                     self.cstrfwdw_lbl_balanceshow.setText(f"{str(e)} €")
                     self.cstrfwdw_lbl_resultmessage.setStyleSheet("color: rgb(0, 84, 147);")
                     self.cstrfwdw_lbl_resultmessage.setText("Successful money transfer")
-
-
-
 
             else:
                 self.cstrfwdw_lbl_resultmessage.setStyleSheet("color: rgb(255, 0, 0);")

@@ -10,6 +10,7 @@ from Ui_admin_window import *
 from Ui_customer_statement_window import *
 from Ui_cs_options_window import *
 from Ui_customer_transfer_window import *
+from Ui_customer_edit_window import *
 
 class Main_Window(QMainWindow, Ui_open_window):
     def __init__(self):
@@ -132,6 +133,7 @@ class CsLogin(QMainWindow,Ui_customer_login_window):
                 CSMain.ID = self.CsId
                 CSOptions.ID = self.CsId
                 CSTransfer.ID = self.CsId
+                CSEdit.ID = self.CsId
                 print("Successfully logged in")
                 cur.execute("INSERT INTO login VALUES(%s,%s)",(f"{self.CsId}", 2))
 
@@ -172,7 +174,7 @@ class CSOptions(QMainWindow, Ui_cs_options_window):
 
         self.optwdw_btn_banktr.clicked.connect(self.open_transactions)
         self.optwdw_btn_transfer.clicked.connect(self.open_transfer)
-        # self.optwdw_btn_editinf.clicked.connect(self.editinf)
+        self.optwdw_btn_editinf.clicked.connect(self.open_edit)
         # self.optwdw_btn_bankstt.clicked.connect(self.bankstt)
 
     def open_transactions(self):
@@ -206,6 +208,54 @@ class CSOptions(QMainWindow, Ui_cs_options_window):
         cur.close()
         conn.commit()
         conn.close()
+    
+    def open_edit(self):
+        self.csAfter = CSEdit()
+        widget.addWidget(self.csAfter)
+        widget.setCurrentIndex(widget.currentIndex()+1)
+        self.csAfter.show()
+
+        conn = psycopg2.connect("dbname=BankingApp user= postgres password=1234")
+        cur = conn.cursor()
+        cur.execute(f"SELECT cs_name FROM customer WHERE customer_id={self.ID}")
+        name = cur.fetchone()[0]
+        cur.execute(f"SELECT cs_email FROM customer WHERE customer_id={self.ID}")
+        email = cur.fetchone()[0]
+        cur.execute(f"SELECT cs_password FROM customer WHERE customer_id={self.ID}")
+        passwordd = cur.fetchone()[0]
+        
+        self.csAfter.cseditwdw_linedit_CSname_show.setText(name)
+        self.csAfter.cseditwdw_linedit_CSemail_show.setText(email)
+        self.csAfter.cseditwdw_linedit_CSpassword_show.setText(str(passwordd))
+    
+        cur.close()
+        conn.commit()
+        conn.close()
+
+class CSEdit(QMainWindow, Ui_Customer_infoEdit_window):
+    def __init__(self):
+        super(CSEdit, self).__init__()
+        self.setupUi(self)
+        self.cseditwdw_btn_save.clicked.connect(self.save)
+
+    conn = psycopg2.connect("dbname=BankingApp user= postgres password=1234567")
+    cur = conn.cursor()
+    cur.execute(f"SELECT cs_name FROM customer")
+    #cur.execute(f"SELECT cs_email FROM customer")
+    #cur.execute(f"SELECT cs_password FROM customer")
+    name = cur.fetchone()[0]
+    #email=cur.fetchone()[0]
+    #password=cur.fetchone()[0]
+    
+    cur.close()
+    conn.commit()
+    conn.close()  
+
+    def save(self):
+        sys.exit()   
+
+    
+
 
 class CSMain(QMainWindow, Ui_customer_main_window):
     def __init__(self):

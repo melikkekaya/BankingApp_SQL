@@ -373,6 +373,7 @@ class CSTransfer(QMainWindow, Ui_customer_transfer_window):
                     cur.close()
                     conn.commit()
                     conn.close()
+
                 elif int(self.cstrfwdw_linedit_receivernumber.text()) == self.ID:
                     self.cstrfwdw_lbl_resultmessage.setStyleSheet("color: rgb(255, 0, 0);")
                     self.cstrfwdw_lbl_resultmessage.setText("Receiver should be different than sender..")

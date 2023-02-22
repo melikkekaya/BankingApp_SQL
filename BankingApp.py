@@ -354,7 +354,7 @@ class CSTransfer(QMainWindow, Ui_customer_transfer_window):
                 receiver_list = [i[0] for i in x]
 
 # gönderdiği hesap numarası tabloya eklensin
-                if int(self.cstrfwdw_linedit_receivernumber.text()) in receiver_list:
+                if int(self.cstrfwdw_linedit_receivernumber.text()) in receiver_list and int(self.cstrfwdw_linedit_receivernumber.text()) != self.ID:
                     receiver_id = int(self.cstrfwdw_linedit_receivernumber.text())
                     d = self.balance - self.cstrfwdw_spinbox_money.value()
                     cur.execute("INSERT INTO all_transactions VALUES(%s,%s,%s,%s)",(f"{self.ID}", f"{int(self.cstrfwdw_spinbox_money.value())}", "Internal Money Transfer", f"{receiver_id}"))
@@ -373,7 +373,9 @@ class CSTransfer(QMainWindow, Ui_customer_transfer_window):
                     cur.close()
                     conn.commit()
                     conn.close()
-
+                elif int(self.cstrfwdw_linedit_receivernumber.text()) == self.ID:
+                    self.cstrfwdw_lbl_resultmessage.setStyleSheet("color: rgb(255, 0, 0);")
+                    self.cstrfwdw_lbl_resultmessage.setText("Receiver should be different than sender..")
                 # başka bankaya
 # gönderdiği hesap numarası tabloya eklensin
                 else:

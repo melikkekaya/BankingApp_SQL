@@ -12,6 +12,7 @@ from Ui_cs_options_window import *
 from Ui_customer_transfer_window import *
 from Ui_admin_options_window import *
 from Ui_admin_edit_window import *
+from Ui_customer_edit_window import *
 
 class Main_Window(QMainWindow, Ui_open_window):
     def __init__(self):
@@ -78,7 +79,7 @@ class Admin_Opt(QMainWindow, Ui_admin_options_window):
         self.adminwdw_btn_createcs.clicked.connect(self.scrn_create_customer)
         self.adminwdw_btn_editinf.clicked.connect(self.scrn_edit_info)
         self.adminwdw_btn_bankstt.clicked.connect(self.scrn_statements)
-        self.adminwdw_btn_logout.clicked.connect(self.return_back)
+        # self.adminwdw_btn_logout.clicked.connect(self.return_back)
         self.adminwdw_btn_exit.clicked.connect(self.close_w)
     
     def scrn_create_customer(self):
@@ -169,9 +170,9 @@ class CsLogin(QMainWindow,Ui_customer_login_window):
         if len(str(self.CsId)) == 0 or len(str(self.CsPs)) == 0:
             self.csloginwdw_lbl_warning.setText("Please fill the required fields!")
         else:
-            # BURAYA TRY GELECEK: YANLIŞ GİRİŞ YA DA OLMAYAN KULLANICIDA ATIYOR!!
+            #TODO BURAYA TRY GELECEK: YANLIŞ GİRİŞ YA DA OLMAYAN KULLANICIDA ATIYOR!!
             conn = psycopg2.connect("dbname=BankingApp user= postgres password=1234")
-            cur = conn.cursor()
+            cur = conn.cursor() 
             cur.execute(f"SELECT cs_password FROM customer WHERE customer_id={self.CsId}")
             password = cur.fetchone()[0]
             if self.CsPs == password:
@@ -284,7 +285,7 @@ class CSEdit(QMainWindow, Ui_Customer_infoEdit_window):
         self.setupUi(self)
         self.cseditwdw_btn_save.clicked.connect(self.save)
 
-    conn = psycopg2.connect("dbname=BankingApp user= postgres password=1234567")
+    conn = psycopg2.connect("dbname=BankingApp user= postgres password=1234")
     cur = conn.cursor()
     cur.execute(f"SELECT cs_name FROM customer")
     #cur.execute(f"SELECT cs_email FROM customer")
@@ -449,7 +450,6 @@ class CSTransfer(QMainWindow, Ui_customer_transfer_window):
                 x = cur.fetchall()
                 receiver_list = [i[0] for i in x]
 
-# gönderdiği hesap numarası tabloya eklensin
                 if int(self.cstrfwdw_linedit_receivernumber.text()) in receiver_list and int(self.cstrfwdw_linedit_receivernumber.text()) != self.ID:
                     receiver_id = int(self.cstrfwdw_linedit_receivernumber.text())
                     d = self.balance - self.cstrfwdw_spinbox_money.value()
@@ -474,7 +474,7 @@ class CSTransfer(QMainWindow, Ui_customer_transfer_window):
                     self.cstrfwdw_lbl_resultmessage.setStyleSheet("color: rgb(255, 0, 0);")
                     self.cstrfwdw_lbl_resultmessage.setText("Receiver should be different than sender..")
                 # başka bankaya
-# gönderdiği hesap numarası tabloya eklensin
+
                 else:
                     e = self.balance - self.cstrfwdw_spinbox_money.value()
                     conn = psycopg2.connect("dbname=BankingApp user= postgres password=1234")

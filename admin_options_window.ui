@@ -20,22 +20,22 @@
    <widget class="QLabel" name="csoptwdw_lbl_showname">
     <property name="geometry">
      <rect>
-      <x>150</x>
-      <y>20</y>
-      <width>271</width>
+      <x>30</x>
+      <y>50</y>
+      <width>541</width>
       <height>81</height>
      </rect>
     </property>
     <property name="font">
      <font>
       <family>Arial</family>
-      <pointsize>24</pointsize>
+      <pointsize>36</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
     </property>
     <property name="text">
-     <string/>
+     <string>Administrative Operations</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
@@ -45,7 +45,7 @@
     <property name="geometry">
      <rect>
       <x>160</x>
-      <y>260</y>
+      <y>190</y>
       <width>260</width>
       <height>71</height>
      </rect>
@@ -72,48 +72,14 @@ QPushButton:hover {
 }</string>
     </property>
     <property name="text">
-     <string>Transfer Money</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="optwdw_btn_banktr">
-    <property name="geometry">
-     <rect>
-      <x>160</x>
-      <y>150</y>
-      <width>261</width>
-      <height>71</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Bahnschrift SemiBold</family>
-      <pointsize>16</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QPushButton{
-	background-color: rgb(0, 100, 148);
-
-border:2px solid rgb(0, 150, 199);
-border-radius:20px;
-border-color:black;
-}
-QPushButton:hover {
-     background-color: rgb(202, 240, 248);
-     border:2px solid rgb(0, 150, 199);
-}</string>
-    </property>
-    <property name="text">
-     <string>Bank Transactions</string>
+     <string>Create Customer</string>
     </property>
    </widget>
    <widget class="QPushButton" name="optwdw_btn_editinf">
     <property name="geometry">
      <rect>
       <x>160</x>
-      <y>370</y>
+      <y>300</y>
       <width>261</width>
       <height>71</height>
      </rect>
@@ -140,14 +106,14 @@ QPushButton:hover {
 }</string>
     </property>
     <property name="text">
-     <string>Edit Information</string>
+     <string>Edit Customer Information</string>
     </property>
    </widget>
    <widget class="QPushButton" name="optwdw_btn_bankstt">
     <property name="geometry">
      <rect>
       <x>160</x>
-      <y>480</y>
+      <y>410</y>
       <width>261</width>
       <height>71</height>
      </rect>
@@ -174,7 +140,7 @@ QPushButton:hover {
 }</string>
     </property>
     <property name="text">
-     <string>Bank Statement</string>
+     <string>Statements</string>
     </property>
    </widget>
    <widget class="QPushButton" name="optwdw_btn_back">

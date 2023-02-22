@@ -37,12 +37,6 @@ CREATE TABLE IF NOT EXISTS public.customer
     CONSTRAINT "Customer_pkey3" PRIMARY KEY (customer_id)
 );
 
-CREATE TABLE IF NOT EXISTS public.login
-(
-    customer_id integer,
-    transaction_type character varying(30),
-    transaction_date timestamp without time zone DEFAULT CURRENT_TIMESTAMP
-);
 
 ALTER TABLE IF EXISTS public.all_transactions
     ADD CONSTRAINT customer_id FOREIGN KEY (customer_id)
@@ -58,16 +52,9 @@ ALTER TABLE IF EXISTS public.balance
     ON UPDATE NO ACTION
     ON DELETE NO ACTION
     NOT VALID;
+    
 CREATE INDEX IF NOT EXISTS "Balance_pkey"
-    ON public.balance(customer_id);
-
-
-ALTER TABLE IF EXISTS public.login
-    ADD CONSTRAINT login_customer_id_fkey FOREIGN KEY (customer_id)
-    REFERENCES public.customer (customer_id) MATCH SIMPLE
-    ON UPDATE NO ACTION
-    ON DELETE NO ACTION
-    NOT VALID"""
+    ON public.balance(customer_id)"""
 
 
 conn = psycopg2.connect("dbname=BankingApp user = postgres password=1234")

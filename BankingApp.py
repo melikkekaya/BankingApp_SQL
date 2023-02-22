@@ -133,8 +133,8 @@ class CsLogin(QMainWindow,Ui_customer_login_window):
                 CSOptions.ID = self.CsId
                 CSTransfer.ID = self.CsId
                 print("Successfully logged in")
-                cur.execute("INSERT INTO login VALUES(%s,%s)",(f"{self.CsId}", 2))
-
+                cur.execute("INSERT INTO all_transactions VALUES(%s,%s,%s)",(f"{self.CsId}", 0, "Login"))
+                
                 # try:        #öncekinde burayı neden try bloğuna aldığımızı anlamadım yine de ekledim şimdilik sdfj
                 self.csAfter = CSOptions()
                 widget.addWidget(self.csAfter)

@@ -22,7 +22,7 @@ class Ui_Customer_infoEdit_window(object):
         self.cseditwdw_lbl_heading.setGeometry(QtCore.QRect(110, 20, 191, 81))
         font = QtGui.QFont()
         font.setFamily("Bahnschrift SemiBold")
-        font.setPointSize(26)
+        font.setPointSize(26) 
         font.setBold(True)
         font.setWeight(75)
         self.cseditwdw_lbl_heading.setFont(font)

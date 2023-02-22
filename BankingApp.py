@@ -10,7 +10,8 @@ from Ui_admin_window import *
 from Ui_customer_statement_window import *
 from Ui_cs_options_window import *
 from Ui_customer_transfer_window import *
-from Ui_customer_edit_window import *
+from Ui_admin_options_window import *
+from Ui_admin_edit_window import *
 
 class Main_Window(QMainWindow, Ui_open_window):
     def __init__(self):
@@ -51,10 +52,10 @@ class ADPreLogin(QMainWindow, Ui_admin_window):
             password = cur.fetchone()[0]
             if ADpassword == password:
                 print("Successfully logged in")
-                self.adminAfter = ADAfterLogin()
-                widget.addWidget(self.adminAfter)
+                self.admin_opt = Admin_Opt()
+                widget.addWidget(self.admin_opt)
                 widget.setCurrentIndex(widget.currentIndex()+1)
-                self.adminAfter.show()
+                self.admin_opt.show()
                 cur.close()
                 conn.commit()
                 conn.close()
@@ -70,9 +71,42 @@ class ADPreLogin(QMainWindow, Ui_admin_window):
     def close_w(self):
         sys.exit()  
 
-class ADAfterLogin(QMainWindow, Ui_admin_CScreate_window):
+class Admin_Opt(QMainWindow, Ui_admin_options_window):
     def __init__(self):
-        super(ADAfterLogin, self).__init__()
+        super(Admin_Opt, self).__init__()
+        self.setupUi(self)
+        self.adminwdw_btn_createcs.clicked.connect(self.scrn_create_customer)
+        self.adminwdw_btn_editinf.clicked.connect(self.scrn_edit_info)
+        self.adminwdw_btn_bankstt.clicked.connect(self.scrn_statements)
+        self.adminwdw_btn_logout.clicked.connect(self.return_back)
+        self.adminwdw_btn_exit.clicked.connect(self.close_w)
+    
+    def scrn_create_customer(self):
+        self.cs_create = AD_CS_create()
+        widget.addWidget(self.cs_create)
+        widget.setCurrentIndex(widget.currentIndex()+1)
+        self.cs_create.show()
+    
+    def scrn_edit_info(self):
+        self.ad_cs_edit = AD_CS_Edit()
+        widget.addWidget(self.ad_cs_edit)
+        widget.setCurrentIndex(widget.currentIndex()+1)
+        self.ad_cs_edit.show()
+
+    def scrn_statements(self):
+        pass
+
+    def return_back(self):
+        adprelogin = ADPreLogin()
+        widget.addWidget(adprelogin)
+        widget.setCurrentIndex(widget.currentIndex()+1)
+    
+    def close_w(self):
+        sys.exit()  
+
+class AD_CS_create(QMainWindow, Ui_admin_CScreate_window):
+    def __init__(self):
+        super(AD_CS_create, self).__init__()
         self.setupUi(self)
         self.admincswdw_btn_create.clicked.connect(self.createcustomer)
         self.admincswdw_btn_create.clicked.connect(self.admincswdw_linedit_CSpassword_2.clear)
@@ -103,11 +137,23 @@ class ADAfterLogin(QMainWindow, Ui_admin_CScreate_window):
             self.admincswdw_lbl_result.setText(f"New customer created:\n{CustomerID}")
             
     def return_back(self):
-            ADlogin = ADPreLogin()
+            ADlogin = Admin_Opt()
             widget.addWidget(ADlogin)
             widget.setCurrentIndex(widget.currentIndex()+1)
+    
     def close_w(self):
         sys.exit()  
+
+class AD_CS_Edit(QMainWindow, Ui_Admin_infoEdit_window):
+    def __init__(self):
+        super(AD_CS_Edit, self).__init__()
+        self.setupUi(self)
+        self.adeditwdw_btn_back.clicked.connect(self.return_back)
+    
+    def return_back(self):
+            AD_opt = Admin_Opt()
+            widget.addWidget(AD_opt)
+            widget.setCurrentIndex(widget.currentIndex()+1)
 
 class CsLogin(QMainWindow,Ui_customer_login_window):
     def __init__(self):
@@ -135,8 +181,8 @@ class CsLogin(QMainWindow,Ui_customer_login_window):
                 CSTransfer.ID = self.CsId
                 CSEdit.ID = self.CsId
                 print("Successfully logged in")
-                cur.execute("INSERT INTO login VALUES(%s,%s)",(f"{self.CsId}", 2))
-
+                cur.execute("INSERT INTO all_transactions VALUES(%s,%s,%s)",(f"{self.CsId}", 0, "Login"))
+                
                 # try:        #öncekinde burayı neden try bloğuna aldığımızı anlamadım yine de ekledim şimdilik sdfj
                 self.csAfter = CSOptions()
                 widget.addWidget(self.csAfter)
@@ -252,7 +298,7 @@ class CSEdit(QMainWindow, Ui_Customer_infoEdit_window):
     conn.close()  
 
     def save(self):
-        sys.exit()   
+        pass  
 
     
 
@@ -404,7 +450,7 @@ class CSTransfer(QMainWindow, Ui_customer_transfer_window):
                 receiver_list = [i[0] for i in x]
 
 # gönderdiği hesap numarası tabloya eklensin
-                if int(self.cstrfwdw_linedit_receivernumber.text()) in receiver_list:
+                if int(self.cstrfwdw_linedit_receivernumber.text()) in receiver_list and int(self.cstrfwdw_linedit_receivernumber.text()) != self.ID:
                     receiver_id = int(self.cstrfwdw_linedit_receivernumber.text())
                     d = self.balance - self.cstrfwdw_spinbox_money.value()
                     cur.execute("INSERT INTO all_transactions VALUES(%s,%s,%s,%s)",(f"{self.ID}", f"{int(self.cstrfwdw_spinbox_money.value())}", "Internal Money Transfer", f"{receiver_id}"))
@@ -424,6 +470,9 @@ class CSTransfer(QMainWindow, Ui_customer_transfer_window):
                     conn.commit()
                     conn.close()
 
+                elif int(self.cstrfwdw_linedit_receivernumber.text()) == self.ID:
+                    self.cstrfwdw_lbl_resultmessage.setStyleSheet("color: rgb(255, 0, 0);")
+                    self.cstrfwdw_lbl_resultmessage.setText("Receiver should be different than sender..")
                 # başka bankaya
 # gönderdiği hesap numarası tabloya eklensin
                 else:

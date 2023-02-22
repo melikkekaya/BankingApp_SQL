@@ -357,8 +357,8 @@ class CSTransfer(QMainWindow, Ui_customer_transfer_window):
                 if int(self.cstrfwdw_linedit_receivernumber.text()) in receiver_list:
                     receiver_id = int(self.cstrfwdw_linedit_receivernumber.text())
                     d = self.balance - self.cstrfwdw_spinbox_money.value()
-                    cur.execute("INSERT INTO all_transactions VALUES(%s,%s,%s)",(f"{self.ID}", f"{int(self.cstrfwdw_spinbox_money.value())}", "Internal Money Transfer"))
-                    cur.execute("INSERT INTO all_transactions VALUES(%s,%s,%s)",(f"{receiver_id}", f"{int(self.cstrfwdw_spinbox_money.value())}", "Money Received"))
+                    cur.execute("INSERT INTO all_transactions VALUES(%s,%s,%s,%s)",(f"{self.ID}", f"{int(self.cstrfwdw_spinbox_money.value())}", "Internal Money Transfer", f"{receiver_id}"))
+                    cur.execute("INSERT INTO all_transactions VALUES(%s,%s,%s,%s)",(f"{receiver_id}", f"{int(self.cstrfwdw_spinbox_money.value())}", "Money Received", f"{self.ID}"))
                     cur.execute("UPDATE balance SET current_balance = %s WHERE customer_id = %s", (f"{d}", f"{self.ID}"))
 
                     cur.execute(f"SELECT current_balance FROM balance WHERE customer_id={receiver_id}")

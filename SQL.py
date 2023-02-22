@@ -13,8 +13,8 @@ CREATE TABLE IF NOT EXISTS public.all_transactions
 (
     customer_id integer,
     transaction_amount integer,
-    transaction_type character varying(15),
-    receiver_sender_id character varying(15),
+    transaction_type character varying(25),
+    receiver_sender_id character varying(25),
     transaction_date timestamp without time zone DEFAULT CURRENT_TIMESTAMP
 );
 

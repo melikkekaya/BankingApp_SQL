@@ -45,9 +45,9 @@
     <property name="geometry">
      <rect>
       <x>50</x>
-      <y>50</y>
+      <y>30</y>
       <width>491</width>
-      <height>61</height>
+      <height>41</height>
      </rect>
     </property>
     <property name="font">
@@ -62,7 +62,7 @@
      <string>Money Transfer</string>
     </property>
     <property name="alignment">
-     <set>Qt::AlignCenter</set>
+     <set>Qt::AlignBottom|Qt::AlignHCenter</set>
     </property>
    </widget>
    <widget class="QPushButton" name="cstrfwdw_btn_returnmain">
@@ -168,8 +168,8 @@ QPushButton:hover {
    <widget class="QPushButton" name="cstrfwdw_btn_send">
     <property name="geometry">
      <rect>
-      <x>220</x>
-      <y>450</y>
+      <x>200</x>
+      <y>460</y>
       <width>180</width>
       <height>50</height>
      </rect>
@@ -214,8 +214,8 @@ QPushButton:hover {
    <widget class="QPushButton" name="cstrfwdw_btn_moneyup">
     <property name="geometry">
      <rect>
-      <x>420</x>
-      <y>380</y>
+      <x>400</x>
+      <y>390</y>
       <width>41</width>
       <height>41</height>
      </rect>
@@ -255,8 +255,8 @@ QPushButton:hover {
    <widget class="QPushButton" name="cstrfwdw_btn_moneydown">
     <property name="geometry">
      <rect>
-      <x>150</x>
-      <y>380</y>
+      <x>130</x>
+      <y>390</y>
       <width>41</width>
       <height>41</height>
      </rect>
@@ -290,8 +290,8 @@ QPushButton:hover {
    <widget class="QSpinBox" name="cstrfwdw_spinbox_money">
     <property name="geometry">
      <rect>
-      <x>230</x>
-      <y>380</y>
+      <x>210</x>
+      <y>390</y>
       <width>160</width>
       <height>40</height>
      </rect>
@@ -368,7 +368,7 @@ background-color: rgb(236, 236, 236);</string>
     <property name="geometry">
      <rect>
       <x>50</x>
-      <y>120</y>
+      <y>90</y>
       <width>491</width>
       <height>141</height>
      </rect>
@@ -521,7 +521,7 @@ background-color: rgb(236, 236, 236);</string>
     <property name="geometry">
      <rect>
       <x>50</x>
-      <y>300</y>
+      <y>270</y>
       <width>491</width>
       <height>43</height>
      </rect>
@@ -569,6 +569,42 @@ background-color: rgb(236, 236, 236);</string>
       </widget>
      </item>
     </layout>
+   </widget>
+   <widget class="QRadioButton" name="cstrfwdw_radiobtn_inttrf">
+    <property name="geometry">
+     <rect>
+      <x>64</x>
+      <y>330</y>
+      <width>231</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Internal Money Transfer</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="cstrfwdw_radiobtn_exttrf">
+    <property name="geometry">
+     <rect>
+      <x>310</x>
+      <y>330</y>
+      <width>211</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>External Money Transfer</string>
+    </property>
    </widget>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>

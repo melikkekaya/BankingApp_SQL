@@ -464,45 +464,68 @@ class CSTransfer(QMainWindow, Ui_customer_transfer_window):
                 cur.execute(f"SELECT customer_id FROM customer")
                 x = cur.fetchall()
                 receiver_list = [i[0] for i in x]
+                if len(self.cstrfwdw_linedit_receivernumber.text())>0:
+                    if self.cstrfwdw_radiobtn_inttrf.isChecked():
+                        if int(self.cstrfwdw_linedit_receivernumber.text()) in receiver_list and int(self.cstrfwdw_linedit_receivernumber.text()) != self.ID:
+                            #TODO: buraya pop-up ile bu adrese göndermek istediğinize emin misiniz?
+                            receiver_id = int(self.cstrfwdw_linedit_receivernumber.text())
+                            d = self.balance - self.cstrfwdw_spinbox_money.value()
+                            cur.execute("INSERT INTO all_transactions VALUES(%s,%s,%s,%s)",(f"{self.ID}", f"{int(self.cstrfwdw_spinbox_money.value())}", "Internal Money Transfer", f"{receiver_id}"))
+                            cur.execute("INSERT INTO all_transactions VALUES(%s,%s,%s,%s)",(f"{receiver_id}", f"{int(self.cstrfwdw_spinbox_money.value())}", "Money Received", f"{self.ID}"))
+                            cur.execute("UPDATE balance SET current_balance = %s WHERE customer_id = %s", (f"{d}", f"{self.ID}"))
 
-                if int(self.cstrfwdw_linedit_receivernumber.text()) in receiver_list and int(self.cstrfwdw_linedit_receivernumber.text()) != self.ID:
-                    receiver_id = int(self.cstrfwdw_linedit_receivernumber.text())
-                    d = self.balance - self.cstrfwdw_spinbox_money.value()
-                    cur.execute("INSERT INTO all_transactions VALUES(%s,%s,%s,%s)",(f"{self.ID}", f"{int(self.cstrfwdw_spinbox_money.value())}", "Internal Money Transfer", f"{receiver_id}"))
-                    cur.execute("INSERT INTO all_transactions VALUES(%s,%s,%s,%s)",(f"{receiver_id}", f"{int(self.cstrfwdw_spinbox_money.value())}", "Money Received", f"{self.ID}"))
-                    cur.execute("UPDATE balance SET current_balance = %s WHERE customer_id = %s", (f"{d}", f"{self.ID}"))
+                            cur.execute(f"SELECT current_balance FROM balance WHERE customer_id={receiver_id}")
+                            receiver_balance = cur.fetchone()[0]
+                            receiver__current_balance = receiver_balance + self.cstrfwdw_spinbox_money.value()
+                            cur.execute("UPDATE balance SET current_balance = %s WHERE customer_id = %s", (f"{receiver__current_balance}", f"{receiver_id}"))
 
-                    cur.execute(f"SELECT current_balance FROM balance WHERE customer_id={receiver_id}")
-                    receiver_balance = cur.fetchone()[0]
-                    receiver__current_balance = receiver_balance + self.cstrfwdw_spinbox_money.value()
-                    cur.execute("UPDATE balance SET current_balance = %s WHERE customer_id = %s", (f"{receiver__current_balance}", f"{receiver_id}"))
+                            self.cstrfwdw_lbl_balanceshow.setText(f"{str(d)} €")
+                            self.cstrfwdw_lbl_resultmessage.setStyleSheet("color: rgb(0, 84, 147);")
+                            self.cstrfwdw_lbl_resultmessage.setText("Successful money transfer") # buraya adı çekilip yazılabilir to ...'s acoount şeklinde
+                                                
+                            cur.close()
+                            conn.commit()
+                            conn.close()
 
-                    self.cstrfwdw_lbl_balanceshow.setText(f"{str(d)} €")
-                    self.cstrfwdw_lbl_resultmessage.setStyleSheet("color: rgb(0, 84, 147);")
-                    self.cstrfwdw_lbl_resultmessage.setText("Successful money transfer") # buraya adı çekilip yazılabilir to ...'s acoount şeklinde
-                                        
-                    cur.close()
-                    conn.commit()
-                    conn.close()
+                        elif int(self.cstrfwdw_linedit_receivernumber.text()) == self.ID:
+                            self.cstrfwdw_lbl_resultmessage.setStyleSheet("color: rgb(255, 0, 0);")
+                            self.cstrfwdw_lbl_resultmessage.setText("Receiver should be different than sender..")
 
-                elif int(self.cstrfwdw_linedit_receivernumber.text()) == self.ID:
+                        elif len(self.cstrfwdw_linedit_receivernumber.text()) <= 8:           
+                                self.cstrfwdw_lbl_resultmessage.setStyleSheet("color: rgb(255, 0, 0);")
+                                self.cstrfwdw_lbl_resultmessage.setText("Receiver number should be at least 8 characters..")
+
+                        else:
+                            self.cstrfwdw_lbl_resultmessage.setStyleSheet("color: rgb(255, 0, 0);")
+                            self.cstrfwdw_lbl_resultmessage.setText("No such receiver found in our bank..")
+
+                    # başka bankaya
+                    elif self.cstrfwdw_radiobtn_exttrf.isChecked():
+                        receiver_id = int(self.cstrfwdw_linedit_receivernumber.text())
+                        if len(str(receiver_id)) >= 8:
+                            #TODO: buraya pop-up ile bu adrese göndermek istediğinize emin misiniz?
+                            e = self.balance - self.cstrfwdw_spinbox_money.value()
+                            conn = psycopg2.connect("dbname=BankingApp user= postgres password=1234")
+                            cur = conn.cursor()
+                            cur.execute("INSERT INTO all_transactions VALUES(%s,%s,%s,%s)",(f"{self.ID}", f"{int(self.cstrfwdw_spinbox_money.value())}", "External Money Transfer",f"{receiver_id}"))
+                            cur.execute("UPDATE balance SET current_balance = %s WHERE customer_id = %s", (f"{e}", f"{self.ID}"))
+                            cur.close()
+                            conn.commit()
+                            conn.close()
+                            self.cstrfwdw_lbl_balanceshow.setText(f"{str(e)} €")
+                            self.cstrfwdw_lbl_resultmessage.setStyleSheet("color: rgb(0, 84, 147);")
+                            self.cstrfwdw_lbl_resultmessage.setText("Successful money transfer")
+                        else:
+                            self.cstrfwdw_lbl_resultmessage.setStyleSheet("color: rgb(255, 0, 0);")
+                            self.cstrfwdw_lbl_resultmessage.setText("Receiver number should be at least 8 characters..")
+
+                    else:
+                        self.cstrfwdw_lbl_resultmessage.setStyleSheet("color: rgb(255, 0, 0);")
+                        self.cstrfwdw_lbl_resultmessage.setText("Please choose a transfer method: internal or external..")
+
+                elif len(self.cstrfwdw_linedit_receivernumber.text()) == 0:
                     self.cstrfwdw_lbl_resultmessage.setStyleSheet("color: rgb(255, 0, 0);")
-                    self.cstrfwdw_lbl_resultmessage.setText("Receiver should be different than sender..")
-                # başka bankaya
-
-                else:
-                    e = self.balance - self.cstrfwdw_spinbox_money.value()
-                    conn = psycopg2.connect("dbname=BankingApp user= postgres password=1234")
-                    cur = conn.cursor()
-                    cur.execute("INSERT INTO all_transactions VALUES(%s,%s,%s,%s)",(f"{self.ID}", f"{int(self.cstrfwdw_spinbox_money.value())}", "External Money Transfer",f"{receiver_id}"))
-                    cur.execute("UPDATE balance SET current_balance = %s WHERE customer_id = %s", (f"{e}", f"{self.ID}"))
-                    cur.close()
-                    conn.commit()
-                    conn.close()
-
-                    self.cstrfwdw_lbl_balanceshow.setText(f"{str(e)} €")
-                    self.cstrfwdw_lbl_resultmessage.setStyleSheet("color: rgb(0, 84, 147);")
-                    self.cstrfwdw_lbl_resultmessage.setText("Successful money transfer")
+                    self.cstrfwdw_lbl_resultmessage.setText("Please input a receiver number..")
 
             else:
                 self.cstrfwdw_lbl_resultmessage.setStyleSheet("color: rgb(255, 0, 0);")
@@ -556,8 +579,7 @@ if __name__ == "__main__":
     widget = QtWidgets.QStackedWidget()
     
     widget.addWidget(mainwindow)
-    widget.setFixedHeight(700)
-    widget.setFixedWidth(600)
+
     widget.show()
 
     try:

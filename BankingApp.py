@@ -292,22 +292,54 @@ class CSEdit(QMainWindow, Ui_Customer_infoEdit_window):
         super(CSEdit, self).__init__()
         self.setupUi(self)
         self.cseditwdw_btn_save.clicked.connect(self.save)
+        self.cseditwdw_btn_back.clicked.connect(self.csback)
 
-    conn = psycopg2.connect("dbname=BankingApp user= postgres password=1234")
-    cur = conn.cursor()
-    cur.execute(f"SELECT cs_name FROM customer")
-    #cur.execute(f"SELECT cs_email FROM customer")
-    #cur.execute(f"SELECT cs_password FROM customer")
-    name = cur.fetchone()[0]
-    #email=cur.fetchone()[0]
-    #password=cur.fetchone()[0]
+        conn = psycopg2.connect("dbname=BankingApp user= postgres password=1234")
+        cur = conn.cursor()
+        cur.execute(f"SELECT cs_name FROM customer")
+        name = cur.fetchone()[0]
+        cur.execute(f"SELECT cs_email FROM customer")
+        email=cur.fetchone()[0]
+        cur.execute(f"SELECT cs_password FROM customer")
+        password=cur.fetchone()[0]
+  
     
-    cur.close()
-    conn.commit()
-    conn.close()  
+    
+    
+        cur.close()
+        conn.commit()
+        conn.close()  
 
     def save(self):
-        pass  
+        self.csAfter = CSEdit()
+        widget.addWidget(self.csAfter)
+        widget.setCurrentIndex(widget.currentIndex()+1)
+        self.csAfter.show()
+
+        conn = psycopg2.connect("dbname=BankingApp user= postgres password=1234")
+        cur = conn.cursor()
+        name1 = self.cseditwdw_linedit_CSname_show.text()
+        email1 =self.cseditwdw_linedit_CSemail_show.text()
+        passwordd1 = self.cseditwdw_linedit_CSpassword_show.text()
+
+        #try:
+        cur.execute("UPDATE customer SET cs_name= %s ,cs_email = %s, cs_password= %s WHERE customer_id = %s",(name1,email1,passwordd1,self.ID))
+        conn.commit()
+             #print("Success")
+        #except:
+            #print("failed")     
+        #name = cur.fetchone()[0]
+        #self.csAfter.cseditwdw_linedit_CSname_show.setText(name)
+        #self.csAfter.cseditwdw_linedit_CSemail_show.setText(email)
+        #self.csAfter.cseditwdw_linedit_CSpassword_show.setText(str(passwordd))
+        #self.csAfter.csmainwdw_lbl_CSID_show.setText(str(self.ID))
+        cur.close()
+        conn.close()
+
+    def csback(self):  
+        cs_opt = CSOptions()
+        widget.addWidget(cs_opt)
+        widget.setCurrentIndex(widget.currentIndex()+1)  
 
 class CSMain(QMainWindow, Ui_customer_main_window):
     def __init__(self):

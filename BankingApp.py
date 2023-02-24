@@ -515,6 +515,7 @@ class CSTransfer(QMainWindow, Ui_customer_transfer_window):
                 cur.execute(f"SELECT customer_id FROM customer")
                 x = cur.fetchall()
                 receiver_list = [i[0] for i in x]
+                # TODO önce int bankada müşteri mi sonra uzunluk sorgula
                 if len(self.cstrfwdw_linedit_receivernumber.text())>0:
                     if self.cstrfwdw_radiobtn_inttrf.isChecked():
                         if int(self.cstrfwdw_linedit_receivernumber.text()) in receiver_list and int(self.cstrfwdw_linedit_receivernumber.text()) != self.ID:

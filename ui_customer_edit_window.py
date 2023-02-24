@@ -22,7 +22,7 @@ class Ui_Customer_infoEdit_window(object):
         self.cseditwdw_lbl_heading.setGeometry(QtCore.QRect(110, 20, 191, 81))
         font = QtGui.QFont()
         font.setFamily("Bahnschrift SemiBold")
-        font.setPointSize(26) 
+        font.setPointSize(26)
         font.setBold(True)
         font.setWeight(75)
         self.cseditwdw_lbl_heading.setFont(font)
@@ -86,7 +86,7 @@ class Ui_Customer_infoEdit_window(object):
         self.cseditwdw_lbl_password.setFont(font)
         self.cseditwdw_lbl_password.setObjectName("cseditwdw_lbl_password")
         self.cseditwdw_btn_save = QtWidgets.QPushButton(self.centralwidget)
-        self.cseditwdw_btn_save.setGeometry(QtCore.QRect(210, 610, 180, 61))
+        self.cseditwdw_btn_save.setGeometry(QtCore.QRect(350, 600, 180, 61))
         font = QtGui.QFont()
         font.setFamily("Bahnschrift SemiBold")
         font.setPointSize(14)
@@ -121,6 +121,30 @@ class Ui_Customer_infoEdit_window(object):
         self.cseditwdw_linedit_CSpassword_show.setGeometry(QtCore.QRect(220, 520, 151, 31))
         self.cseditwdw_linedit_CSpassword_show.setStyleSheet("background-color: rgb(255, 255, 255);")
         self.cseditwdw_linedit_CSpassword_show.setObjectName("cseditwdw_linedit_CSpassword_show")
+        self.cseditwdw_btn_back = QtWidgets.QPushButton(self.centralwidget)
+        self.cseditwdw_btn_back.setGeometry(QtCore.QRect(80, 600, 180, 61))
+        font = QtGui.QFont()
+        font.setFamily("Bahnschrift SemiBold")
+        font.setPointSize(14)
+        font.setBold(True)
+        font.setWeight(75)
+        self.cseditwdw_btn_back.setFont(font)
+        self.cseditwdw_btn_back.setStyleSheet("QPushButton {\n"
+"background-color: rgb(0, 150, 199);\n"
+"   border-color: rgb(66, 167, 255);\n"
+"   border-bottom-color: rgb(255, 255, 255);\n"
+"   border:2px solid rgb(202, 240, 248);\n"
+"   border-radius:20px;\n"
+"   border-color: black;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"     background-color: rgb(202, 240, 248);\n"
+"     border:2px solid rgb(202, 240, 248);\n"
+"}\n"
+"    \n"
+"   ")
+        self.cseditwdw_btn_back.setObjectName("cseditwdw_btn_back")
         Customer_infoEdit_window.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(Customer_infoEdit_window)
         self.statusbar.setObjectName("statusbar")
@@ -140,3 +164,4 @@ class Ui_Customer_infoEdit_window(object):
         self.cseditwdw_lbl_headingAcc.setText(_translate("Customer_infoEdit_window", "Account Information"))
         self.cseditwdw_lbl_password.setText(_translate("Customer_infoEdit_window", "Password:"))
         self.cseditwdw_btn_save.setText(_translate("Customer_infoEdit_window", "SAVE"))
+        self.cseditwdw_btn_back.setText(_translate("Customer_infoEdit_window", "BACK"))

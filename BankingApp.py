@@ -441,7 +441,10 @@ class CSTransfer(QMainWindow, Ui_customer_transfer_window):
         conn.close()
 
         self.cstrfwdw_lbl_balanceshow.setText(f"{str(self.first_balance)} €")
-        self.cstrfwdw_btn_send.clicked.connect(self.send_money)
+
+        # self.cstrfwdw_btn_send.clicked.connect(self.send_money)
+        self.cstrfwdw_btn_send.clicked.connect(self.show_popup)
+
         self.cstrfwdw_btn_returnmain.clicked.connect(self.return_back)
         self.cstrfwdw_btn_exit.clicked.connect(self.close_w)
     
@@ -456,6 +459,7 @@ class CSTransfer(QMainWindow, Ui_customer_transfer_window):
         
     def send_money(self):
         self.take_balance()
+        # self.show_popup()
 
         if self.cstrfwdw_spinbox_money.value() > 0:
             if self.balance >= self.cstrfwdw_spinbox_money.value():
@@ -504,6 +508,8 @@ class CSTransfer(QMainWindow, Ui_customer_transfer_window):
                         receiver_id = int(self.cstrfwdw_linedit_receivernumber.text())
                         if len(str(receiver_id)) >= 8:
                             #TODO: buraya pop-up ile bu adrese göndermek istediğinize emin misiniz?
+                            # self.show_popup()
+                            # if self.show_popup(QMessageBox.Ok):
                             e = self.balance - self.cstrfwdw_spinbox_money.value()
                             conn = psycopg2.connect("dbname=BankingApp user= postgres password=1234")
                             cur = conn.cursor()
@@ -515,6 +521,11 @@ class CSTransfer(QMainWindow, Ui_customer_transfer_window):
                             self.cstrfwdw_lbl_balanceshow.setText(f"{str(e)} €")
                             self.cstrfwdw_lbl_resultmessage.setStyleSheet("color: rgb(0, 84, 147);")
                             self.cstrfwdw_lbl_resultmessage.setText("Successful money transfer")
+
+                            # elif self.show_popup(QMessageBox.Cancel):
+                            #     self.cstrfwdw_spinbox_money.cleanText()
+                            #     self.cstrfwdw_lbl_resultmessage.setStyleSheet("color: rgb(255, 0, 0);")
+                            #     self.cstrfwdw_lbl_resultmessage.setText("You've cancelled the transfer..")
                         else:
                             self.cstrfwdw_lbl_resultmessage.setStyleSheet("color: rgb(255, 0, 0);")
                             self.cstrfwdw_lbl_resultmessage.setText("Receiver number should be at least 8 characters..")
@@ -534,6 +545,38 @@ class CSTransfer(QMainWindow, Ui_customer_transfer_window):
         else:
             self.cstrfwdw_lbl_resultmessage.setStyleSheet("color: rgb(255, 0, 0);")
             self.cstrfwdw_lbl_resultmessage.setText("Please enter an amount to transfer..")
+
+    def show_popup(self):
+        msg = QMessageBox()
+        msg.setText(f"Please confirm the money transfer to this receiver: {self.cstrfwdw_linedit_receivernumber.text()}")
+        # x = msg.exec_()
+        msg.setIcon(QMessageBox.Question)
+        msg.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
+        # x = msg.exec_()
+
+        returnValue = msg.exec()
+        if returnValue == QMessageBox.Ok:
+            self.send_money()
+        if returnValue == QMessageBox.Cancel:
+
+            self.cstrfwdw_spinbox_money.cleanText()
+            self.cstrfwdw_lbl_resultmessage.setStyleSheet("color: rgb(255, 0, 0);")
+            self.cstrfwdw_lbl_resultmessage.setText("You've cancelled the transfer..")
+        #     print('Cancel clicked')
+        # elif msg.exec_() == QMessageBox.Ok:
+        #     msg.exec_()
+
+        # cancel_btn = QMessageBox.Cancel
+        # ok_btn = QMessageBox.Ok
+
+        # if x = :
+        #     self.cstrfwdw_spinbox_money.cleanText()
+        #     self.cstrfwdw_lbl_resultmessage.setStyleSheet("color: rgb(255, 0, 0);")
+        #     self.cstrfwdw_lbl_resultmessage.setText("You've cancelled the transfer..")
+        #     print('Cancel clicked')
+        # elif ok_btn:
+        #     msg.exec_()
+    
 
     def return_back(self):
         csoptions = CSOptions()

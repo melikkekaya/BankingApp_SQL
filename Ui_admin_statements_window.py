@@ -34,18 +34,18 @@ class Ui_admin_statements_window(object):
         self.ADstatementswdw_lbl_heading.setFont(font)
         self.ADstatementswdw_lbl_heading.setAlignment(QtCore.Qt.AlignCenter)
         self.ADstatementswdw_lbl_heading.setObjectName("ADstatementswdw_lbl_heading")
-        self.csstatementwdw_btn_returnmain = QtWidgets.QPushButton(self.centralwidget)
-        self.csstatementwdw_btn_returnmain.setEnabled(True)
-        self.csstatementwdw_btn_returnmain.setGeometry(QtCore.QRect(110, 540, 180, 70))
-        self.csstatementwdw_btn_returnmain.setMinimumSize(QtCore.QSize(180, 70))
-        self.csstatementwdw_btn_returnmain.setMaximumSize(QtCore.QSize(180, 70))
+        self.ADstatementswdw_btn_back = QtWidgets.QPushButton(self.centralwidget)
+        self.ADstatementswdw_btn_back.setEnabled(True)
+        self.ADstatementswdw_btn_back.setGeometry(QtCore.QRect(220, 540, 180, 70))
+        self.ADstatementswdw_btn_back.setMinimumSize(QtCore.QSize(180, 70))
+        self.ADstatementswdw_btn_back.setMaximumSize(QtCore.QSize(180, 70))
         font = QtGui.QFont()
         font.setFamily("Bahnschrift SemiBold")
         font.setPointSize(18)
         font.setBold(True)
         font.setWeight(75)
-        self.csstatementwdw_btn_returnmain.setFont(font)
-        self.csstatementwdw_btn_returnmain.setStyleSheet("QPushButton {\n"
+        self.ADstatementswdw_btn_back.setFont(font)
+        self.ADstatementswdw_btn_back.setStyleSheet("QPushButton {\n"
 "background-color: rgb(0, 150, 199);\n"
 "   border-color: rgb(66, 167, 255);\n"
 "   border-bottom-color: rgb(255, 255, 255);\n"
@@ -60,33 +60,7 @@ class Ui_admin_statements_window(object):
 "}\n"
 "    \n"
 "   ")
-        self.csstatementwdw_btn_returnmain.setObjectName("csstatementwdw_btn_returnmain")
-        self.csstatementwdw_btn_exit = QtWidgets.QPushButton(self.centralwidget)
-        self.csstatementwdw_btn_exit.setGeometry(QtCore.QRect(310, 540, 180, 70))
-        self.csstatementwdw_btn_exit.setMinimumSize(QtCore.QSize(180, 70))
-        self.csstatementwdw_btn_exit.setMaximumSize(QtCore.QSize(180, 16777215))
-        font = QtGui.QFont()
-        font.setFamily("Bahnschrift SemiBold")
-        font.setPointSize(18)
-        font.setBold(True)
-        font.setWeight(75)
-        self.csstatementwdw_btn_exit.setFont(font)
-        self.csstatementwdw_btn_exit.setStyleSheet("QPushButton {\n"
-"background-color: rgb(0, 150, 199);\n"
-"   border-color: rgb(66, 167, 255);\n"
-"   border-bottom-color: rgb(255, 255, 255);\n"
-"   border:2px solid rgb(202, 240, 248);\n"
-"   border-radius:20px;\n"
-"   border-color: black;\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"     background-color: rgb(202, 240, 248);\n"
-"     border:2px solid rgb(202, 240, 248);\n"
-"}\n"
-"    \n"
-"   ")
-        self.csstatementwdw_btn_exit.setObjectName("csstatementwdw_btn_exit")
+        self.ADstatementswdw_btn_back.setObjectName("ADstatementswdw_btn_back")
         self.ADstatementswdw_lbl_filter = QtWidgets.QLabel(self.centralwidget)
         self.ADstatementswdw_lbl_filter.setGeometry(QtCore.QRect(40, 80, 91, 41))
         self.ADstatementswdw_lbl_filter.setObjectName("ADstatementswdw_lbl_filter")
@@ -174,8 +148,7 @@ class Ui_admin_statements_window(object):
         _translate = QtCore.QCoreApplication.translate
         admin_statements_window.setWindowTitle(_translate("admin_statements_window", "Customer Bank Statement"))
         self.ADstatementswdw_lbl_heading.setText(_translate("admin_statements_window", "Statements"))
-        self.csstatementwdw_btn_returnmain.setText(_translate("admin_statements_window", "Back"))
-        self.csstatementwdw_btn_exit.setText(_translate("admin_statements_window", "Exit"))
+        self.ADstatementswdw_btn_back.setText(_translate("admin_statements_window", "Back"))
         self.ADstatementswdw_lbl_filter.setText(_translate("admin_statements_window", "Filtering Options:"))
         self.ADstatementswdw_btn_search.setText(_translate("admin_statements_window", "Search"))
         self.ADstatementswdw_lbl_filter_date.setText(_translate("admin_statements_window", "Date:"))

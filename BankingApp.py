@@ -12,6 +12,7 @@ from Ui_customer_transfer_window import *
 from Ui_admin_options_window import *
 from Ui_admin_edit_window import *
 from Ui_customer_edit_window import *
+from Ui_admin_statements_window import *
 
 class Main_Window(QMainWindow, Ui_open_window):
     def __init__(self):
@@ -94,7 +95,10 @@ class Admin_Opt(QMainWindow, Ui_admin_options_window):
         self.ad_cs_edit.show()
 
     def scrn_statements(self):
-        pass
+        self.ad_statements = AD_Statements()
+        widget.addWidget(self.ad_statements)
+        widget.setCurrentIndex(widget.currentIndex()+1)
+        self.ad_statements.show()
 
     def return_back(self):
         adprelogin = ADPreLogin()
@@ -148,6 +152,17 @@ class AD_CS_Edit(QMainWindow, Ui_Admin_infoEdit_window):
         super(AD_CS_Edit, self).__init__()
         self.setupUi(self)
         self.adeditwdw_btn_back.clicked.connect(self.return_back)
+    
+    def return_back(self):
+            AD_opt = Admin_Opt()
+            widget.addWidget(AD_opt)
+            widget.setCurrentIndex(widget.currentIndex()+1)
+
+class AD_Statements(QMainWindow, Ui_admin_statements_window):
+    def __init__(self):
+        super(AD_Statements, self).__init__()
+        self.setupUi(self)
+        self.ADstatementswdw_btn_back.clicked.connect(self.return_back)
     
     def return_back(self):
             AD_opt = Admin_Opt()

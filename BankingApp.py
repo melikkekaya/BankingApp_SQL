@@ -88,7 +88,10 @@ class Admin_Opt(QMainWindow, Ui_admin_options_window):
         self.cs_create.show()
     
     def scrn_edit_info(self):
-        pass
+        self.ad_cs_edit = AD_CS_Edit()
+        widget.addWidget(self.ad_cs_edit)
+        widget.setCurrentIndex(widget.currentIndex()+1)
+        self.ad_cs_edit.show()
 
     def scrn_statements(self):
         pass

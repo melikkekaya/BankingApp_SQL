@@ -78,7 +78,7 @@ class Admin_Opt(QMainWindow, Ui_admin_options_window):
         self.adminwdw_btn_createcs.clicked.connect(self.scrn_create_customer)
         self.adminwdw_btn_editinf.clicked.connect(self.scrn_edit_info)
         self.adminwdw_btn_bankstt.clicked.connect(self.scrn_statements)
-        # self.adminwdw_btn_logout.clicked.connect(self.return_back)
+        self.adminwdw_btn_logout.clicked.connect(self.return_back)
         self.adminwdw_btn_exit.clicked.connect(self.close_w)
     
     def scrn_create_customer(self):
@@ -88,10 +88,7 @@ class Admin_Opt(QMainWindow, Ui_admin_options_window):
         self.cs_create.show()
     
     def scrn_edit_info(self):
-        self.ad_cs_edit = AD_CS_Edit()
-        widget.addWidget(self.ad_cs_edit)
-        widget.setCurrentIndex(widget.currentIndex()+1)
-        self.ad_cs_edit.show()
+        pass
 
     def scrn_statements(self):
         pass
@@ -102,7 +99,7 @@ class Admin_Opt(QMainWindow, Ui_admin_options_window):
         widget.setCurrentIndex(widget.currentIndex()+1)
     
     def close_w(self):
-        sys.exit()  
+        sys.exit() 
 
 class AD_CS_create(QMainWindow, Ui_admin_CScreate_window):
     def __init__(self):

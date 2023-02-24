@@ -10,6 +10,18 @@
     <height>700</height>
    </rect>
   </property>
+  <property name="minimumSize">
+   <size>
+    <width>600</width>
+    <height>700</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>600</width>
+    <height>700</height>
+   </size>
+  </property>
   <property name="windowTitle">
    <string>Admin Options Window</string>
   </property>
@@ -20,16 +32,16 @@
    <widget class="QLabel" name="adminoptwdw_lbl_heading">
     <property name="geometry">
      <rect>
-      <x>30</x>
+      <x>-20</x>
       <y>50</y>
-      <width>541</width>
+      <width>641</width>
       <height>81</height>
      </rect>
     </property>
     <property name="font">
      <font>
       <family>Arial</family>
-      <pointsize>36</pointsize>
+      <pointsize>32</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
@@ -44,9 +56,9 @@
    <widget class="QPushButton" name="adminwdw_btn_createcs">
     <property name="geometry">
      <rect>
-      <x>160</x>
+      <x>139</x>
       <y>190</y>
-      <width>260</width>
+      <width>301</width>
       <height>71</height>
      </rect>
     </property>
@@ -78,9 +90,9 @@ QPushButton:hover {
    <widget class="QPushButton" name="adminwdw_btn_editinf">
     <property name="geometry">
      <rect>
-      <x>160</x>
+      <x>140</x>
       <y>300</y>
-      <width>261</width>
+      <width>301</width>
       <height>71</height>
      </rect>
     </property>
@@ -112,9 +124,9 @@ QPushButton:hover {
    <widget class="QPushButton" name="adminwdw_btn_bankstt">
     <property name="geometry">
      <rect>
-      <x>160</x>
+      <x>140</x>
       <y>410</y>
-      <width>261</width>
+      <width>301</width>
       <height>71</height>
      </rect>
     </property>
@@ -143,7 +155,7 @@ QPushButton:hover {
      <string>Statements</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="adminwdw_btn_back">
+   <widget class="QPushButton" name="adminwdw_btn_logout">
     <property name="geometry">
      <rect>
       <x>100</x>
@@ -178,7 +190,7 @@ QPushButton:hover {
    </string>
     </property>
     <property name="text">
-     <string>Back</string>
+     <string>Log Out</string>
     </property>
    </widget>
    <widget class="QPushButton" name="adminwdw_btn_exit">
@@ -227,7 +239,7 @@ QPushButton:hover {
      <x>0</x>
      <y>0</y>
      <width>600</width>
-     <height>21</height>
+     <height>22</height>
     </rect>
    </property>
   </widget>

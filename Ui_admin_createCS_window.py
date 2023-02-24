@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'c:\Users\musab\OneDrive\Belgeler\GitHub\Atm-Project\QT_designer\admin_createCS_window.ui'
+# Form implementation generated from reading ui file 'c:\Users\musab\OneDrive\Belgeler\GitHub\BankingApp_SQL\admin_createCS_window.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.4
 #
@@ -217,7 +217,7 @@ class Ui_admin_CScreate_window(object):
         admin_CScreate_window.setWindowTitle(_translate("admin_CScreate_window", "Admin Window"))
         self.admincswdw_lbl_heading.setText(_translate("admin_CScreate_window", "Creating Customer Account"))
         self.admincswdw_btn_create.setText(_translate("admin_CScreate_window", "CREATE CUSTOMER"))
-        self.admincswdw_btn_returnmain.setText(_translate("admin_CScreate_window", "Log Out"))
+        self.admincswdw_btn_returnmain.setText(_translate("admin_CScreate_window", "Back"))
         self.admincswdw_btn_exit.setText(_translate("admin_CScreate_window", "Exit"))
         self.admincswdw_lbl_name.setText(_translate("admin_CScreate_window", "Name:"))
         self.admincswdw_lbl_email.setText(_translate("admin_CScreate_window", "Email:"))

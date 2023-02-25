@@ -344,13 +344,16 @@ class CSEdit(QMainWindow, Ui_Customer_infoEdit_window):
         #except:
             #print("failed")     
         #name = cur.fetchone()[0]
-        #self.csAfter.cseditwdw_linedit_CSname_show.setText(name)
-        #self.csAfter.cseditwdw_linedit_CSemail_show.setText(email)
-        #self.csAfter.cseditwdw_linedit_CSpassword_show.setText(str(passwordd))
+        self.csAfter.cseditwdw_linedit_CSname_show.setText(name1)
+        self.csAfter.cseditwdw_linedit_CSemail_show.setText(email1)
+        self.csAfter.cseditwdw_linedit_CSpassword_show.setText(str(passwordd1))
         #self.csAfter.csmainwdw_lbl_CSID_show.setText(str(self.ID))
+        #self.cseditwdw_label_successave.setStyleSheet("color: rgb(255, 255, 255);")
+        #self.cseditwdw_label_successave.setText("Successfully Saved")
         cur.close()
         conn.close()
-
+        
+       
     def csback(self):  
         cs_opt = CSOptions()
         widget.addWidget(cs_opt)

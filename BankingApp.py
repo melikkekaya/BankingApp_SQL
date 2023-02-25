@@ -489,8 +489,8 @@ class CSTransfer(QMainWindow, Ui_customer_transfer_window):
 
         self.cstrfwdw_lbl_balanceshow.setText(f"{str(self.first_balance)} €")
 
-        # self.cstrfwdw_btn_send.clicked.connect(self.send_money)
-        self.cstrfwdw_btn_send.clicked.connect(self.show_popup)
+        self.cstrfwdw_btn_send.clicked.connect(self.send_money)
+        # self.cstrfwdw_btn_send.clicked.connect(self.show_popup)
 
         self.cstrfwdw_btn_returnmain.clicked.connect(self.return_back)
         self.cstrfwdw_btn_exit.clicked.connect(self.close_w)

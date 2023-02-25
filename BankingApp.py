@@ -267,6 +267,7 @@ class CSOptions(QMainWindow, Ui_cs_options_window):
         name = cur.fetchone()[0]
         self.csAfter.cstrfwdw_lbl_CSname_show.setText(name)
         self.csAfter.cstrfwdw_lbl_CSID_show.setText(str(self.ID))
+        self.csAfter.cstrfwdw_radiobtn_inttrf.setChecked(True)
         cur.close()
         conn.commit()
         conn.close()

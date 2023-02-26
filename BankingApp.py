@@ -547,7 +547,7 @@ class CSTransfer(QMainWindow, Ui_customer_transfer_window):
                             self.cstrfwdw_lbl_resultmessage.setStyleSheet("color: rgb(255, 0, 0);")
                             self.cstrfwdw_lbl_resultmessage.setText("Receiver should be different than sender..")
 
-                        elif len(self.cstrfwdw_linedit_receivernumber.text()) <= 8:           
+                        elif len(self.cstrfwdw_linedit_receivernumber.text()) < 8:           
                                 self.cstrfwdw_lbl_resultmessage.setStyleSheet("color: rgb(255, 0, 0);")
                                 self.cstrfwdw_lbl_resultmessage.setText("Receiver number should be at least 8 characters..")
 

@@ -7,7 +7,7 @@ from Ui_customer_login_window import *
 from Ui_customer_main_window import *
 from Ui_admin_createCS_window import *
 from Ui_admin_window import *
-from Ui_customer_statement_window import *
+from Ui_customer_statements_window import *
 from Ui_cs_options_window import *
 from Ui_customer_transfer_window import *
 from Ui_admin_options_window import *
@@ -204,6 +204,7 @@ class CsLogin(QMainWindow,Ui_customer_login_window):
                 CSOptions.ID = self.CsId
                 CSTransfer.ID = self.CsId
                 CSEdit.ID = self.CsId
+                CSinfo.ID = self.CsId
                 print("Successfully logged in")
                 cur.execute("INSERT INTO all_transactions VALUES(%s,%s,%s)",(f"{self.CsId}", 0, "Login"))
                 
@@ -245,7 +246,7 @@ class CSOptions(QMainWindow, Ui_cs_options_window):
         self.optwdw_btn_banktr.clicked.connect(self.open_transactions)
         self.optwdw_btn_transfer.clicked.connect(self.open_transfer)
         self.optwdw_btn_editinf.clicked.connect(self.open_edit)
-        # self.optwdw_btn_bankstt.clicked.connect(self.bankstt)
+        self.optwdw_btn_bankstt.clicked.connect(self.bankstt)
         self.optwdw_btn_back.clicked.connect(self.return_back)
         self.optwdw_btn_exit.clicked.connect(self.close_w)        
 
@@ -304,7 +305,12 @@ class CSOptions(QMainWindow, Ui_cs_options_window):
         cur.close()
         conn.commit()
         conn.close()
-    
+    def bankstt(self):
+        self.csAfter = CSinfo()
+        widget.addWidget(self.csAfter)
+        widget.setCurrentIndex(widget.currentIndex()+1)
+        self.csAfter.show()
+
     def return_back(self):
         cslogin = CsLogin()
         widget.addWidget(cslogin)
@@ -656,12 +662,45 @@ class CSTransfer(QMainWindow, Ui_customer_transfer_window):
     def close_w(self):
         sys.exit()  
 
-class CSinfo(QMainWindow, Ui_customer_statement_window):
+class CSinfo(QMainWindow, Ui_customer_statements_window):
     def __init__(self):
         super(CSinfo, self).__init__()
         self.setupUi(self)
-        self.csstatementwdw_btn_returnmain.clicked.connect(self.return_back)
-        self.csstatementwdw_btn_exit.clicked.connect(self.close_w)
+        self.dateEdit_start.setDate(QtCore.QDateTime.currentDateTime().date().addDays(-7))
+        self.dateEdit_end.setDate(QtCore.QDateTime.currentDateTime().date())
+
+
+        self.CSstatementswdw_btn_search.clicked.connect(self.search)
+        
+        # self.csstatementwdw_btn_returnmain.clicked.connect(self.return_back)
+        # self.csstatementwdw_btn_exit.clicked.connect(self.close_w)
+    def search(self):
+
+        query = ""
+        tType = self.CSstatements_Transection_Types_combo.currentText() 
+        if tType != 'All':
+            query = f" AND transaction_type = '{tType}'"
+
+        start_time = self.dateEdit_start.date().toString("yyyy-MM-dd")
+        end_time = self.dateEdit_end.date().toString("yyyy-MM-dd 23:59:59" )
+
+        conn = psycopg2.connect("dbname=BankingApp user= postgres password=1234")
+        cur = conn.cursor() 
+        cur.execute(f"SELECT transaction_type,transaction_amount,transaction_date FROM all_transactions WHERE customer_id={self.ID} AND transaction_date >= '{start_time}' AND transaction_date <= '{end_time}' AND transaction_type != 'Login' {query}")
+        list = cur.fetchall()
+        
+        self.CSstatementswdw_tableWidget.setColumnWidth(2,200)
+        self.CSstatementswdw_tableWidget.setRowCount(len(list))
+        row = 0
+        for tr in list:
+            self.CSstatementswdw_tableWidget.setItem(row,0,QtWidgets.QTableWidgetItem(tr[0]))
+            self.CSstatementswdw_tableWidget.setItem(row,1,QtWidgets.QTableWidgetItem(str(tr[1])))
+            self.CSstatementswdw_tableWidget.setItem(row,2,QtWidgets.QTableWidgetItem(str(tr[2])))
+            row = row + 1
+
+        cur.close()
+        conn.commit()
+        conn.close()
 
     def return_back(self):
         csmain = CSMain()

@@ -1,5 +1,6 @@
 from PyQt5.QtWidgets import *
 import psycopg2, sys
+import hashlib
 
 from Ui_main_window import *
 from Ui_customer_login_window import *
@@ -119,11 +120,17 @@ class AD_CS_create(QMainWindow, Ui_admin_CScreate_window):
         self.admincswdw_btn_create.clicked.connect(self.admincswdw_spinBox_balance.clear)
         self.admincswdw_btn_returnmain.clicked.connect(self.return_back)
         self.admincswdw_btn_exit.clicked.connect(self.close_w)
-
+    
+    def hash_password(self, unhashpass):
+            Password = unhashpass
+            hash_object = hashlib.sha256(Password.encode('utf-8'))
+            Pass_hash = hash_object.hexdigest()  
+            return Pass_hash
+    
     def createcustomer(self):
         Name = self.admincswdw_linedit_name.text()
         Email = self.admincswdw_linedit_email.text()
-        Password = self.admincswdw_linedit_CSpassword_2.text()
+        Password = self.hash_password(self.admincswdw_linedit_CSpassword_2.text())
         CurrentBalance = int(self.admincswdw_spinBox_balance.text().split("€")[0])
         if  len(Name) == 0 or len(Email) == 0 or len(Password) == 0:
             self.admincswdw_lbl_result.setText("Please fill all the fields!")
@@ -138,7 +145,7 @@ class AD_CS_create(QMainWindow, Ui_admin_CScreate_window):
             conn.commit()
             conn.close()
             self.admincswdw_lbl_result.setText(f"New customer created:\n{CustomerID}")
-            
+    
     def return_back(self):
             ADlogin = Admin_Opt()
             widget.addWidget(ADlogin)
@@ -188,7 +195,10 @@ class CsLogin(QMainWindow,Ui_customer_login_window):
             cur = conn.cursor() 
             cur.execute(f"SELECT cs_password FROM customer WHERE customer_id={self.CsId}")
             password = cur.fetchone()[0]
-            if self.CsPs == password:
+            ad_CS_create = AD_CS_create ()           
+            hashed_password = ad_CS_create.hash_password(self.CsPs)
+
+            if hashed_password == password:
                 # try:
                 CSMain.ID = self.CsId
                 CSOptions.ID = self.CsId
@@ -336,8 +346,8 @@ class CSEdit(QMainWindow, Ui_Customer_infoEdit_window):
         cur = conn.cursor()
         name1 = self.cseditwdw_linedit_CSname_show.text()
         email1 =self.cseditwdw_linedit_CSemail_show.text()
-        passwordd1 = self.cseditwdw_linedit_CSpassword_show.text()
-
+        ad_CS_edit = AD_CS_create ()           
+        passwordd1 = ad_CS_edit.hash_password(self.cseditwdw_linedit_CSpassword_show.text())
         #try:
         cur.execute("UPDATE customer SET cs_name= %s ,cs_email = %s, cs_password= %s WHERE customer_id = %s",(name1,email1,passwordd1,self.ID))
         conn.commit()

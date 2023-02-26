@@ -295,8 +295,8 @@ QPushButton:hover {
    <widget class="QLabel" name="cseditwdw_label_successave">
     <property name="geometry">
      <rect>
-      <x>190</x>
-      <y>530</y>
+      <x>90</x>
+      <y>520</y>
       <width>261</width>
       <height>41</height>
      </rect>
@@ -309,8 +309,11 @@ QPushButton:hover {
       <bold>true</bold>
      </font>
     </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(255, 255, 255);</string>
+    </property>
     <property name="text">
-     <string/>
+     <string>Text</string>
     </property>
    </widget>
   </widget>

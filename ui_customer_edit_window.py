@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'c:\Users\90506\Documents\GitHub\BankingApp_SQL\customer_edit_window.ui'
+# Form implementation generated from reading ui file '/Users/melike/Documents/GitHub/BankingApp_SQL/customer_edit_window.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.7
 #
@@ -146,14 +146,14 @@ class Ui_Customer_infoEdit_window(object):
 "   ")
         self.cseditwdw_btn_back.setObjectName("cseditwdw_btn_back")
         self.cseditwdw_label_successave = QtWidgets.QLabel(self.centralwidget)
-        self.cseditwdw_label_successave.setGeometry(QtCore.QRect(190, 530, 261, 41))
+        self.cseditwdw_label_successave.setGeometry(QtCore.QRect(90, 520, 261, 41))
         font = QtGui.QFont()
         font.setFamily("Bahnschrift SemiBold")
         font.setPointSize(16)
         font.setBold(True)
         font.setWeight(75)
         self.cseditwdw_label_successave.setFont(font)
-        self.cseditwdw_label_successave.setText("")
+        self.cseditwdw_label_successave.setStyleSheet("color: rgb(255, 255, 255);")
         self.cseditwdw_label_successave.setObjectName("cseditwdw_label_successave")
         Customer_infoEdit_window.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(Customer_infoEdit_window)
@@ -175,3 +175,4 @@ class Ui_Customer_infoEdit_window(object):
         self.cseditwdw_lbl_password.setText(_translate("Customer_infoEdit_window", "Password:"))
         self.cseditwdw_btn_save.setText(_translate("Customer_infoEdit_window", "SAVE"))
         self.cseditwdw_btn_back.setText(_translate("Customer_infoEdit_window", "BACK"))
+        self.cseditwdw_label_successave.setText(_translate("Customer_infoEdit_window", "Text"))

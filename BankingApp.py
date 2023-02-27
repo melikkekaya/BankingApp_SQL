@@ -630,20 +630,7 @@ class CSTransfer(QMainWindow, Ui_customer_transfer_window):
             self.cstrfwdw_spinbox_money.cleanText()
             self.cstrfwdw_lbl_resultmessage.setStyleSheet("color: rgb(255, 0, 0);")
             self.cstrfwdw_lbl_resultmessage.setText("You've cancelled the transfer..")
-        #     print('Cancel clicked')
-        # elif msg.exec_() == QMessageBox.Ok:
-        #     msg.exec_()
 
-        # cancel_btn = QMessageBox.Cancel
-        # ok_btn = QMessageBox.Ok
-
-        # if x = :
-        #     self.cstrfwdw_spinbox_money.cleanText()
-        #     self.cstrfwdw_lbl_resultmessage.setStyleSheet("color: rgb(255, 0, 0);")
-        #     self.cstrfwdw_lbl_resultmessage.setText("You've cancelled the transfer..")
-        #     print('Cancel clicked')
-        # elif ok_btn:
-        #     msg.exec_()
     
 
     def return_back(self):

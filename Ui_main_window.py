@@ -125,7 +125,7 @@ class Ui_open_window(object):
     def retranslateUi(self, open_window):
         _translate = QtCore.QCoreApplication.translate
         open_window.setWindowTitle(_translate("open_window", "MainWindow"))
-        self.openwdw_lbl_welcome.setText(_translate("open_window", "Welcome to the Banking App"))
+        self.openwdw_lbl_welcome.setText(_translate("open_window", "Welcome to the Hello Bank"))
         self.openwdw_btn_CSLogin.setText(_translate("open_window", "  CUSTOMER LOGIN"))
         self.openwdw_btn_ADLogin.setText(_translate("open_window", "   ADMIN LOGIN"))
         self.openwdw_btn_exit.setText(_translate("open_window", "    EXIT"))

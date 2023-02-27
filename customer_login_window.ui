@@ -26,7 +26,7 @@
    <string>Customer Login Window</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(5, 130, 202);</string>
+   <string notr="true">background-color: rgb(241, 242, 248);</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QLabel" name="csloginwdw_lbl_heading">
@@ -40,11 +40,14 @@
     </property>
     <property name="font">
      <font>
-      <family>MS Shell Dlg 2</family>
-      <pointsize>20</pointsize>
+      <family>Arial</family>
+      <pointsize>36</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(15, 42, 57);</string>
     </property>
     <property name="text">
      <string>Customer Login </string>
@@ -84,15 +87,15 @@
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton{
-	background-color: rgb(0, 100, 148);
-
-border:2px solid rgb(0, 150, 199);
-border-radius:20px;
-border-color:black;
+color: rgb(39, 82, 97);
+background-color: rgb(211, 224, 243);
+border:2px solid rgb(123, 169, 191);
+border-radius:20px
 }
+
 QPushButton:hover {
-     background-color: rgb(202, 240, 248);
-     border:2px solid rgb(0, 150, 199);
+     background-color: rgb(225, 229, 241);
+     border:2px solid rgb(196, 218, 245);
 }</string>
     </property>
     <property name="text">
@@ -129,21 +132,17 @@ QPushButton:hover {
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">QPushButton {
-background-color: rgb(0, 150, 199);
-   border-color: rgb(66, 167, 255);
-   border-bottom-color: rgb(255, 255, 255);
-   border:2px solid rgb(202, 240, 248);
-   border-radius:20px;
-   border-color: black;
+     <string notr="true">QPushButton{
+color: rgb(39, 82, 97);
+background-color: rgb(187, 207, 237);
+border:2px solid rgb(123, 169, 191);
+border-radius:20px
 }
 
 QPushButton:hover {
-     background-color: rgb(202, 240, 248);
-     border:2px solid rgb(202, 240, 248);
-}
-    
-   </string>
+     background-color: rgb(225, 229, 241);
+     border:2px solid rgb(196, 218, 245);
+}</string>
     </property>
     <property name="text">
      <string>Back</string>
@@ -179,21 +178,17 @@ QPushButton:hover {
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">QPushButton {
-background-color: rgb(0, 150, 199);
-   border-color: rgb(66, 167, 255);
-   border-bottom-color: rgb(255, 255, 255);
-   border:2px solid rgb(202, 240, 248);
-   border-radius:20px;
-   border-color: black;
+     <string notr="true">QPushButton{
+color: rgb(39, 82, 97);
+background-color: rgb(187, 207, 237);
+border:2px solid rgb(123, 169, 191);
+border-radius:20px
 }
 
 QPushButton:hover {
-     background-color: rgb(202, 240, 248);
-     border:2px solid rgb(202, 240, 248);
-}
-    
-   </string>
+     background-color: rgb(225, 229, 241);
+     border:2px solid rgb(196, 218, 245);
+}</string>
     </property>
     <property name="text">
      <string>Exit</string>
@@ -299,7 +294,7 @@ QPushButton:hover {
      <x>0</x>
      <y>0</y>
      <width>600</width>
-     <height>26</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>

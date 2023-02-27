@@ -17,17 +17,18 @@ class Ui_customer_login_window(object):
         customer_login_window.resize(600, 700)
         customer_login_window.setMinimumSize(QtCore.QSize(600, 700))
         customer_login_window.setMaximumSize(QtCore.QSize(600, 700))
-        customer_login_window.setStyleSheet("background-color: rgb(5, 130, 202);")
+        customer_login_window.setStyleSheet("background-color: rgb(241, 242, 248);")
         self.centralwidget = QtWidgets.QWidget(customer_login_window)
         self.centralwidget.setObjectName("centralwidget")
         self.csloginwdw_lbl_heading = QtWidgets.QLabel(self.centralwidget)
         self.csloginwdw_lbl_heading.setGeometry(QtCore.QRect(80, 60, 411, 61))
         font = QtGui.QFont()
-        font.setFamily("MS Shell Dlg 2")
-        font.setPointSize(20)
+        font.setFamily("Arial")
+        font.setPointSize(36)
         font.setBold(True)
         font.setWeight(75)
         self.csloginwdw_lbl_heading.setFont(font)
+        self.csloginwdw_lbl_heading.setStyleSheet("color: rgb(15, 42, 57);")
         self.csloginwdw_lbl_heading.setAlignment(QtCore.Qt.AlignCenter)
         self.csloginwdw_lbl_heading.setObjectName("csloginwdw_lbl_heading")
         self.csloginwdw_btn_login = QtWidgets.QPushButton(self.centralwidget)
@@ -41,15 +42,15 @@ class Ui_customer_login_window(object):
         font.setWeight(75)
         self.csloginwdw_btn_login.setFont(font)
         self.csloginwdw_btn_login.setStyleSheet("QPushButton{\n"
-"    background-color: rgb(0, 100, 148);\n"
-"\n"
-"border:2px solid rgb(0, 150, 199);\n"
-"border-radius:20px;\n"
-"border-color:black;\n"
+"color: rgb(39, 82, 97);\n"
+"background-color: rgb(211, 224, 243);\n"
+"border:2px solid rgb(123, 169, 191);\n"
+"border-radius:20px\n"
 "}\n"
+"\n"
 "QPushButton:hover {\n"
-"     background-color: rgb(202, 240, 248);\n"
-"     border:2px solid rgb(0, 150, 199);\n"
+"     background-color: rgb(225, 229, 241);\n"
+"     border:2px solid rgb(196, 218, 245);\n"
 "}")
         self.csloginwdw_btn_login.setObjectName("csloginwdw_btn_login")
         self.csloginwdw_btn_returnmain = QtWidgets.QPushButton(self.centralwidget)
@@ -62,21 +63,17 @@ class Ui_customer_login_window(object):
         font.setBold(True)
         font.setWeight(75)
         self.csloginwdw_btn_returnmain.setFont(font)
-        self.csloginwdw_btn_returnmain.setStyleSheet("QPushButton {\n"
-"background-color: rgb(0, 150, 199);\n"
-"   border-color: rgb(66, 167, 255);\n"
-"   border-bottom-color: rgb(255, 255, 255);\n"
-"   border:2px solid rgb(202, 240, 248);\n"
-"   border-radius:20px;\n"
-"   border-color: black;\n"
+        self.csloginwdw_btn_returnmain.setStyleSheet("QPushButton{\n"
+"color: rgb(39, 82, 97);\n"
+"background-color: rgb(187, 207, 237);\n"
+"border:2px solid rgb(123, 169, 191);\n"
+"border-radius:20px\n"
 "}\n"
 "\n"
 "QPushButton:hover {\n"
-"     background-color: rgb(202, 240, 248);\n"
-"     border:2px solid rgb(202, 240, 248);\n"
-"}\n"
-"    \n"
-"   ")
+"     background-color: rgb(225, 229, 241);\n"
+"     border:2px solid rgb(196, 218, 245);\n"
+"}")
         self.csloginwdw_btn_returnmain.setObjectName("csloginwdw_btn_returnmain")
         self.csloginwdw_btn_exit = QtWidgets.QPushButton(self.centralwidget)
         self.csloginwdw_btn_exit.setGeometry(QtCore.QRect(310, 540, 180, 70))
@@ -88,21 +85,17 @@ class Ui_customer_login_window(object):
         font.setBold(True)
         font.setWeight(75)
         self.csloginwdw_btn_exit.setFont(font)
-        self.csloginwdw_btn_exit.setStyleSheet("QPushButton {\n"
-"background-color: rgb(0, 150, 199);\n"
-"   border-color: rgb(66, 167, 255);\n"
-"   border-bottom-color: rgb(255, 255, 255);\n"
-"   border:2px solid rgb(202, 240, 248);\n"
-"   border-radius:20px;\n"
-"   border-color: black;\n"
+        self.csloginwdw_btn_exit.setStyleSheet("QPushButton{\n"
+"color: rgb(39, 82, 97);\n"
+"background-color: rgb(187, 207, 237);\n"
+"border:2px solid rgb(123, 169, 191);\n"
+"border-radius:20px\n"
 "}\n"
 "\n"
 "QPushButton:hover {\n"
-"     background-color: rgb(202, 240, 248);\n"
-"     border:2px solid rgb(202, 240, 248);\n"
-"}\n"
-"    \n"
-"   ")
+"     background-color: rgb(225, 229, 241);\n"
+"     border:2px solid rgb(196, 218, 245);\n"
+"}")
         self.csloginwdw_btn_exit.setObjectName("csloginwdw_btn_exit")
         self.layoutWidget = QtWidgets.QWidget(self.centralwidget)
         self.layoutWidget.setGeometry(QtCore.QRect(170, 150, 252, 251))
@@ -148,7 +141,7 @@ class Ui_customer_login_window(object):
         self.verticalLayout.addWidget(self.csloginwdw_lbl_warning)
         customer_login_window.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(customer_login_window)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 600, 26))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 600, 21))
         self.menubar.setObjectName("menubar")
         customer_login_window.setMenuBar(self.menubar)
         self.statusbar = QtWidgets.QStatusBar(customer_login_window)

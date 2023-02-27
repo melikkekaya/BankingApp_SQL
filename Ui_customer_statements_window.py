@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'c:\Users\qwert\OneDrive\Masaüstü\DATA SCIENCE\PROJECTS\PROJECT-2\BankingApp_SQL\customer_statements_window.ui'
+# Form implementation generated from reading ui file '/Users/melike/Documents/GitHub/BankingApp_SQL/customer_statements_window.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.7
 #
@@ -20,7 +20,7 @@ class Ui_customer_statements_window(object):
         customer_statements_window.setMaximumSize(QtCore.QSize(600, 700))
         customer_statements_window.setContextMenuPolicy(QtCore.Qt.DefaultContextMenu)
         customer_statements_window.setAcceptDrops(False)
-        customer_statements_window.setStyleSheet("background-color: rgb(5, 130, 202);")
+        customer_statements_window.setStyleSheet("background-color: rgb(241, 242, 248);")
         customer_statements_window.setInputMethodHints(QtCore.Qt.ImhNone)
         self.centralwidget = QtWidgets.QWidget(customer_statements_window)
         self.centralwidget.setObjectName("centralwidget")
@@ -45,21 +45,17 @@ class Ui_customer_statements_window(object):
         font.setBold(True)
         font.setWeight(75)
         self.CSstatementswdw_btn_back.setFont(font)
-        self.CSstatementswdw_btn_back.setStyleSheet("QPushButton {\n"
-"background-color: rgb(0, 150, 199);\n"
-"   border-color: rgb(66, 167, 255);\n"
-"   border-bottom-color: rgb(255, 255, 255);\n"
-"   border:2px solid rgb(202, 240, 248);\n"
-"   border-radius:20px;\n"
-"   border-color: black;\n"
+        self.CSstatementswdw_btn_back.setStyleSheet("QPushButton{\n"
+"color: rgb(39, 82, 97);\n"
+"background-color: rgb(187, 207, 237);\n"
+"border:2px solid rgb(123, 169, 191);\n"
+"border-radius:20px\n"
 "}\n"
 "\n"
 "QPushButton:hover {\n"
-"     background-color: rgb(202, 240, 248);\n"
-"     border:2px solid rgb(202, 240, 248);\n"
-"}\n"
-"    \n"
-"   ")
+"     background-color: rgb(225, 229, 241);\n"
+"     border:2px solid rgb(196, 218, 245);\n"
+"}")
         self.CSstatementswdw_btn_back.setObjectName("CSstatementswdw_btn_back")
         self.CSstatementswdw_lbl_filter = QtWidgets.QLabel(self.centralwidget)
         self.CSstatementswdw_lbl_filter.setGeometry(QtCore.QRect(30, 50, 91, 41))
@@ -112,7 +108,7 @@ class Ui_customer_statements_window(object):
         self.dateEdit_start.setObjectName("dateEdit_start")
         customer_statements_window.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(customer_statements_window)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 600, 26))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 600, 21))
         self.menubar.setObjectName("menubar")
         customer_statements_window.setMenuBar(self.menubar)
         self.statusbar = QtWidgets.QStatusBar(customer_statements_window)

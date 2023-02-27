@@ -14,15 +14,15 @@
    <string>MainWindow</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(5, 130, 202);</string>
+   <string notr="true">background-color: rgb(241, 242, 248);</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QLabel" name="csoptwdw_lbl_showname">
     <property name="geometry">
      <rect>
-      <x>160</x>
+      <x>110</x>
       <y>30</y>
-      <width>271</width>
+      <width>381</width>
       <height>81</height>
      </rect>
     </property>
@@ -33,6 +33,9 @@
       <weight>75</weight>
       <bold>true</bold>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(15, 42, 57);</string>
     </property>
     <property name="text">
      <string/>
@@ -60,19 +63,29 @@
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton{
-	background-color: rgb(0, 100, 148);
-
-border:2px solid rgb(0, 150, 199);
-border-radius:20px;
-border-color:black;
+color: rgb(39, 82, 97);
+background-color: rgb(211, 224, 243);
+border:2px solid rgb(123, 169, 191);
+border-radius:20px
 }
+
 QPushButton:hover {
-     background-color: rgb(202, 240, 248);
-     border:2px solid rgb(0, 150, 199);
+     background-color: rgb(225, 229, 241);
+     border:2px solid rgb(196, 218, 245);
 }</string>
     </property>
     <property name="text">
-     <string>Transfer Money</string>
+     <string>  Transfer Money</string>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>icons/fund.png</normaloff>icons/fund.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>50</width>
+      <height>50</height>
+     </size>
     </property>
    </widget>
    <widget class="QPushButton" name="optwdw_btn_banktr">
@@ -94,19 +107,29 @@ QPushButton:hover {
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton{
-	background-color: rgb(0, 100, 148);
-
-border:2px solid rgb(0, 150, 199);
-border-radius:20px;
-border-color:black;
+color: rgb(39, 82, 97);
+background-color: rgb(211, 224, 243);
+border:2px solid rgb(123, 169, 191);
+border-radius:20px
 }
+
 QPushButton:hover {
-     background-color: rgb(202, 240, 248);
-     border:2px solid rgb(0, 150, 199);
+     background-color: rgb(225, 229, 241);
+     border:2px solid rgb(196, 218, 245);
 }</string>
     </property>
     <property name="text">
-     <string>Bank Transactions</string>
+     <string>  Bank Transactions</string>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>icons/transaction.png</normaloff>icons/transaction.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>50</width>
+      <height>50</height>
+     </size>
     </property>
    </widget>
    <widget class="QPushButton" name="optwdw_btn_editinf">
@@ -128,19 +151,29 @@ QPushButton:hover {
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton{
-	background-color: rgb(0, 100, 148);
-
-border:2px solid rgb(0, 150, 199);
-border-radius:20px;
-border-color:black;
+color: rgb(39, 82, 97);
+background-color: rgb(211, 224, 243);
+border:2px solid rgb(123, 169, 191);
+border-radius:20px
 }
+
 QPushButton:hover {
-     background-color: rgb(202, 240, 248);
-     border:2px solid rgb(0, 150, 199);
+     background-color: rgb(225, 229, 241);
+     border:2px solid rgb(196, 218, 245);
 }</string>
     </property>
     <property name="text">
-     <string>Edit Information</string>
+     <string>  Edit Information</string>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>icons/edit.png</normaloff>icons/edit.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>50</width>
+      <height>50</height>
+     </size>
     </property>
    </widget>
    <widget class="QPushButton" name="optwdw_btn_bankstt">
@@ -162,19 +195,29 @@ QPushButton:hover {
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton{
-	background-color: rgb(0, 100, 148);
-
-border:2px solid rgb(0, 150, 199);
-border-radius:20px;
-border-color:black;
+color: rgb(39, 82, 97);
+background-color: rgb(211, 224, 243);
+border:2px solid rgb(123, 169, 191);
+border-radius:20px
 }
+
 QPushButton:hover {
-     background-color: rgb(202, 240, 248);
-     border:2px solid rgb(0, 150, 199);
+     background-color: rgb(225, 229, 241);
+     border:2px solid rgb(196, 218, 245);
 }</string>
     </property>
     <property name="text">
-     <string>Bank Statement</string>
+     <string>  Bank Statement</string>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>icons/report-2.png</normaloff>icons/report-2.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>50</width>
+      <height>50</height>
+     </size>
     </property>
    </widget>
    <widget class="QPushButton" name="optwdw_btn_back">
@@ -195,24 +238,30 @@ QPushButton:hover {
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">QPushButton {
-background-color: rgb(0, 150, 199);
-   border-color: rgb(66, 167, 255);
-   border-bottom-color: rgb(255, 255, 255);
-   border:2px solid rgb(202, 240, 248);
-   border-radius:20px;
-   border-color: black;
+     <string notr="true">QPushButton{
+color: rgb(39, 82, 97);
+background-color: rgb(187, 207, 237);
+border:2px solid rgb(123, 169, 191);
+border-radius:20px
 }
 
 QPushButton:hover {
-     background-color: rgb(202, 240, 248);
-     border:2px solid rgb(202, 240, 248);
-}
-    
-   </string>
+     background-color: rgb(225, 229, 241);
+     border:2px solid rgb(196, 218, 245);
+}</string>
     </property>
     <property name="text">
      <string>Log Out</string>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>icons/exit.png</normaloff>icons/exit.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>50</width>
+      <height>50</height>
+     </size>
     </property>
    </widget>
    <widget class="QPushButton" name="optwdw_btn_exit">
@@ -233,24 +282,31 @@ QPushButton:hover {
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">QPushButton {
-background-color: rgb(0, 150, 199);
-   border-color: rgb(66, 167, 255);
-   border-bottom-color: rgb(255, 255, 255);
-   border:2px solid rgb(202, 240, 248);
-   border-radius:20px;
-   border-color: black;
+     <string notr="true">QPushButton{
+color: rgb(39, 82, 97);
+background-color: rgb(187, 207, 237);
+border:2px solid rgb(123, 169, 191);
+border-radius:20px
 }
 
 QPushButton:hover {
-     background-color: rgb(202, 240, 248);
-     border:2px solid rgb(202, 240, 248);
+     background-color: rgb(225, 229, 241);
+     border:2px solid rgb(196, 218, 245);
 }
-    
    </string>
     </property>
     <property name="text">
-     <string>Exit</string>
+     <string>  Exit</string>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>icons/log-out.png</normaloff>icons/log-out.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>40</width>
+      <height>40</height>
+     </size>
     </property>
    </widget>
   </widget>

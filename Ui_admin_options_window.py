@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'c:\Users\90506\Documents\GitHub\BankingApp_SQL\admin_options_window.ui'
+# Form implementation generated from reading ui file '/Users/melike/Documents/GitHub/BankingApp_SQL/admin_options_window.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.7
 #
@@ -17,7 +17,7 @@ class Ui_admin_options_window(object):
         admin_options_window.resize(600, 700)
         admin_options_window.setMinimumSize(QtCore.QSize(600, 700))
         admin_options_window.setMaximumSize(QtCore.QSize(600, 700))
-        admin_options_window.setStyleSheet("background-color: rgb(5, 130, 202);")
+        admin_options_window.setStyleSheet("background-color: rgb(241, 242, 248);")
         self.centralwidget = QtWidgets.QWidget(admin_options_window)
         self.centralwidget.setObjectName("centralwidget")
         self.adminoptwdw_lbl_heading = QtWidgets.QLabel(self.centralwidget)
@@ -28,122 +28,135 @@ class Ui_admin_options_window(object):
         font.setBold(True)
         font.setWeight(75)
         self.adminoptwdw_lbl_heading.setFont(font)
+        self.adminoptwdw_lbl_heading.setStyleSheet("color: rgb(15, 42, 57);")
         self.adminoptwdw_lbl_heading.setAlignment(QtCore.Qt.AlignCenter)
         self.adminoptwdw_lbl_heading.setObjectName("adminoptwdw_lbl_heading")
         self.adminwdw_btn_createcs = QtWidgets.QPushButton(self.centralwidget)
         self.adminwdw_btn_createcs.setGeometry(QtCore.QRect(139, 190, 301, 71))
         font = QtGui.QFont()
-        font.setFamily("Bahnschrift SemiBold")
+        font.setFamily("Arial")
         font.setPointSize(16)
         font.setBold(True)
         font.setWeight(75)
         self.adminwdw_btn_createcs.setFont(font)
         self.adminwdw_btn_createcs.setStyleSheet("QPushButton{\n"
-"    background-color: rgb(0, 100, 148);\n"
-"\n"
-"border:2px solid rgb(0, 150, 199);\n"
-"border-radius:20px;\n"
-"border-color:black;\n"
+"color: rgb(39, 82, 97);\n"
+"background-color: rgb(211, 224, 243);\n"
+"border:2px solid rgb(123, 169, 191);\n"
+"border-radius:20px\n"
 "}\n"
+"\n"
 "QPushButton:hover {\n"
-"     background-color: rgb(202, 240, 248);\n"
-"     border:2px solid rgb(0, 150, 199);\n"
+"     background-color: rgb(225, 229, 241);\n"
+"     border:2px solid rgb(196, 218, 245);\n"
 "}")
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap("icons/resume.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.adminwdw_btn_createcs.setIcon(icon)
+        self.adminwdw_btn_createcs.setIconSize(QtCore.QSize(50, 50))
         self.adminwdw_btn_createcs.setObjectName("adminwdw_btn_createcs")
         self.adminwdw_btn_editinf = QtWidgets.QPushButton(self.centralwidget)
         self.adminwdw_btn_editinf.setGeometry(QtCore.QRect(140, 300, 301, 71))
         font = QtGui.QFont()
-        font.setFamily("Bahnschrift SemiBold")
+        font.setFamily("Arial")
         font.setPointSize(16)
         font.setBold(True)
         font.setWeight(75)
         self.adminwdw_btn_editinf.setFont(font)
         self.adminwdw_btn_editinf.setStyleSheet("QPushButton{\n"
-"    background-color: rgb(0, 100, 148);\n"
-"\n"
-"border:2px solid rgb(0, 150, 199);\n"
-"border-radius:20px;\n"
-"border-color:black;\n"
+"color: rgb(39, 82, 97);\n"
+"background-color: rgb(211, 224, 243);\n"
+"border:2px solid rgb(123, 169, 191);\n"
+"border-radius:20px\n"
 "}\n"
+"\n"
 "QPushButton:hover {\n"
-"     background-color: rgb(202, 240, 248);\n"
-"     border:2px solid rgb(0, 150, 199);\n"
+"     background-color: rgb(225, 229, 241);\n"
+"     border:2px solid rgb(196, 218, 245);\n"
 "}")
+        icon1 = QtGui.QIcon()
+        icon1.addPixmap(QtGui.QPixmap("icons/edit.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.adminwdw_btn_editinf.setIcon(icon1)
+        self.adminwdw_btn_editinf.setIconSize(QtCore.QSize(50, 50))
         self.adminwdw_btn_editinf.setObjectName("adminwdw_btn_editinf")
         self.adminwdw_btn_bankstt = QtWidgets.QPushButton(self.centralwidget)
         self.adminwdw_btn_bankstt.setGeometry(QtCore.QRect(140, 410, 301, 71))
         font = QtGui.QFont()
-        font.setFamily("Bahnschrift SemiBold")
+        font.setFamily("Arial")
         font.setPointSize(16)
         font.setBold(True)
         font.setWeight(75)
         self.adminwdw_btn_bankstt.setFont(font)
         self.adminwdw_btn_bankstt.setStyleSheet("QPushButton{\n"
-"    background-color: rgb(0, 100, 148);\n"
-"\n"
-"border:2px solid rgb(0, 150, 199);\n"
-"border-radius:20px;\n"
-"border-color:black;\n"
+"color: rgb(39, 82, 97);\n"
+"background-color: rgb(211, 224, 243);\n"
+"border:2px solid rgb(123, 169, 191);\n"
+"border-radius:20px\n"
 "}\n"
+"\n"
 "QPushButton:hover {\n"
-"     background-color: rgb(202, 240, 248);\n"
-"     border:2px solid rgb(0, 150, 199);\n"
+"     background-color: rgb(225, 229, 241);\n"
+"     border:2px solid rgb(196, 218, 245);\n"
 "}")
+        icon2 = QtGui.QIcon()
+        icon2.addPixmap(QtGui.QPixmap("icons/accounting.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.adminwdw_btn_bankstt.setIcon(icon2)
+        self.adminwdw_btn_bankstt.setIconSize(QtCore.QSize(50, 50))
         self.adminwdw_btn_bankstt.setObjectName("adminwdw_btn_bankstt")
         self.adminwdw_btn_logout = QtWidgets.QPushButton(self.centralwidget)
         self.adminwdw_btn_logout.setGeometry(QtCore.QRect(100, 590, 150, 50))
         font = QtGui.QFont()
-        font.setFamily("Bahnschrift SemiBold")
+        font.setFamily("Arial")
         font.setPointSize(16)
         font.setBold(True)
         font.setWeight(75)
         self.adminwdw_btn_logout.setFont(font)
-        self.adminwdw_btn_logout.setStyleSheet("QPushButton {\n"
-"background-color: rgb(0, 150, 199);\n"
-"   border-color: rgb(66, 167, 255);\n"
-"   border-bottom-color: rgb(255, 255, 255);\n"
-"   border:2px solid rgb(202, 240, 248);\n"
-"   border-radius:20px;\n"
-"   border-color: black;\n"
+        self.adminwdw_btn_logout.setStyleSheet("QPushButton{\n"
+"color: rgb(39, 82, 97);\n"
+"background-color: rgb(187, 207, 237);\n"
+"border:2px solid rgb(123, 169, 191);\n"
+"border-radius:20px\n"
 "}\n"
 "\n"
 "QPushButton:hover {\n"
-"     background-color: rgb(202, 240, 248);\n"
-"     border:2px solid rgb(202, 240, 248);\n"
-"}\n"
-"    \n"
-"   ")
+"     background-color: rgb(225, 229, 241);\n"
+"     border:2px solid rgb(196, 218, 245);\n"
+"}")
+        icon3 = QtGui.QIcon()
+        icon3.addPixmap(QtGui.QPixmap("icons/exit.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.adminwdw_btn_logout.setIcon(icon3)
+        self.adminwdw_btn_logout.setIconSize(QtCore.QSize(50, 50))
         self.adminwdw_btn_logout.setObjectName("adminwdw_btn_logout")
         self.adminwdw_btn_exit = QtWidgets.QPushButton(self.centralwidget)
         self.adminwdw_btn_exit.setGeometry(QtCore.QRect(340, 590, 150, 50))
         font = QtGui.QFont()
-        font.setFamily("Bahnschrift SemiBold")
+        font.setFamily("Arial")
         font.setPointSize(16)
         font.setBold(True)
         font.setWeight(75)
         self.adminwdw_btn_exit.setFont(font)
-        self.adminwdw_btn_exit.setStyleSheet("QPushButton {\n"
-"background-color: rgb(0, 150, 199);\n"
-"   border-color: rgb(66, 167, 255);\n"
-"   border-bottom-color: rgb(255, 255, 255);\n"
-"   border:2px solid rgb(202, 240, 248);\n"
-"   border-radius:20px;\n"
-"   border-color: black;\n"
+        self.adminwdw_btn_exit.setStyleSheet("QPushButton{\n"
+"color: rgb(39, 82, 97);\n"
+"background-color: rgb(187, 207, 237);\n"
+"border:2px solid rgb(123, 169, 191);\n"
+"border-radius:20px\n"
 "}\n"
 "\n"
 "QPushButton:hover {\n"
-"     background-color: rgb(202, 240, 248);\n"
-"     border:2px solid rgb(202, 240, 248);\n"
-"}\n"
-"    \n"
-"   ")
+"     background-color: rgb(225, 229, 241);\n"
+"     border:2px solid rgb(196, 218, 245);\n"
+"}")
+        icon4 = QtGui.QIcon()
+        icon4.addPixmap(QtGui.QPixmap("icons/log-out.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.adminwdw_btn_exit.setIcon(icon4)
+        self.adminwdw_btn_exit.setIconSize(QtCore.QSize(40, 40))
         self.adminwdw_btn_exit.setObjectName("adminwdw_btn_exit")
         admin_options_window.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(admin_options_window)
         self.statusbar.setObjectName("statusbar")
         admin_options_window.setStatusBar(self.statusbar)
         self.menubar = QtWidgets.QMenuBar(admin_options_window)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 600, 22))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 600, 21))
         self.menubar.setObjectName("menubar")
         admin_options_window.setMenuBar(self.menubar)
 
@@ -154,8 +167,8 @@ class Ui_admin_options_window(object):
         _translate = QtCore.QCoreApplication.translate
         admin_options_window.setWindowTitle(_translate("admin_options_window", "Admin Options Window"))
         self.adminoptwdw_lbl_heading.setText(_translate("admin_options_window", "Administrative Operations"))
-        self.adminwdw_btn_createcs.setText(_translate("admin_options_window", "Create Customer"))
-        self.adminwdw_btn_editinf.setText(_translate("admin_options_window", "Edit Customer Information"))
+        self.adminwdw_btn_createcs.setText(_translate("admin_options_window", "  Create Customer"))
+        self.adminwdw_btn_editinf.setText(_translate("admin_options_window", " Edit Customer Information"))
         self.adminwdw_btn_bankstt.setText(_translate("admin_options_window", "Statements"))
         self.adminwdw_btn_logout.setText(_translate("admin_options_window", "Log Out"))
-        self.adminwdw_btn_exit.setText(_translate("admin_options_window", "Exit"))
+        self.adminwdw_btn_exit.setText(_translate("admin_options_window", "  Exit"))

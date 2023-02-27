@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'c:\Users\90506\Documents\GitHub\BankingApp_SQL\admin_createCS_window.ui'
+# Form implementation generated from reading ui file '/Users/melike/Documents/GitHub/BankingApp_SQL/admin_createCS_window.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.7
 #
@@ -15,17 +15,18 @@ class Ui_admin_CScreate_window(object):
     def setupUi(self, admin_CScreate_window):
         admin_CScreate_window.setObjectName("admin_CScreate_window")
         admin_CScreate_window.resize(600, 700)
-        admin_CScreate_window.setStyleSheet("background-color: rgb(5, 130, 202);")
+        admin_CScreate_window.setStyleSheet("background-color: rgb(241, 242, 248);")
         self.centralwidget = QtWidgets.QWidget(admin_CScreate_window)
         self.centralwidget.setObjectName("centralwidget")
         self.admincswdw_lbl_heading = QtWidgets.QLabel(self.centralwidget)
         self.admincswdw_lbl_heading.setGeometry(QtCore.QRect(20, 20, 561, 61))
         font = QtGui.QFont()
-        font.setFamily("MS Shell Dlg 2")
+        font.setFamily("Arial")
         font.setPointSize(20)
         font.setBold(True)
         font.setWeight(75)
         self.admincswdw_lbl_heading.setFont(font)
+        self.admincswdw_lbl_heading.setStyleSheet("color: rgb(15, 42, 57);")
         self.admincswdw_lbl_heading.setAlignment(QtCore.Qt.AlignCenter)
         self.admincswdw_lbl_heading.setObjectName("admincswdw_lbl_heading")
         self.admincswdw_btn_create = QtWidgets.QPushButton(self.centralwidget)
@@ -33,23 +34,26 @@ class Ui_admin_CScreate_window(object):
         self.admincswdw_btn_create.setMinimumSize(QtCore.QSize(330, 70))
         self.admincswdw_btn_create.setMaximumSize(QtCore.QSize(330, 70))
         font = QtGui.QFont()
-        font.setFamily("Bahnschrift SemiBold")
+        font.setFamily("Arial")
         font.setPointSize(18)
         font.setBold(True)
         font.setWeight(75)
         self.admincswdw_btn_create.setFont(font)
         self.admincswdw_btn_create.setStyleSheet("QPushButton{\n"
-"    background-color: rgb(0, 100, 148);\n"
-"\n"
-"border:2px solid rgb(0, 150, 199);\n"
-"border-radius:20px;\n"
-"border-color:black;\n"
+"color: rgb(39, 82, 97);\n"
+"background-color: rgb(211, 224, 243);\n"
+"border:2px solid rgb(123, 169, 191);\n"
+"border-radius:20px\n"
 "}\n"
+"\n"
 "QPushButton:hover {\n"
-"     background-color: rgb(202, 240, 248);\n"
-"     border:2px solid rgb(0, 150, 199);\n"
+"     background-color: rgb(225, 229, 241);\n"
+"     border:2px solid rgb(196, 218, 245);\n"
 "}")
-        self.admincswdw_btn_create.setIconSize(QtCore.QSize(16, 16))
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap("icons/settings.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.admincswdw_btn_create.setIcon(icon)
+        self.admincswdw_btn_create.setIconSize(QtCore.QSize(50, 50))
         self.admincswdw_btn_create.setObjectName("admincswdw_btn_create")
         self.admincswdw_btn_returnmain = QtWidgets.QPushButton(self.centralwidget)
         self.admincswdw_btn_returnmain.setGeometry(QtCore.QRect(100, 540, 180, 70))
@@ -61,52 +65,53 @@ class Ui_admin_CScreate_window(object):
         self.admincswdw_btn_returnmain.setMinimumSize(QtCore.QSize(180, 70))
         self.admincswdw_btn_returnmain.setMaximumSize(QtCore.QSize(180, 70))
         font = QtGui.QFont()
-        font.setFamily("Bahnschrift SemiBold")
+        font.setFamily("Arial")
         font.setPointSize(18)
         font.setBold(True)
         font.setWeight(75)
         self.admincswdw_btn_returnmain.setFont(font)
-        self.admincswdw_btn_returnmain.setStyleSheet("QPushButton {\n"
-"background-color: rgb(0, 150, 199);\n"
-"   border-color: rgb(66, 167, 255);\n"
-"   border-bottom-color: rgb(255, 255, 255);\n"
-"   border:2px solid rgb(202, 240, 248);\n"
-"   border-radius:20px;\n"
-"   border-color: black;\n"
+        self.admincswdw_btn_returnmain.setStyleSheet("QPushButton{\n"
+"color: rgb(39, 82, 97);\n"
+"background-color: rgb(187, 207, 237);\n"
+"border:2px solid rgb(123, 169, 191);\n"
+"border-radius:20px\n"
 "}\n"
 "\n"
 "QPushButton:hover {\n"
-"     background-color: rgb(202, 240, 248);\n"
-"     border:2px solid rgb(202, 240, 248);\n"
+"     background-color: rgb(225, 229, 241);\n"
+"     border:2px solid rgb(196, 218, 245);\n"
 "}\n"
-"    \n"
 "   ")
+        icon1 = QtGui.QIcon()
+        icon1.addPixmap(QtGui.QPixmap("icons/back-arrow.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.admincswdw_btn_returnmain.setIcon(icon1)
+        self.admincswdw_btn_returnmain.setIconSize(QtCore.QSize(40, 40))
         self.admincswdw_btn_returnmain.setObjectName("admincswdw_btn_returnmain")
         self.admincswdw_btn_exit = QtWidgets.QPushButton(self.centralwidget)
         self.admincswdw_btn_exit.setGeometry(QtCore.QRect(310, 540, 180, 70))
         self.admincswdw_btn_exit.setMinimumSize(QtCore.QSize(180, 70))
         self.admincswdw_btn_exit.setMaximumSize(QtCore.QSize(180, 70))
         font = QtGui.QFont()
-        font.setFamily("Bahnschrift SemiBold")
+        font.setFamily("Arial")
         font.setPointSize(18)
         font.setBold(True)
         font.setWeight(75)
         self.admincswdw_btn_exit.setFont(font)
-        self.admincswdw_btn_exit.setStyleSheet("QPushButton {\n"
-"background-color: rgb(0, 150, 199);\n"
-"   border-color: rgb(66, 167, 255);\n"
-"   border-bottom-color: rgb(255, 255, 255);\n"
-"   border:2px solid rgb(202, 240, 248);\n"
-"   border-radius:20px;\n"
-"   border-color: black;\n"
+        self.admincswdw_btn_exit.setStyleSheet("QPushButton{\n"
+"color: rgb(39, 82, 97);\n"
+"background-color: rgb(187, 207, 237);\n"
+"border:2px solid rgb(123, 169, 191);\n"
+"border-radius:20px\n"
 "}\n"
 "\n"
 "QPushButton:hover {\n"
-"     background-color: rgb(202, 240, 248);\n"
-"     border:2px solid rgb(202, 240, 248);\n"
-"}\n"
-"    \n"
-"   ")
+"     background-color: rgb(225, 229, 241);\n"
+"     border:2px solid rgb(196, 218, 245);\n"
+"}")
+        icon2 = QtGui.QIcon()
+        icon2.addPixmap(QtGui.QPixmap("icons/log-out.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.admincswdw_btn_exit.setIcon(icon2)
+        self.admincswdw_btn_exit.setIconSize(QtCore.QSize(40, 40))
         self.admincswdw_btn_exit.setObjectName("admincswdw_btn_exit")
         self.admincswdw_lbl_result = QtWidgets.QLabel(self.centralwidget)
         self.admincswdw_lbl_result.setGeometry(QtCore.QRect(50, 440, 501, 81))
@@ -130,32 +135,40 @@ class Ui_admin_CScreate_window(object):
         self.verticalLayout.setObjectName("verticalLayout")
         self.admincswdw_lbl_name = QtWidgets.QLabel(self.layoutWidget)
         font = QtGui.QFont()
-        font.setFamily("MS Shell Dlg 2")
+        font.setFamily("Arial")
         font.setPointSize(16)
         font.setBold(True)
         font.setWeight(75)
         self.admincswdw_lbl_name.setFont(font)
+        self.admincswdw_lbl_name.setStyleSheet("color: rgb(15, 42, 57);")
         self.admincswdw_lbl_name.setObjectName("admincswdw_lbl_name")
         self.verticalLayout.addWidget(self.admincswdw_lbl_name)
         self.admincswdw_linedit_name = QtWidgets.QLineEdit(self.layoutWidget)
         self.admincswdw_linedit_name.setMinimumSize(QtCore.QSize(180, 40))
         self.admincswdw_linedit_name.setMaximumSize(QtCore.QSize(180, 40))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        self.admincswdw_linedit_name.setFont(font)
         self.admincswdw_linedit_name.setStyleSheet("background-color: rgb(255, 255, 255);")
         self.admincswdw_linedit_name.setEchoMode(QtWidgets.QLineEdit.Normal)
         self.admincswdw_linedit_name.setObjectName("admincswdw_linedit_name")
         self.verticalLayout.addWidget(self.admincswdw_linedit_name)
         self.admincswdw_lbl_email = QtWidgets.QLabel(self.layoutWidget)
         font = QtGui.QFont()
-        font.setFamily("MS Shell Dlg 2")
+        font.setFamily("Arial")
         font.setPointSize(16)
         font.setBold(True)
         font.setWeight(75)
         self.admincswdw_lbl_email.setFont(font)
+        self.admincswdw_lbl_email.setStyleSheet("color: rgb(15, 42, 57);")
         self.admincswdw_lbl_email.setObjectName("admincswdw_lbl_email")
         self.verticalLayout.addWidget(self.admincswdw_lbl_email)
         self.admincswdw_linedit_email = QtWidgets.QLineEdit(self.layoutWidget)
         self.admincswdw_linedit_email.setMinimumSize(QtCore.QSize(180, 40))
         self.admincswdw_linedit_email.setMaximumSize(QtCore.QSize(180, 40))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        self.admincswdw_linedit_email.setFont(font)
         self.admincswdw_linedit_email.setStyleSheet("background-color: rgb(255, 255, 255);")
         self.admincswdw_linedit_email.setObjectName("admincswdw_linedit_email")
         self.verticalLayout.addWidget(self.admincswdw_linedit_email)
@@ -167,16 +180,20 @@ class Ui_admin_CScreate_window(object):
         self.verticalLayout_2.setObjectName("verticalLayout_2")
         self.admincswdw_lbl_balance = QtWidgets.QLabel(self.layoutWidget1)
         font = QtGui.QFont()
-        font.setFamily("MS Shell Dlg 2")
+        font.setFamily("Arial")
         font.setPointSize(16)
         font.setBold(True)
         font.setWeight(75)
         self.admincswdw_lbl_balance.setFont(font)
+        self.admincswdw_lbl_balance.setStyleSheet("color: rgb(15, 42, 57);")
         self.admincswdw_lbl_balance.setObjectName("admincswdw_lbl_balance")
         self.verticalLayout_2.addWidget(self.admincswdw_lbl_balance)
         self.admincswdw_spinBox_balance = QtWidgets.QSpinBox(self.layoutWidget1)
         self.admincswdw_spinBox_balance.setMinimumSize(QtCore.QSize(180, 40))
         self.admincswdw_spinBox_balance.setMaximumSize(QtCore.QSize(180, 40))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        self.admincswdw_spinBox_balance.setFont(font)
         self.admincswdw_spinBox_balance.setStyleSheet("background-color: rgb(255, 255, 255);")
         self.admincswdw_spinBox_balance.setPrefix("")
         self.admincswdw_spinBox_balance.setMaximum(10000)
@@ -185,23 +202,27 @@ class Ui_admin_CScreate_window(object):
         self.verticalLayout_2.addWidget(self.admincswdw_spinBox_balance)
         self.admincswdw_lbl_password = QtWidgets.QLabel(self.layoutWidget1)
         font = QtGui.QFont()
-        font.setFamily("MS Shell Dlg 2")
+        font.setFamily("Arial")
         font.setPointSize(16)
         font.setBold(True)
         font.setWeight(75)
         self.admincswdw_lbl_password.setFont(font)
+        self.admincswdw_lbl_password.setStyleSheet("color: rgb(15, 42, 57);")
         self.admincswdw_lbl_password.setObjectName("admincswdw_lbl_password")
         self.verticalLayout_2.addWidget(self.admincswdw_lbl_password)
         self.admincswdw_linedit_CSpassword_2 = QtWidgets.QLineEdit(self.layoutWidget1)
         self.admincswdw_linedit_CSpassword_2.setMinimumSize(QtCore.QSize(180, 40))
         self.admincswdw_linedit_CSpassword_2.setMaximumSize(QtCore.QSize(180, 40))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        self.admincswdw_linedit_CSpassword_2.setFont(font)
         self.admincswdw_linedit_CSpassword_2.setStyleSheet("background-color: rgb(255, 255, 255);")
         self.admincswdw_linedit_CSpassword_2.setEchoMode(QtWidgets.QLineEdit.Password)
         self.admincswdw_linedit_CSpassword_2.setObjectName("admincswdw_linedit_CSpassword_2")
         self.verticalLayout_2.addWidget(self.admincswdw_linedit_CSpassword_2)
         admin_CScreate_window.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(admin_CScreate_window)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 600, 22))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 600, 21))
         self.menubar.setObjectName("menubar")
         admin_CScreate_window.setMenuBar(self.menubar)
         self.statusbar = QtWidgets.QStatusBar(admin_CScreate_window)
@@ -216,9 +237,9 @@ class Ui_admin_CScreate_window(object):
         _translate = QtCore.QCoreApplication.translate
         admin_CScreate_window.setWindowTitle(_translate("admin_CScreate_window", "Admin Window"))
         self.admincswdw_lbl_heading.setText(_translate("admin_CScreate_window", "Creating Customer Account"))
-        self.admincswdw_btn_create.setText(_translate("admin_CScreate_window", "CREATE CUSTOMER"))
-        self.admincswdw_btn_returnmain.setText(_translate("admin_CScreate_window", "Back"))
-        self.admincswdw_btn_exit.setText(_translate("admin_CScreate_window", "Exit"))
+        self.admincswdw_btn_create.setText(_translate("admin_CScreate_window", "  CREATE CUSTOMER"))
+        self.admincswdw_btn_returnmain.setText(_translate("admin_CScreate_window", "  Back"))
+        self.admincswdw_btn_exit.setText(_translate("admin_CScreate_window", "  Exit"))
         self.admincswdw_lbl_name.setText(_translate("admin_CScreate_window", "Name:"))
         self.admincswdw_lbl_email.setText(_translate("admin_CScreate_window", "Email:"))
         self.admincswdw_lbl_balance.setText(_translate("admin_CScreate_window", "Current Balance:"))

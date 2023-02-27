@@ -35,7 +35,7 @@
    <string>Customer Bank Statement</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(5, 130, 202);</string>
+   <string notr="true">background-color: rgb(241, 242, 248);</string>
   </property>
   <property name="inputMethodHints">
    <set>Qt::ImhNone</set>
@@ -98,20 +98,17 @@
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">QPushButton {
-background-color: rgb(0, 150, 199);
-   border-color: rgb(66, 167, 255);
-   border-bottom-color: rgb(255, 255, 255);
-   border:2px solid rgb(202, 240, 248);
-   border-radius:20px;
-   border-color: black;
+     <string notr="true">QPushButton{
+color: rgb(39, 82, 97);
+background-color: rgb(187, 207, 237);
+border:2px solid rgb(123, 169, 191);
+border-radius:20px
 }
 
 QPushButton:hover {
-     background-color: rgb(202, 240, 248);
-     border:2px solid rgb(202, 240, 248);
+     background-color: rgb(225, 229, 241);
+     border:2px solid rgb(196, 218, 245);
 }
-    
    </string>
     </property>
     <property name="text">
@@ -377,7 +374,7 @@ QPushButton:hover {
      <x>0</x>
      <y>0</y>
      <width>600</width>
-     <height>22</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>

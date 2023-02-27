@@ -35,7 +35,7 @@
    <string>Money Transfer Window</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(5, 130, 202);</string>
+   <string notr="true">background-color: rgb(241, 242, 248);</string>
   </property>
   <property name="inputMethodHints">
    <set>Qt::ImhNone</set>
@@ -52,11 +52,14 @@
     </property>
     <property name="font">
      <font>
-      <family>MS Shell Dlg 2</family>
+      <family>Arial</family>
       <pointsize>20</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(15, 42, 57);</string>
     </property>
     <property name="text">
      <string>Money Transfer</string>
@@ -88,31 +91,37 @@
     </property>
     <property name="font">
      <font>
-      <family>Bahnschrift SemiBold</family>
+      <family>Arial</family>
       <pointsize>18</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">QPushButton {
-background-color: rgb(0, 150, 199);
-   border-color: rgb(66, 167, 255);
-   border-bottom-color: rgb(255, 255, 255);
-   border:2px solid rgb(202, 240, 248);
-   border-radius:20px;
-   border-color: black;
+     <string notr="true">QPushButton{
+color: rgb(39, 82, 97);
+background-color: rgb(187, 207, 237);
+border:2px solid rgb(123, 169, 191);
+border-radius:20px
 }
 
 QPushButton:hover {
-     background-color: rgb(202, 240, 248);
-     border:2px solid rgb(202, 240, 248);
-}
-    
-   </string>
+     background-color: rgb(225, 229, 241);
+     border:2px solid rgb(196, 218, 245);
+}</string>
     </property>
     <property name="text">
-     <string>Back</string>
+     <string>  Back</string>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>icons/back-arrow.png</normaloff>icons/back-arrow.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>40</width>
+      <height>40</height>
+     </size>
     </property>
    </widget>
    <widget class="QPushButton" name="cstrfwdw_btn_exit">
@@ -138,31 +147,37 @@ QPushButton:hover {
     </property>
     <property name="font">
      <font>
-      <family>Bahnschrift SemiBold</family>
+      <family>Arial</family>
       <pointsize>18</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">QPushButton {
-background-color: rgb(0, 150, 199);
-   border-color: rgb(66, 167, 255);
-   border-bottom-color: rgb(255, 255, 255);
-   border:2px solid rgb(202, 240, 248);
-   border-radius:20px;
-   border-color: black;
+     <string notr="true">QPushButton{
+color: rgb(39, 82, 97);
+background-color: rgb(187, 207, 237);
+border:2px solid rgb(123, 169, 191);
+border-radius:20px
 }
 
 QPushButton:hover {
-     background-color: rgb(202, 240, 248);
-     border:2px solid rgb(202, 240, 248);
-}
-    
-   </string>
+     background-color: rgb(225, 229, 241);
+     border:2px solid rgb(196, 218, 245);
+}</string>
     </property>
     <property name="text">
-     <string>Exit</string>
+     <string>  Exit</string>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>icons/log-out.png</normaloff>icons/log-out.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>40</width>
+      <height>40</height>
+     </size>
     </property>
    </widget>
    <widget class="QPushButton" name="cstrfwdw_btn_send">
@@ -188,7 +203,7 @@ QPushButton:hover {
     </property>
     <property name="font">
      <font>
-      <family>Bahnschrift SemiBold</family>
+      <family>Arial</family>
       <pointsize>18</pointsize>
       <weight>75</weight>
       <bold>true</bold>
@@ -196,19 +211,29 @@ QPushButton:hover {
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton{
-	background-color: rgb(0, 100, 148);
-
-border:2px solid rgb(0, 150, 199);
-border-radius:20px;
-border-color:black;
+color: rgb(39, 82, 97);
+background-color: rgb(211, 224, 243);
+border:2px solid rgb(123, 169, 191);
+border-radius:20px
 }
+
 QPushButton:hover {
-     background-color: rgb(202, 240, 248);
-     border:2px solid rgb(0, 150, 199);
+     background-color: rgb(225, 229, 241);
+     border:2px solid rgb(196, 218, 245);
 }</string>
     </property>
     <property name="text">
      <string>SEND MONEY</string>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>icons/fund.png</normaloff>icons/fund.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>35</width>
+      <height>35</height>
+     </size>
     </property>
    </widget>
    <widget class="QPushButton" name="cstrfwdw_btn_moneyup">
@@ -222,33 +247,36 @@ QPushButton:hover {
     </property>
     <property name="font">
      <font>
+      <family>Arial</family>
       <pointsize>24</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">QPushButton {
-background-color: rgb(0, 150, 199);
-   border-color: rgb(66, 167, 255);
-   border-bottom-color: rgb(255, 255, 255);
-   border:2px solid rgb(202, 240, 248);
-   border-radius:20px;
-   border-color: black;
+     <string notr="true">QPushButton{
+color: rgb(39, 82, 97);
+background-color: rgb(123, 169, 191);
+border:2px solid rgb(60, 121, 138);
+border-radius:20px
 }
 
 QPushButton:hover {
-     background-color: rgb(202, 240, 248);
-     border:2px solid rgb(202, 240, 248);
-}
-    
-   </string>
+     background-color: rgb(225, 229, 241);
+     border:2px solid rgb(196, 218, 245);
+}</string>
     </property>
     <property name="text">
-     <string>+</string>
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>icons/add.png</normaloff>icons/add.png</iconset>
     </property>
     <property name="iconSize">
      <size>
-      <width>16</width>
-      <height>16</height>
+      <width>25</width>
+      <height>25</height>
      </size>
     </property>
    </widget>
@@ -263,28 +291,38 @@ QPushButton:hover {
     </property>
     <property name="font">
      <font>
+      <family>Arial</family>
       <pointsize>24</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">QPushButton {
-background-color: rgb(0, 150, 199);
-   border-color: rgb(66, 167, 255);
-   border-bottom-color: rgb(255, 255, 255);
-   border:2px solid rgb(202, 240, 248);
-   border-radius:20px;
-   border-color: black;
+     <string notr="true">QPushButton{
+color: rgb(39, 82, 97);
+background-color: rgb(123, 169, 191);
+border:2px solid rgb(60, 121, 138);
+border-radius:20px
 }
 
 QPushButton:hover {
-     background-color: rgb(202, 240, 248);
-     border:2px solid rgb(202, 240, 248);
+     background-color: rgb(225, 229, 241);
+     border:2px solid rgb(196, 218, 245);
 }
-    
    </string>
     </property>
     <property name="text">
-     <string>-</string>
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>icons/remove.png</normaloff>icons/remove.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>25</width>
+      <height>25</height>
+     </size>
     </property>
    </widget>
    <widget class="QSpinBox" name="cstrfwdw_spinbox_money">
@@ -348,7 +386,7 @@ background-color: rgb(236, 236, 236);</string>
     </property>
     <property name="font">
      <font>
-      <family>Bahnschrift SemiBold</family>
+      <family>Arial</family>
       <pointsize>14</pointsize>
       <weight>75</weight>
       <bold>true</bold>
@@ -378,11 +416,14 @@ background-color: rgb(236, 236, 236);</string>
       <widget class="QLabel" name="punc">
        <property name="font">
         <font>
-         <family>MS Shell Dlg 2</family>
+         <family>Arial</family>
          <pointsize>16</pointsize>
          <weight>75</weight>
          <bold>true</bold>
         </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(15, 42, 57);</string>
        </property>
        <property name="text">
         <string>:</string>
@@ -399,11 +440,14 @@ background-color: rgb(236, 236, 236);</string>
        </property>
        <property name="font">
         <font>
-         <family>MS Shell Dlg 2</family>
+         <family>Arial</family>
          <pointsize>16</pointsize>
          <weight>75</weight>
          <bold>true</bold>
         </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(15, 42, 57);</string>
        </property>
        <property name="text">
         <string>:</string>
@@ -420,6 +464,9 @@ background-color: rgb(236, 236, 236);</string>
          <bold>true</bold>
         </font>
        </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(15, 42, 57);</string>
+       </property>
        <property name="text">
         <string/>
        </property>
@@ -429,11 +476,14 @@ background-color: rgb(236, 236, 236);</string>
       <widget class="QLabel" name="cstrfwdw_lbl_CSname_heading">
        <property name="font">
         <font>
-         <family>MS Shell Dlg 2</family>
+         <family>Arial</family>
          <pointsize>16</pointsize>
          <weight>75</weight>
          <bold>true</bold>
         </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(15, 42, 57);</string>
        </property>
        <property name="text">
         <string>Customer Name</string>
@@ -444,11 +494,14 @@ background-color: rgb(236, 236, 236);</string>
       <widget class="QLabel" name="cstrfwdw_lbl_balanceheading">
        <property name="font">
         <font>
-         <family>.AppleSystemUIFont</family>
+         <family>Arial</family>
          <pointsize>18</pointsize>
          <weight>75</weight>
          <bold>true</bold>
         </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(15, 42, 57);</string>
        </property>
        <property name="text">
         <string>Your current balance</string>
@@ -459,11 +512,14 @@ background-color: rgb(236, 236, 236);</string>
       <widget class="QLabel" name="punc_2">
        <property name="font">
         <font>
-         <family>MS Shell Dlg 2</family>
+         <family>Arial</family>
          <pointsize>16</pointsize>
          <weight>75</weight>
          <bold>true</bold>
         </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(15, 42, 57);</string>
        </property>
        <property name="text">
         <string>:</string>
@@ -474,11 +530,14 @@ background-color: rgb(236, 236, 236);</string>
       <widget class="QLabel" name="cstrfwdw_lbl_CSID_heading">
        <property name="font">
         <font>
-         <family>MS Shell Dlg 2</family>
+         <family>Arial</family>
          <pointsize>16</pointsize>
          <weight>75</weight>
          <bold>true</bold>
         </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(15, 42, 57);</string>
        </property>
        <property name="text">
         <string>Customer ID</string>
@@ -495,6 +554,9 @@ background-color: rgb(236, 236, 236);</string>
          <bold>true</bold>
         </font>
        </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(15, 42, 57);</string>
+       </property>
        <property name="text">
         <string/>
        </property>
@@ -509,6 +571,9 @@ background-color: rgb(236, 236, 236);</string>
          <weight>75</weight>
          <bold>true</bold>
         </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(15, 42, 57);</string>
        </property>
        <property name="text">
         <string/>
@@ -541,9 +606,18 @@ background-color: rgb(236, 236, 236);</string>
          <height>41</height>
         </size>
        </property>
+       <property name="font">
+        <font>
+         <family>.AppleSystemUIFont</family>
+         <pointsize>24</pointsize>
+         <weight>50</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+        </font>
+       </property>
        <property name="styleSheet">
         <string notr="true">font: 24pt &quot;.AppleSystemUIFont&quot;;
-background-color: rgb(236, 236, 236);</string>
+background-color: rgb(225, 229, 241);</string>
        </property>
        <property name="inputMethodHints">
         <set>Qt::ImhDigitsOnly|Qt::ImhPreferNumbers</set>
@@ -557,11 +631,14 @@ background-color: rgb(236, 236, 236);</string>
       <widget class="QLabel" name="cstrfwdw_lbl_receiverheading">
        <property name="font">
         <font>
-         <family>.AppleSystemUIFont</family>
+         <family>Arial</family>
          <pointsize>18</pointsize>
          <weight>75</weight>
          <bold>true</bold>
         </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(15, 42, 57);</string>
        </property>
        <property name="text">
         <string>Recipient Number</string>
@@ -581,6 +658,7 @@ background-color: rgb(236, 236, 236);</string>
     </property>
     <property name="font">
      <font>
+      <family>Arial</family>
       <pointsize>16</pointsize>
      </font>
     </property>
@@ -599,6 +677,7 @@ background-color: rgb(236, 236, 236);</string>
     </property>
     <property name="font">
      <font>
+      <family>Arial</family>
       <pointsize>16</pointsize>
      </font>
     </property>

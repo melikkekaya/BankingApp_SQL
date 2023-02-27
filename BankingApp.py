@@ -300,6 +300,7 @@ class CSOptions(QMainWindow, Ui_cs_options_window):
         
         self.csAfter.cseditwdw_linedit_CSname_show.setText(name)
         self.csAfter.cseditwdw_linedit_CSemail_show.setText(email)
+        self.csAfter.cseditwdw_lbl_showname.setText(f"Hello {name}")
         # self.csAfter.cseditwdw_linedit_CSpassword_show.setText(str(passwordd))
     
         cur.close()
@@ -356,6 +357,7 @@ class CSEdit(QMainWindow, Ui_Customer_infoEdit_window):
         passwordd1 = ad_CS_edit.hash_password(self.cseditwdw_linedit_CSpassword_show.text())
         #try:
         cur.execute("UPDATE customer SET cs_name= %s ,cs_email = %s, cs_password= %s WHERE customer_id = %s",(name1,email1,passwordd1,self.ID))
+        self.cseditwdw_lbl_showname.setText(f"Hello {name1}")
         conn.commit()
              #print("Success")
         #except:

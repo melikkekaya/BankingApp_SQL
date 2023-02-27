@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'c:\Users\90506\Documents\GitHub\BankingApp_SQL\customer_main_window.ui'
+# Form implementation generated from reading ui file '/Users/melike/Documents/GitHub/BankingApp_SQL/customer_main_window.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.7
 #
@@ -20,18 +20,19 @@ class Ui_customer_main_window(object):
         customer_main_window.setMaximumSize(QtCore.QSize(600, 700))
         customer_main_window.setContextMenuPolicy(QtCore.Qt.DefaultContextMenu)
         customer_main_window.setAcceptDrops(False)
-        customer_main_window.setStyleSheet("background-color: rgb(5, 130, 202);")
+        customer_main_window.setStyleSheet("background-color: rgb(241, 242, 248);")
         customer_main_window.setInputMethodHints(QtCore.Qt.ImhNone)
         self.centralwidget = QtWidgets.QWidget(customer_main_window)
         self.centralwidget.setObjectName("centralwidget")
         self.csmainwdw_lbl_heading = QtWidgets.QLabel(self.centralwidget)
         self.csmainwdw_lbl_heading.setGeometry(QtCore.QRect(50, 40, 491, 61))
         font = QtGui.QFont()
-        font.setFamily("MS Shell Dlg 2")
+        font.setFamily("Arial")
         font.setPointSize(20)
         font.setBold(True)
         font.setWeight(75)
         self.csmainwdw_lbl_heading.setFont(font)
+        self.csmainwdw_lbl_heading.setStyleSheet("color: rgb(15, 42, 57);")
         self.csmainwdw_lbl_heading.setAlignment(QtCore.Qt.AlignCenter)
         self.csmainwdw_lbl_heading.setObjectName("csmainwdw_lbl_heading")
         self.csmainwdw_btn_getcash = QtWidgets.QPushButton(self.centralwidget)
@@ -39,152 +40,170 @@ class Ui_customer_main_window(object):
         self.csmainwdw_btn_getcash.setMinimumSize(QtCore.QSize(180, 50))
         self.csmainwdw_btn_getcash.setMaximumSize(QtCore.QSize(180, 50))
         font = QtGui.QFont()
-        font.setFamily("Bahnschrift SemiBold")
+        font.setFamily("Arial")
         font.setPointSize(18)
         font.setBold(True)
         font.setWeight(75)
         self.csmainwdw_btn_getcash.setFont(font)
         self.csmainwdw_btn_getcash.setStyleSheet("QPushButton{\n"
-"    background-color: rgb(0, 100, 148);\n"
-"\n"
-"border:2px solid rgb(0, 150, 199);\n"
-"border-radius:20px;\n"
-"border-color:black;\n"
+"color: rgb(39, 82, 97);\n"
+"background-color: rgb(211, 224, 243);\n"
+"border:2px solid rgb(123, 169, 191);\n"
+"border-radius:20px\n"
 "}\n"
+"\n"
 "QPushButton:hover {\n"
-"     background-color: rgb(202, 240, 248);\n"
-"     border:2px solid rgb(0, 150, 199);\n"
+"     background-color: rgb(225, 229, 241);\n"
+"     border:2px solid rgb(196, 218, 245);\n"
 "}")
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap("icons/atm.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.csmainwdw_btn_getcash.setIcon(icon)
+        self.csmainwdw_btn_getcash.setIconSize(QtCore.QSize(35, 35))
         self.csmainwdw_btn_getcash.setObjectName("csmainwdw_btn_getcash")
         self.csmainwdw_btn_returnmain = QtWidgets.QPushButton(self.centralwidget)
         self.csmainwdw_btn_returnmain.setGeometry(QtCore.QRect(110, 540, 180, 70))
         self.csmainwdw_btn_returnmain.setMinimumSize(QtCore.QSize(180, 70))
         self.csmainwdw_btn_returnmain.setMaximumSize(QtCore.QSize(180, 70))
         font = QtGui.QFont()
-        font.setFamily("Bahnschrift SemiBold")
+        font.setFamily("Arial")
         font.setPointSize(18)
         font.setBold(True)
         font.setWeight(75)
         self.csmainwdw_btn_returnmain.setFont(font)
-        self.csmainwdw_btn_returnmain.setStyleSheet("QPushButton {\n"
-"background-color: rgb(0, 150, 199);\n"
-"   border-color: rgb(66, 167, 255);\n"
-"   border-bottom-color: rgb(255, 255, 255);\n"
-"   border:2px solid rgb(202, 240, 248);\n"
-"   border-radius:20px;\n"
-"   border-color: black;\n"
+        self.csmainwdw_btn_returnmain.setStyleSheet("QPushButton{\n"
+"color: rgb(39, 82, 97);\n"
+"background-color: rgb(187, 207, 237);\n"
+"border:2px solid rgb(123, 169, 191);\n"
+"border-radius:20px\n"
 "}\n"
 "\n"
 "QPushButton:hover {\n"
-"     background-color: rgb(202, 240, 248);\n"
-"     border:2px solid rgb(202, 240, 248);\n"
-"}\n"
-"    \n"
-"   ")
+"     background-color: rgb(225, 229, 241);\n"
+"     border:2px solid rgb(196, 218, 245);\n"
+"}")
+        icon1 = QtGui.QIcon()
+        icon1.addPixmap(QtGui.QPixmap("icons/back-arrow.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.csmainwdw_btn_returnmain.setIcon(icon1)
+        self.csmainwdw_btn_returnmain.setIconSize(QtCore.QSize(40, 50))
         self.csmainwdw_btn_returnmain.setObjectName("csmainwdw_btn_returnmain")
         self.csmainwdw_btn_exit = QtWidgets.QPushButton(self.centralwidget)
         self.csmainwdw_btn_exit.setGeometry(QtCore.QRect(310, 540, 180, 70))
         self.csmainwdw_btn_exit.setMinimumSize(QtCore.QSize(180, 70))
         self.csmainwdw_btn_exit.setMaximumSize(QtCore.QSize(180, 70))
         font = QtGui.QFont()
-        font.setFamily("Bahnschrift SemiBold")
+        font.setFamily("Arial")
         font.setPointSize(18)
         font.setBold(True)
         font.setWeight(75)
         self.csmainwdw_btn_exit.setFont(font)
-        self.csmainwdw_btn_exit.setStyleSheet("QPushButton {\n"
-"background-color: rgb(0, 150, 199);\n"
-"   border-color: rgb(66, 167, 255);\n"
-"   border-bottom-color: rgb(255, 255, 255);\n"
-"   border:2px solid rgb(202, 240, 248);\n"
-"   border-radius:20px;\n"
-"   border-color: black;\n"
+        self.csmainwdw_btn_exit.setStyleSheet("QPushButton{\n"
+"color: rgb(39, 82, 97);\n"
+"background-color: rgb(187, 207, 237);\n"
+"border:2px solid rgb(123, 169, 191);\n"
+"border-radius:20px\n"
 "}\n"
 "\n"
 "QPushButton:hover {\n"
-"     background-color: rgb(202, 240, 248);\n"
-"     border:2px solid rgb(202, 240, 248);\n"
-"}\n"
-"    \n"
-"   ")
+"     background-color: rgb(225, 229, 241);\n"
+"     border:2px solid rgb(196, 218, 245);\n"
+"}")
+        icon2 = QtGui.QIcon()
+        icon2.addPixmap(QtGui.QPixmap("icons/log-out.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.csmainwdw_btn_exit.setIcon(icon2)
+        self.csmainwdw_btn_exit.setIconSize(QtCore.QSize(40, 40))
         self.csmainwdw_btn_exit.setObjectName("csmainwdw_btn_exit")
         self.csmainwdw_btn_deposit = QtWidgets.QPushButton(self.centralwidget)
         self.csmainwdw_btn_deposit.setGeometry(QtCore.QRect(310, 390, 180, 50))
         self.csmainwdw_btn_deposit.setMinimumSize(QtCore.QSize(180, 50))
         self.csmainwdw_btn_deposit.setMaximumSize(QtCore.QSize(180, 50))
         font = QtGui.QFont()
-        font.setFamily("Bahnschrift SemiBold")
+        font.setFamily("Arial")
         font.setPointSize(18)
         font.setBold(True)
         font.setWeight(75)
         self.csmainwdw_btn_deposit.setFont(font)
         self.csmainwdw_btn_deposit.setStyleSheet("QPushButton{\n"
-"    background-color: rgb(0, 100, 148);\n"
-"\n"
-"border:2px solid rgb(0, 150, 199);\n"
-"border-radius:20px;\n"
-"border-color:black;\n"
+"color: rgb(39, 82, 97);\n"
+"background-color: rgb(211, 224, 243);\n"
+"border:2px solid rgb(123, 169, 191);\n"
+"border-radius:20px\n"
 "}\n"
+"\n"
 "QPushButton:hover {\n"
-"     background-color: rgb(202, 240, 248);\n"
-"     border:2px solid rgb(0, 150, 199);\n"
+"     background-color: rgb(225, 229, 241);\n"
+"     border:2px solid rgb(196, 218, 245);\n"
 "}")
+        icon3 = QtGui.QIcon()
+        icon3.addPixmap(QtGui.QPixmap("icons/deposit.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.csmainwdw_btn_deposit.setIcon(icon3)
+        self.csmainwdw_btn_deposit.setIconSize(QtCore.QSize(50, 50))
         self.csmainwdw_btn_deposit.setObjectName("csmainwdw_btn_deposit")
         self.csmainwdw_btn_moneyup = QtWidgets.QPushButton(self.centralwidget)
         self.csmainwdw_btn_moneyup.setGeometry(QtCore.QRect(420, 300, 41, 41))
         font = QtGui.QFont()
+        font.setFamily("Arial")
         font.setPointSize(24)
+        font.setBold(True)
+        font.setWeight(75)
         self.csmainwdw_btn_moneyup.setFont(font)
-        self.csmainwdw_btn_moneyup.setStyleSheet("QPushButton {\n"
-"background-color: rgb(0, 150, 199);\n"
-"   border-color: rgb(66, 167, 255);\n"
-"   border-bottom-color: rgb(255, 255, 255);\n"
-"   border:2px solid rgb(202, 240, 248);\n"
-"   border-radius:20px;\n"
-"   border-color: black;\n"
+        self.csmainwdw_btn_moneyup.setStyleSheet("QPushButton{\n"
+"color: rgb(39, 82, 97);\n"
+"background-color: rgb(123, 169, 191);\n"
+"border:2px solid rgb(60, 121, 138);\n"
+"border-radius:20px\n"
 "}\n"
 "\n"
 "QPushButton:hover {\n"
-"     background-color: rgb(202, 240, 248);\n"
-"     border:2px solid rgb(202, 240, 248);\n"
+"     background-color: rgb(225, 229, 241);\n"
+"     border:2px solid rgb(196, 218, 245);\n"
 "}\n"
-"    \n"
 "   ")
-        self.csmainwdw_btn_moneyup.setIconSize(QtCore.QSize(16, 16))
+        self.csmainwdw_btn_moneyup.setText("")
+        icon4 = QtGui.QIcon()
+        icon4.addPixmap(QtGui.QPixmap("icons/add.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.csmainwdw_btn_moneyup.setIcon(icon4)
+        self.csmainwdw_btn_moneyup.setIconSize(QtCore.QSize(25, 25))
         self.csmainwdw_btn_moneyup.setObjectName("csmainwdw_btn_moneyup")
         self.csmainwdw_btn_moneydown = QtWidgets.QPushButton(self.centralwidget)
         self.csmainwdw_btn_moneydown.setGeometry(QtCore.QRect(140, 300, 41, 41))
         font = QtGui.QFont()
+        font.setFamily("Arial")
         font.setPointSize(24)
+        font.setBold(True)
+        font.setWeight(75)
         self.csmainwdw_btn_moneydown.setFont(font)
-        self.csmainwdw_btn_moneydown.setStyleSheet("QPushButton {\n"
-"background-color: rgb(0, 150, 199);\n"
-"   border-color: rgb(66, 167, 255);\n"
-"   border-bottom-color: rgb(255, 255, 255);\n"
-"   border:2px solid rgb(202, 240, 248);\n"
-"   border-radius:20px;\n"
-"   border-color: black;\n"
+        self.csmainwdw_btn_moneydown.setStyleSheet("QPushButton{\n"
+"color: rgb(39, 82, 97);\n"
+"background-color: rgb(123, 169, 191);\n"
+"border:2px solid rgb(60, 121, 138);\n"
+"border-radius:20px\n"
 "}\n"
 "\n"
 "QPushButton:hover {\n"
-"     background-color: rgb(202, 240, 248);\n"
-"     border:2px solid rgb(202, 240, 248);\n"
+"     background-color: rgb(225, 229, 241);\n"
+"     border:2px solid rgb(196, 218, 245);\n"
 "}\n"
-"    \n"
 "   ")
+        self.csmainwdw_btn_moneydown.setText("")
+        icon5 = QtGui.QIcon()
+        icon5.addPixmap(QtGui.QPixmap("icons/remove.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.csmainwdw_btn_moneydown.setIcon(icon5)
+        self.csmainwdw_btn_moneydown.setIconSize(QtCore.QSize(25, 25))
         self.csmainwdw_btn_moneydown.setObjectName("csmainwdw_btn_moneydown")
         self.csmainwdw_spinbox_money = QtWidgets.QSpinBox(self.centralwidget)
         self.csmainwdw_spinbox_money.setGeometry(QtCore.QRect(220, 300, 160, 40))
         font = QtGui.QFont()
-        font.setFamily(".AppleSystemUIFont")
+        font.setFamily("Arial")
         font.setPointSize(24)
         font.setBold(False)
         font.setItalic(False)
         font.setWeight(50)
         self.csmainwdw_spinbox_money.setFont(font)
         self.csmainwdw_spinbox_money.setFocusPolicy(QtCore.Qt.WheelFocus)
-        self.csmainwdw_spinbox_money.setStyleSheet("font: 24pt \".AppleSystemUIFont\";\n"
-"background-color: rgb(236, 236, 236);")
+        self.csmainwdw_spinbox_money.setStyleSheet("\n"
+"background-color: rgb(236, 236, 236);\n"
+"color: rgb(15, 42, 57);")
         self.csmainwdw_spinbox_money.setInputMethodHints(QtCore.Qt.ImhDigitsOnly)
         self.csmainwdw_spinbox_money.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
         self.csmainwdw_spinbox_money.setButtonSymbols(QtWidgets.QAbstractSpinBox.NoButtons)
@@ -197,12 +216,13 @@ class Ui_customer_main_window(object):
         self.csmainwdw_lbl_resultmessage = QtWidgets.QLabel(self.centralwidget)
         self.csmainwdw_lbl_resultmessage.setGeometry(QtCore.QRect(50, 470, 501, 33))
         font = QtGui.QFont()
-        font.setFamily("Bahnschrift SemiBold")
+        font.setFamily("Arial")
         font.setPointSize(14)
         font.setBold(True)
         font.setWeight(75)
         self.csmainwdw_lbl_resultmessage.setFont(font)
-        self.csmainwdw_lbl_resultmessage.setStyleSheet("")
+        self.csmainwdw_lbl_resultmessage.setStyleSheet("\n"
+"color: rgb(39, 82, 97);")
         self.csmainwdw_lbl_resultmessage.setText("")
         self.csmainwdw_lbl_resultmessage.setAlignment(QtCore.Qt.AlignCenter)
         self.csmainwdw_lbl_resultmessage.setObjectName("csmainwdw_lbl_resultmessage")
@@ -219,53 +239,59 @@ class Ui_customer_main_window(object):
         font.setBold(True)
         font.setWeight(75)
         self.csmainwdw_lbl_CSID_show.setFont(font)
+        self.csmainwdw_lbl_CSID_show.setStyleSheet("color: rgb(15, 42, 57);")
         self.csmainwdw_lbl_CSID_show.setText("")
         self.csmainwdw_lbl_CSID_show.setObjectName("csmainwdw_lbl_CSID_show")
         self.gridLayout.addWidget(self.csmainwdw_lbl_CSID_show, 1, 2, 1, 1)
         self.punc_2 = QtWidgets.QLabel(self.gridLayoutWidget)
         font = QtGui.QFont()
-        font.setFamily("MS Shell Dlg 2")
+        font.setFamily("Arial")
         font.setPointSize(16)
         font.setBold(True)
         font.setWeight(75)
         self.punc_2.setFont(font)
+        self.punc_2.setStyleSheet("color: rgb(15, 42, 57);")
         self.punc_2.setObjectName("punc_2")
         self.gridLayout.addWidget(self.punc_2, 2, 1, 1, 1)
         self.csmainwdw_lbl_CSname_heading = QtWidgets.QLabel(self.gridLayoutWidget)
         font = QtGui.QFont()
-        font.setFamily("MS Shell Dlg 2")
+        font.setFamily("Arial")
         font.setPointSize(16)
         font.setBold(True)
         font.setWeight(75)
         self.csmainwdw_lbl_CSname_heading.setFont(font)
+        self.csmainwdw_lbl_CSname_heading.setStyleSheet("color: rgb(15, 42, 57);")
         self.csmainwdw_lbl_CSname_heading.setObjectName("csmainwdw_lbl_CSname_heading")
         self.gridLayout.addWidget(self.csmainwdw_lbl_CSname_heading, 0, 0, 1, 1)
         self.csmainwdw_lbl_CSID_heading = QtWidgets.QLabel(self.gridLayoutWidget)
         font = QtGui.QFont()
-        font.setFamily("MS Shell Dlg 2")
+        font.setFamily("Arial")
         font.setPointSize(16)
         font.setBold(True)
         font.setWeight(75)
         self.csmainwdw_lbl_CSID_heading.setFont(font)
+        self.csmainwdw_lbl_CSID_heading.setStyleSheet("color: rgb(15, 42, 57);")
         self.csmainwdw_lbl_CSID_heading.setObjectName("csmainwdw_lbl_CSID_heading")
         self.gridLayout.addWidget(self.csmainwdw_lbl_CSID_heading, 1, 0, 1, 1)
         self.punc = QtWidgets.QLabel(self.gridLayoutWidget)
         font = QtGui.QFont()
-        font.setFamily("MS Shell Dlg 2")
+        font.setFamily("Arial")
         font.setPointSize(16)
         font.setBold(True)
         font.setWeight(75)
         self.punc.setFont(font)
+        self.punc.setStyleSheet("color: rgb(15, 42, 57);")
         self.punc.setObjectName("punc")
         self.gridLayout.addWidget(self.punc, 1, 1, 1, 1)
         self.punc_3 = QtWidgets.QLabel(self.gridLayoutWidget)
         self.punc_3.setMaximumSize(QtCore.QSize(15, 16777215))
         font = QtGui.QFont()
-        font.setFamily("MS Shell Dlg 2")
+        font.setFamily("Arial")
         font.setPointSize(16)
         font.setBold(True)
         font.setWeight(75)
         self.punc_3.setFont(font)
+        self.punc_3.setStyleSheet("color: rgb(15, 42, 57);")
         self.punc_3.setObjectName("punc_3")
         self.gridLayout.addWidget(self.punc_3, 0, 1, 1, 1)
         self.csmainwdw_lbl_CSname_show = QtWidgets.QLabel(self.gridLayoutWidget)
@@ -275,16 +301,18 @@ class Ui_customer_main_window(object):
         font.setBold(True)
         font.setWeight(75)
         self.csmainwdw_lbl_CSname_show.setFont(font)
+        self.csmainwdw_lbl_CSname_show.setStyleSheet("color: rgb(15, 42, 57);")
         self.csmainwdw_lbl_CSname_show.setText("")
         self.csmainwdw_lbl_CSname_show.setObjectName("csmainwdw_lbl_CSname_show")
         self.gridLayout.addWidget(self.csmainwdw_lbl_CSname_show, 0, 2, 1, 1)
         self.csmainwdw_lbl_balanceheading = QtWidgets.QLabel(self.gridLayoutWidget)
         font = QtGui.QFont()
-        font.setFamily(".AppleSystemUIFont")
+        font.setFamily("Arial")
         font.setPointSize(18)
         font.setBold(True)
         font.setWeight(75)
         self.csmainwdw_lbl_balanceheading.setFont(font)
+        self.csmainwdw_lbl_balanceheading.setStyleSheet("color: rgb(15, 42, 57);")
         self.csmainwdw_lbl_balanceheading.setObjectName("csmainwdw_lbl_balanceheading")
         self.gridLayout.addWidget(self.csmainwdw_lbl_balanceheading, 2, 0, 1, 1)
         self.csmainwdw_lbl_balanceshow = QtWidgets.QLabel(self.gridLayoutWidget)
@@ -294,6 +322,7 @@ class Ui_customer_main_window(object):
         font.setBold(True)
         font.setWeight(75)
         self.csmainwdw_lbl_balanceshow.setFont(font)
+        self.csmainwdw_lbl_balanceshow.setStyleSheet("color: rgb(15, 42, 57);")
         self.csmainwdw_lbl_balanceshow.setText("")
         self.csmainwdw_lbl_balanceshow.setObjectName("csmainwdw_lbl_balanceshow")
         self.gridLayout.addWidget(self.csmainwdw_lbl_balanceshow, 2, 2, 1, 1)
@@ -311,12 +340,10 @@ class Ui_customer_main_window(object):
         _translate = QtCore.QCoreApplication.translate
         customer_main_window.setWindowTitle(_translate("customer_main_window", "Customer Main Window"))
         self.csmainwdw_lbl_heading.setText(_translate("customer_main_window", "Bank Transactions"))
-        self.csmainwdw_btn_getcash.setText(_translate("customer_main_window", "GET CASH"))
-        self.csmainwdw_btn_returnmain.setText(_translate("customer_main_window", "Back"))
-        self.csmainwdw_btn_exit.setText(_translate("customer_main_window", "Exit"))
-        self.csmainwdw_btn_deposit.setText(_translate("customer_main_window", "DEPOSIT"))
-        self.csmainwdw_btn_moneyup.setText(_translate("customer_main_window", "+"))
-        self.csmainwdw_btn_moneydown.setText(_translate("customer_main_window", "-"))
+        self.csmainwdw_btn_getcash.setText(_translate("customer_main_window", "  GET CASH"))
+        self.csmainwdw_btn_returnmain.setText(_translate("customer_main_window", "  Back"))
+        self.csmainwdw_btn_exit.setText(_translate("customer_main_window", "  Exit"))
+        self.csmainwdw_btn_deposit.setText(_translate("customer_main_window", "  DEPOSIT"))
         self.punc_2.setText(_translate("customer_main_window", ":"))
         self.csmainwdw_lbl_CSname_heading.setText(_translate("customer_main_window", "Customer Name"))
         self.csmainwdw_lbl_CSID_heading.setText(_translate("customer_main_window", "Customer ID"))

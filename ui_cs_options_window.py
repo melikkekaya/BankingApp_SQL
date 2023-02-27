@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'c:\Users\90506\Documents\GitHub\BankingApp_SQL\cs_options_window.ui'
+# Form implementation generated from reading ui file '/Users/melike/Documents/GitHub/BankingApp_SQL/cs_options_window.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.7
 #
@@ -15,17 +15,18 @@ class Ui_cs_options_window(object):
     def setupUi(self, cs_options_window):
         cs_options_window.setObjectName("cs_options_window")
         cs_options_window.resize(600, 700)
-        cs_options_window.setStyleSheet("background-color: rgb(5, 130, 202);")
+        cs_options_window.setStyleSheet("background-color: rgb(241, 242, 248);")
         self.centralwidget = QtWidgets.QWidget(cs_options_window)
         self.centralwidget.setObjectName("centralwidget")
         self.csoptwdw_lbl_showname = QtWidgets.QLabel(self.centralwidget)
-        self.csoptwdw_lbl_showname.setGeometry(QtCore.QRect(160, 30, 271, 81))
+        self.csoptwdw_lbl_showname.setGeometry(QtCore.QRect(110, 30, 381, 81))
         font = QtGui.QFont()
         font.setFamily("Arial")
         font.setPointSize(24)
         font.setBold(True)
         font.setWeight(75)
         self.csoptwdw_lbl_showname.setFont(font)
+        self.csoptwdw_lbl_showname.setStyleSheet("color: rgb(15, 42, 57);")
         self.csoptwdw_lbl_showname.setText("")
         self.csoptwdw_lbl_showname.setAlignment(QtCore.Qt.AlignCenter)
         self.csoptwdw_lbl_showname.setObjectName("csoptwdw_lbl_showname")
@@ -38,16 +39,20 @@ class Ui_cs_options_window(object):
         font.setWeight(75)
         self.optwdw_btn_transfer.setFont(font)
         self.optwdw_btn_transfer.setStyleSheet("QPushButton{\n"
-"    background-color: rgb(0, 100, 148);\n"
-"\n"
-"border:2px solid rgb(0, 150, 199);\n"
-"border-radius:20px;\n"
-"border-color:black;\n"
+"color: rgb(39, 82, 97);\n"
+"background-color: rgb(211, 224, 243);\n"
+"border:2px solid rgb(123, 169, 191);\n"
+"border-radius:20px\n"
 "}\n"
+"\n"
 "QPushButton:hover {\n"
-"     background-color: rgb(202, 240, 248);\n"
-"     border:2px solid rgb(0, 150, 199);\n"
+"     background-color: rgb(225, 229, 241);\n"
+"     border:2px solid rgb(196, 218, 245);\n"
 "}")
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap("/Users/melike/Documents/GitHub/BankingApp_SQL/icons/fund.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.optwdw_btn_transfer.setIcon(icon)
+        self.optwdw_btn_transfer.setIconSize(QtCore.QSize(50, 50))
         self.optwdw_btn_transfer.setObjectName("optwdw_btn_transfer")
         self.optwdw_btn_banktr = QtWidgets.QPushButton(self.centralwidget)
         self.optwdw_btn_banktr.setGeometry(QtCore.QRect(170, 130, 261, 71))
@@ -58,16 +63,20 @@ class Ui_cs_options_window(object):
         font.setWeight(75)
         self.optwdw_btn_banktr.setFont(font)
         self.optwdw_btn_banktr.setStyleSheet("QPushButton{\n"
-"    background-color: rgb(0, 100, 148);\n"
-"\n"
-"border:2px solid rgb(0, 150, 199);\n"
-"border-radius:20px;\n"
-"border-color:black;\n"
+"color: rgb(39, 82, 97);\n"
+"background-color: rgb(211, 224, 243);\n"
+"border:2px solid rgb(123, 169, 191);\n"
+"border-radius:20px\n"
 "}\n"
+"\n"
 "QPushButton:hover {\n"
-"     background-color: rgb(202, 240, 248);\n"
-"     border:2px solid rgb(0, 150, 199);\n"
+"     background-color: rgb(225, 229, 241);\n"
+"     border:2px solid rgb(196, 218, 245);\n"
 "}")
+        icon1 = QtGui.QIcon()
+        icon1.addPixmap(QtGui.QPixmap("/Users/melike/Documents/GitHub/BankingApp_SQL/icons/transaction.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.optwdw_btn_banktr.setIcon(icon1)
+        self.optwdw_btn_banktr.setIconSize(QtCore.QSize(50, 50))
         self.optwdw_btn_banktr.setObjectName("optwdw_btn_banktr")
         self.optwdw_btn_editinf = QtWidgets.QPushButton(self.centralwidget)
         self.optwdw_btn_editinf.setGeometry(QtCore.QRect(170, 350, 261, 71))
@@ -78,16 +87,20 @@ class Ui_cs_options_window(object):
         font.setWeight(75)
         self.optwdw_btn_editinf.setFont(font)
         self.optwdw_btn_editinf.setStyleSheet("QPushButton{\n"
-"    background-color: rgb(0, 100, 148);\n"
-"\n"
-"border:2px solid rgb(0, 150, 199);\n"
-"border-radius:20px;\n"
-"border-color:black;\n"
+"color: rgb(39, 82, 97);\n"
+"background-color: rgb(211, 224, 243);\n"
+"border:2px solid rgb(123, 169, 191);\n"
+"border-radius:20px\n"
 "}\n"
+"\n"
 "QPushButton:hover {\n"
-"     background-color: rgb(202, 240, 248);\n"
-"     border:2px solid rgb(0, 150, 199);\n"
+"     background-color: rgb(225, 229, 241);\n"
+"     border:2px solid rgb(196, 218, 245);\n"
 "}")
+        icon2 = QtGui.QIcon()
+        icon2.addPixmap(QtGui.QPixmap("/Users/melike/Documents/GitHub/BankingApp_SQL/icons/edit.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.optwdw_btn_editinf.setIcon(icon2)
+        self.optwdw_btn_editinf.setIconSize(QtCore.QSize(50, 50))
         self.optwdw_btn_editinf.setObjectName("optwdw_btn_editinf")
         self.optwdw_btn_bankstt = QtWidgets.QPushButton(self.centralwidget)
         self.optwdw_btn_bankstt.setGeometry(QtCore.QRect(170, 460, 261, 71))
@@ -98,16 +111,20 @@ class Ui_cs_options_window(object):
         font.setWeight(75)
         self.optwdw_btn_bankstt.setFont(font)
         self.optwdw_btn_bankstt.setStyleSheet("QPushButton{\n"
-"    background-color: rgb(0, 100, 148);\n"
-"\n"
-"border:2px solid rgb(0, 150, 199);\n"
-"border-radius:20px;\n"
-"border-color:black;\n"
+"color: rgb(39, 82, 97);\n"
+"background-color: rgb(211, 224, 243);\n"
+"border:2px solid rgb(123, 169, 191);\n"
+"border-radius:20px\n"
 "}\n"
+"\n"
 "QPushButton:hover {\n"
-"     background-color: rgb(202, 240, 248);\n"
-"     border:2px solid rgb(0, 150, 199);\n"
+"     background-color: rgb(225, 229, 241);\n"
+"     border:2px solid rgb(196, 218, 245);\n"
 "}")
+        icon3 = QtGui.QIcon()
+        icon3.addPixmap(QtGui.QPixmap("icons/report-2.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.optwdw_btn_bankstt.setIcon(icon3)
+        self.optwdw_btn_bankstt.setIconSize(QtCore.QSize(50, 50))
         self.optwdw_btn_bankstt.setObjectName("optwdw_btn_bankstt")
         self.optwdw_btn_back = QtWidgets.QPushButton(self.centralwidget)
         self.optwdw_btn_back.setGeometry(QtCore.QRect(110, 570, 150, 50))
@@ -117,21 +134,21 @@ class Ui_cs_options_window(object):
         font.setBold(True)
         font.setWeight(75)
         self.optwdw_btn_back.setFont(font)
-        self.optwdw_btn_back.setStyleSheet("QPushButton {\n"
-"background-color: rgb(0, 150, 199);\n"
-"   border-color: rgb(66, 167, 255);\n"
-"   border-bottom-color: rgb(255, 255, 255);\n"
-"   border:2px solid rgb(202, 240, 248);\n"
-"   border-radius:20px;\n"
-"   border-color: black;\n"
+        self.optwdw_btn_back.setStyleSheet("QPushButton{\n"
+"color: rgb(39, 82, 97);\n"
+"background-color: rgb(187, 207, 237);\n"
+"border:2px solid rgb(123, 169, 191);\n"
+"border-radius:20px\n"
 "}\n"
 "\n"
 "QPushButton:hover {\n"
-"     background-color: rgb(202, 240, 248);\n"
-"     border:2px solid rgb(202, 240, 248);\n"
-"}\n"
-"    \n"
-"   ")
+"     background-color: rgb(225, 229, 241);\n"
+"     border:2px solid rgb(196, 218, 245);\n"
+"}")
+        icon4 = QtGui.QIcon()
+        icon4.addPixmap(QtGui.QPixmap("icons/exit.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.optwdw_btn_back.setIcon(icon4)
+        self.optwdw_btn_back.setIconSize(QtCore.QSize(50, 50))
         self.optwdw_btn_back.setObjectName("optwdw_btn_back")
         self.optwdw_btn_exit = QtWidgets.QPushButton(self.centralwidget)
         self.optwdw_btn_exit.setGeometry(QtCore.QRect(350, 570, 150, 50))
@@ -141,21 +158,22 @@ class Ui_cs_options_window(object):
         font.setBold(True)
         font.setWeight(75)
         self.optwdw_btn_exit.setFont(font)
-        self.optwdw_btn_exit.setStyleSheet("QPushButton {\n"
-"background-color: rgb(0, 150, 199);\n"
-"   border-color: rgb(66, 167, 255);\n"
-"   border-bottom-color: rgb(255, 255, 255);\n"
-"   border:2px solid rgb(202, 240, 248);\n"
-"   border-radius:20px;\n"
-"   border-color: black;\n"
+        self.optwdw_btn_exit.setStyleSheet("QPushButton{\n"
+"color: rgb(39, 82, 97);\n"
+"background-color: rgb(187, 207, 237);\n"
+"border:2px solid rgb(123, 169, 191);\n"
+"border-radius:20px\n"
 "}\n"
 "\n"
 "QPushButton:hover {\n"
-"     background-color: rgb(202, 240, 248);\n"
-"     border:2px solid rgb(202, 240, 248);\n"
+"     background-color: rgb(225, 229, 241);\n"
+"     border:2px solid rgb(196, 218, 245);\n"
 "}\n"
-"    \n"
 "   ")
+        icon5 = QtGui.QIcon()
+        icon5.addPixmap(QtGui.QPixmap("icons/log-out.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.optwdw_btn_exit.setIcon(icon5)
+        self.optwdw_btn_exit.setIconSize(QtCore.QSize(40, 40))
         self.optwdw_btn_exit.setObjectName("optwdw_btn_exit")
         cs_options_window.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(cs_options_window)
@@ -172,9 +190,9 @@ class Ui_cs_options_window(object):
     def retranslateUi(self, cs_options_window):
         _translate = QtCore.QCoreApplication.translate
         cs_options_window.setWindowTitle(_translate("cs_options_window", "MainWindow"))
-        self.optwdw_btn_transfer.setText(_translate("cs_options_window", "Transfer Money"))
-        self.optwdw_btn_banktr.setText(_translate("cs_options_window", "Bank Transactions"))
-        self.optwdw_btn_editinf.setText(_translate("cs_options_window", "Edit Information"))
-        self.optwdw_btn_bankstt.setText(_translate("cs_options_window", "Bank Statement"))
+        self.optwdw_btn_transfer.setText(_translate("cs_options_window", "  Transfer Money"))
+        self.optwdw_btn_banktr.setText(_translate("cs_options_window", "  Bank Transactions"))
+        self.optwdw_btn_editinf.setText(_translate("cs_options_window", "  Edit Information"))
+        self.optwdw_btn_bankstt.setText(_translate("cs_options_window", "  Bank Statement"))
         self.optwdw_btn_back.setText(_translate("cs_options_window", "Log Out"))
-        self.optwdw_btn_exit.setText(_translate("cs_options_window", "Exit"))
+        self.optwdw_btn_exit.setText(_translate("cs_options_window", "  Exit"))

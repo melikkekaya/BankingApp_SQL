@@ -204,6 +204,9 @@ QPushButton:hover {
     <property name="styleSheet">
      <string notr="true">background-color: rgb(225, 229, 241);</string>
     </property>
+    <attribute name="horizontalHeaderDefaultSectionSize">
+     <number>172</number>
+    </attribute>
     <column>
      <property name="text">
       <string>Transaction Type</string>
@@ -214,6 +217,9 @@ QPushButton:hover {
        <weight>75</weight>
        <bold>true</bold>
       </font>
+     </property>
+     <property name="textAlignment">
+      <set>AlignCenter</set>
      </property>
      <property name="background">
       <color>
@@ -235,7 +241,7 @@ QPushButton:hover {
       </font>
      </property>
      <property name="textAlignment">
-      <set>AlignTrailing|AlignVCenter</set>
+      <set>AlignCenter</set>
      </property>
      <property name="background">
       <color>
@@ -247,7 +253,7 @@ QPushButton:hover {
     </column>
     <column>
      <property name="text">
-      <string>                        Date                </string>
+      <string>Date</string>
      </property>
      <property name="font">
       <font>
@@ -255,6 +261,9 @@ QPushButton:hover {
        <weight>75</weight>
        <bold>true</bold>
       </font>
+     </property>
+     <property name="textAlignment">
+      <set>AlignCenter</set>
      </property>
      <property name="background">
       <color>

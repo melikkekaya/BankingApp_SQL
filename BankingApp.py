@@ -197,35 +197,42 @@ class AD_Statements(QMainWindow, Ui_admin_statements_window):
         self.ADstatementswdw_btn_back.clicked.connect(self.return_back)
         self.ADstatementswdw_dateEdit_start.setDate(QtCore.QDateTime.currentDateTime().date().addDays(-7))
         self.ADstatementswdw_dateEdit_end.setDate(QtCore.QDateTime.currentDateTime().date())
-        # self.ADstatementswdw_btn_search.clicked.connect(self.search)
+        self.ADstatementswdw_btn_search.clicked.connect(self.search)
+        # self.Name = self.ADstatementswdw_lnedit_name.text()
+
+    def search(self):
+        query = ""
+        ID = ""
+        tType = self.ADstatementswdw_combobox_Ttype.currentText() 
+        CustomerID = self.ADstatementswdw_lnedit_csid.text()
+        if tType != 'All':
+            query = f" AND transaction_type = '{tType}'"
+        if CustomerID:
+            ID = f"customer_id = '{CustomerID}' AND "
+
+        start_time = self.ADstatementswdw_dateEdit_start.date().toString("yyyy-MM-dd")
+        end_time = self.ADstatementswdw_dateEdit_end.date().toString("yyyy-MM-dd 23:59:59" )
         
+        # Amount = self.ADstatementswdw_lnedit_amount.text()
 
-    # def search(self):
-    #     query = ""
-    #     tType = self.ADstatementswdw_combobox_Ttype.currentText() 
-    #     if tType != 'All':
-    #         query = f" AND transaction_type = '{tType}'"
+        conn = psycopg2.connect("dbname=BankingApp user= postgres password=1234")
+        cur = conn.cursor() 
+        cur.execute(f"SELECT customer_id,transaction_amount,transaction_type,receiver_sender_id,transaction_date FROM all_transactions WHERE {ID}transaction_date >= '{start_time}' AND transaction_date <= '{end_time}' {query}")
+        list = cur.fetchall()
+        self.ADstatementswdw_tableWidget.setColumnWidth(2,200)
+        self.ADstatementswdw_tableWidget.setRowCount(len(list))
+        row = 0
+        for tr in list:
+            self.ADstatementswdw_tableWidget.setItem(row,0,QtWidgets.QTableWidgetItem(str(tr[0])))
+            self.ADstatementswdw_tableWidget.setItem(row,3,QtWidgets.QTableWidgetItem(str(tr[1])))
+            self.ADstatementswdw_tableWidget.setItem(row,4,QtWidgets.QTableWidgetItem(tr[2]))
+            self.ADstatementswdw_tableWidget.setItem(row,5,QtWidgets.QTableWidgetItem(str(tr[3])))
+            self.ADstatementswdw_tableWidget.setItem(row,6,QtWidgets.QTableWidgetItem(str(tr[4])))
+            row = row + 1
 
-    #     start_time = self.ADstatementswdw_dateEdit_start.date().toString("yyyy-MM-dd")
-    #     end_time = self.ADstatementswdw_dateEdit_end.date().toString("yyyy-MM-dd 23:59:59" )
-
-    #     conn = psycopg2.connect("dbname=BankingApp user= postgres password=1234")
-    #     cur = conn.cursor() 
-    #     cur.execute(f"SELECT customer_id, transaction_type,transaction_amount,transaction_date FROM all_transactions WHERE customer_id={} AND transaction_date >= '{start_time}' AND transaction_date <= '{end_time}' AND transaction_type != 'Login' {query}")
-    #     list = cur.fetchall()
-        
-    #     self.CSstatementswdw_tableWidget.setColumnWidth(2,200)
-    #     self.CSstatementswdw_tableWidget.setRowCount(len(list))
-    #     row = 0
-    #     for tr in list:
-    #         self.CSstatementswdw_tableWidget.setItem(row,0,QtWidgets.QTableWidgetItem(tr[0]))
-    #         self.CSstatementswdw_tableWidget.setItem(row,1,QtWidgets.QTableWidgetItem(str(tr[1])))
-    #         self.CSstatementswdw_tableWidget.setItem(row,2,QtWidgets.QTableWidgetItem(str(tr[2])))
-    #         row = row + 1
-
-    #     cur.close()
-    #     conn.commit()
-    #     conn.close()
+        cur.close()
+        conn.commit()
+        conn.close()
 
     
     def return_back(self):

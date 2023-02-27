@@ -258,22 +258,27 @@ QPushButton:hover {
     </item>
     <item>
      <property name="text">
-      <string>Deposit</string>
+      <string>Deposit Money</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>Withdraw</string>
+      <string>Withdraw Money</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>Bank Transfer</string>
+      <string>Internal Money Transfer</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>EFT</string>
+      <string>External Money Transfer</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Money Received</string>
      </property>
     </item>
     <item>
@@ -338,12 +343,12 @@ QPushButton:hover {
     </column>
     <column>
      <property name="text">
-      <string>Date</string>
+      <string>Receiver/Sender ID</string>
      </property>
     </column>
     <column>
      <property name="text">
-      <string>Receiver/Sender ID</string>
+      <string>Date</string>
      </property>
     </column>
     <column>

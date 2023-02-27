@@ -177,7 +177,7 @@ class AD_CS_Edit(QMainWindow, Ui_Admin_infoEdit_window):
                     password = cur.fetchone()[0]
                     self.ad_edit_wdw_cs_name_lnedit.setText(name)
                     self.ad_edit_wdw_cs_email_lnedit.setText(email)
-                    self.ad_edit_wdw_cs_pw_lnedit.setText(password)  
+                    # self.ad_edit_wdw_cs_pw_lnedit.setText(password)  
         except:
             self.ad_edit_wdw_warn_lbl.setText("Invalid Entry!")
         cur.close()

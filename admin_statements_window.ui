@@ -206,26 +206,6 @@ QPushButton:hover {
      <string>Customer ID:</string>
     </property>
    </widget>
-   <widget class="QDateTimeEdit" name="ADstatementswdw_dateTimeEdit_start">
-    <property name="geometry">
-     <rect>
-      <x>130</x>
-      <y>130</y>
-      <width>121</width>
-      <height>22</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QDateTimeEdit" name="ADstatementswdw_dateTimeEdit_end">
-    <property name="geometry">
-     <rect>
-      <x>300</x>
-      <y>130</y>
-      <width>121</width>
-      <height>22</height>
-     </rect>
-    </property>
-   </widget>
    <widget class="QLabel" name="ADstatementswdw_lbl_start">
     <property name="geometry">
      <rect>
@@ -271,6 +251,11 @@ QPushButton:hover {
       <height>22</height>
      </rect>
     </property>
+    <item>
+     <property name="text">
+      <string>All</string>
+     </property>
+    </item>
     <item>
      <property name="text">
       <string>Deposit</string>
@@ -367,6 +352,26 @@ QPushButton:hover {
      </property>
     </column>
    </widget>
+   <widget class="QDateEdit" name="ADstatementswdw_dateEdit_start">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>130</y>
+      <width>110</width>
+      <height>22</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QDateEdit" name="ADstatementswdw_dateEdit_end">
+    <property name="geometry">
+     <rect>
+      <x>290</x>
+      <y>130</y>
+      <width>110</width>
+      <height>22</height>
+     </rect>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -374,7 +379,7 @@ QPushButton:hover {
      <x>0</x>
      <y>0</y>
      <width>600</width>
-     <height>21</height>
+     <height>22</height>
     </rect>
    </property>
   </widget>

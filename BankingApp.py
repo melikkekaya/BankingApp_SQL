@@ -159,6 +159,31 @@ class AD_CS_Edit(QMainWindow, Ui_Admin_infoEdit_window):
         super(AD_CS_Edit, self).__init__()
         self.setupUi(self)
         self.adeditwdw_btn_back.clicked.connect(self.return_back)
+        self.adeditwdw_btn_getinfo.clicked.connect(self.get_info)
+    def get_info(self):
+        self.csid = self.ad_edit_wdw_cs_id_lnedit.text()
+        conn = psycopg2.connect("dbname=BankingApp user= postgres password=1234")
+        cur = conn.cursor()
+        cur.execute("SELECT customer_id FROM customer")
+        a = cur.fetchall()
+        try: 
+            for i in a:
+                if int(self.csid) == i[0]:
+                    cur.execute(f"SELECT cs_name FROM customer WHERE customer_id={self.csid}")
+                    name = cur.fetchone()[0]
+                    cur.execute(f"SELECT cs_email FROM customer WHERE customer_id={self.csid}")
+                    email = cur.fetchone()[0]
+                    cur.execute(f"SELECT cs_password FROM customer WHERE customer_id={self.csid}")
+                    password = cur.fetchone()[0]
+                    self.ad_edit_wdw_cs_name_lnedit.setText(name)
+                    self.ad_edit_wdw_cs_email_lnedit.setText(email)
+                    self.ad_edit_wdw_cs_pw_lnedit.setText(password)  
+        except:
+            self.ad_edit_wdw_warn_lbl.setText("Invalid Entry!")
+        cur.close()
+        conn.commit()
+        conn.close()
+
     
     def return_back(self):
             AD_opt = Admin_Opt()
@@ -170,6 +195,38 @@ class AD_Statements(QMainWindow, Ui_admin_statements_window):
         super(AD_Statements, self).__init__()
         self.setupUi(self)
         self.ADstatementswdw_btn_back.clicked.connect(self.return_back)
+        self.ADstatementswdw_dateEdit_start.setDate(QtCore.QDateTime.currentDateTime().date().addDays(-7))
+        self.ADstatementswdw_dateEdit_end.setDate(QtCore.QDateTime.currentDateTime().date())
+        # self.ADstatementswdw_btn_search.clicked.connect(self.search)
+        
+
+    # def search(self):
+    #     query = ""
+    #     tType = self.ADstatementswdw_combobox_Ttype.currentText() 
+    #     if tType != 'All':
+    #         query = f" AND transaction_type = '{tType}'"
+
+    #     start_time = self.ADstatementswdw_dateEdit_start.date().toString("yyyy-MM-dd")
+    #     end_time = self.ADstatementswdw_dateEdit_end.date().toString("yyyy-MM-dd 23:59:59" )
+
+    #     conn = psycopg2.connect("dbname=BankingApp user= postgres password=1234")
+    #     cur = conn.cursor() 
+    #     cur.execute(f"SELECT customer_id, transaction_type,transaction_amount,transaction_date FROM all_transactions WHERE customer_id={} AND transaction_date >= '{start_time}' AND transaction_date <= '{end_time}' AND transaction_type != 'Login' {query}")
+    #     list = cur.fetchall()
+        
+    #     self.CSstatementswdw_tableWidget.setColumnWidth(2,200)
+    #     self.CSstatementswdw_tableWidget.setRowCount(len(list))
+    #     row = 0
+    #     for tr in list:
+    #         self.CSstatementswdw_tableWidget.setItem(row,0,QtWidgets.QTableWidgetItem(tr[0]))
+    #         self.CSstatementswdw_tableWidget.setItem(row,1,QtWidgets.QTableWidgetItem(str(tr[1])))
+    #         self.CSstatementswdw_tableWidget.setItem(row,2,QtWidgets.QTableWidgetItem(str(tr[2])))
+    #         row = row + 1
+
+    #     cur.close()
+    #     conn.commit()
+    #     conn.close()
+
     
     def return_back(self):
             AD_opt = Admin_Opt()

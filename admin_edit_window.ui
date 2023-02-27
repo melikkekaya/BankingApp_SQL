@@ -88,7 +88,7 @@ QPushButton:hover {
      </font>
     </property>
     <property name="text">
-     <string>TextLabel</string>
+     <string/>
     </property>
    </widget>
    <widget class="QPushButton" name="adeditwdw_btn_back">
@@ -479,7 +479,7 @@ QPushButton:hover {
       </widget>
      </item>
      <item row="0" column="2">
-      <widget class="QLineEdit" name="ad_edit_wdw_cs_name_lnedit_2">
+      <widget class="QLineEdit" name="ad_edit_wdw_cs_id_lnedit">
        <property name="enabled">
         <bool>true</bool>
        </property>

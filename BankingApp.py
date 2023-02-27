@@ -344,33 +344,31 @@ class CSEdit(QMainWindow, Ui_Customer_infoEdit_window):
         conn.close()  
 
     def save(self):
-        self.csAfter = CSEdit()
-        widget.addWidget(self.csAfter)
-        widget.setCurrentIndex(widget.currentIndex()+1)
-        self.csAfter.show()
+        # self.csAfter = CSEdit()
+        # widget.addWidget(self.csAfter)
+        # widget.setCurrentIndex(widget.currentIndex()+1)
+        # self.csAfter.show()
 
-        conn = psycopg2.connect("dbname=BankingApp user= postgres password=1234")
-        cur = conn.cursor()
         name1 = self.cseditwdw_linedit_CSname_show.text()
         email1 =self.cseditwdw_linedit_CSemail_show.text()
         ad_CS_edit = AD_CS_create ()           
         passwordd1 = ad_CS_edit.hash_password(self.cseditwdw_linedit_CSpassword_show.text())
-        #try:
+
+        conn = psycopg2.connect("dbname=BankingApp user= postgres password=1234")
+        cur = conn.cursor()
         cur.execute("UPDATE customer SET cs_name= %s ,cs_email = %s, cs_password= %s WHERE customer_id = %s",(name1,email1,passwordd1,self.ID))
-        self.cseditwdw_lbl_showname.setText(f"Hello {name1}")
         conn.commit()
-             #print("Success")
-        #except:
-            #print("failed")     
-        #name = cur.fetchone()[0]
-        self.csAfter.cseditwdw_linedit_CSname_show.setText(name1)
-        self.csAfter.cseditwdw_linedit_CSemail_show.setText(email1)
-        # self.csAfter.cseditwdw_linedit_CSpassword_show.setText(str(passwordd1))
-        #self.csAfter.csmainwdw_lbl_CSID_show.setText(str(self.ID))
-        #self.cseditwdw_label_successave.setStyleSheet("color: rgb(255, 255, 255);")
-        # self.cseditwdw_label_successave.setText("Successfully Saved")
         cur.close()
         conn.close()
+
+        self.cseditwdw_linedit_CSname_show.setText(name1)
+        self.cseditwdw_linedit_CSemail_show.setText(email1)
+        self.cseditwdw_lbl_showname.setText(f"Hello {name1}")
+        # self.csAfter.cseditwdw_linedit_CSpassword_show.setText(str(passwordd1))
+        #self.csAfter.csmainwdw_lbl_CSID_show.setText(str(self.ID))
+        self.cseditwdw_label_successave.setStyleSheet("color: rgb(0, 84, 147);")
+        self.cseditwdw_label_successave.setText("Successfully Saved")
+
         
        
     def csback(self):  

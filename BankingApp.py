@@ -160,8 +160,10 @@ class AD_CS_Edit(QMainWindow, Ui_Admin_infoEdit_window):
         self.setupUi(self)
         self.adeditwdw_btn_back.clicked.connect(self.return_back)
         self.adeditwdw_btn_getinfo.clicked.connect(self.get_info)
-    def get_info(self):
+        self.adeditwdw_btn_save.clicked.connect(self.save)
+    def get_info(self, csid):
         self.csid = self.ad_edit_wdw_cs_id_lnedit.text()
+        
         conn = psycopg2.connect("dbname=BankingApp user= postgres password=1234")
         cur = conn.cursor()
         cur.execute("SELECT customer_id FROM customer")
@@ -183,6 +185,25 @@ class AD_CS_Edit(QMainWindow, Ui_Admin_infoEdit_window):
         cur.close()
         conn.commit()
         conn.close()
+    
+    def save(self):
+        name = self.ad_edit_wdw_cs_name_lnedit.text()
+        email =self.ad_edit_wdw_cs_email_lnedit.text()
+        AD_CS_edit = AD_CS_create()           
+        password = AD_CS_edit.hash_password(self.ad_edit_wdw_cs_pw_lnedit.text())
+
+        conn = psycopg2.connect("dbname=BankingApp user= postgres password=1234")
+        cur = conn.cursor()
+        cur.execute("UPDATE customer SET cs_name= %s ,cs_email = %s, cs_password= %s WHERE customer_id = %s",(name,email,password,self.csid))
+        conn.commit()
+        cur.close()
+        conn.close()
+
+        self.ad_edit_wdw_cs_name_lnedit.setText(name)
+        self.ad_edit_wdw_cs_email_lnedit.setText(email)
+        
+        self.ad_edit_wdw_warn_lbl.setStyleSheet("color: rgb(0, 84, 147);")
+        self.ad_edit_wdw_warn_lbl.setText("Successfully Saved")
 
     
     def return_back(self):

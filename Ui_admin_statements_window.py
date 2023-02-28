@@ -59,7 +59,7 @@ class Ui_admin_statements_window(object):
 "}\n"
 "   ")
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("/Users/melike/Documents/GitHub/BankingApp_SQL/icons/back-arrow.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap("icons/back-arrow.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.ADstatementswdw_btn_back.setIcon(icon)
         self.ADstatementswdw_btn_back.setIconSize(QtCore.QSize(40, 40))
         self.ADstatementswdw_btn_back.setObjectName("ADstatementswdw_btn_back")
@@ -320,7 +320,7 @@ class Ui_admin_statements_window(object):
 "     border:2px solid rgb(196, 218, 245);\n"
 "}")
         icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap("/Users/melike/Documents/GitHub/BankingApp_SQL/icons/filter.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon1.addPixmap(QtGui.QPixmap("icons/filter.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.ADstatementswdw_btn_search.setIcon(icon1)
         self.ADstatementswdw_btn_search.setIconSize(QtCore.QSize(35, 35))
         self.ADstatementswdw_btn_search.setObjectName("ADstatementswdw_btn_search")

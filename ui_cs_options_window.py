@@ -50,7 +50,7 @@ class Ui_cs_options_window(object):
 "     border:2px solid rgb(196, 218, 245);\n"
 "}")
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("/Users/melike/Documents/GitHub/BankingApp_SQL/icons/fund.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap("icons/fund.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.optwdw_btn_transfer.setIcon(icon)
         self.optwdw_btn_transfer.setIconSize(QtCore.QSize(50, 50))
         self.optwdw_btn_transfer.setObjectName("optwdw_btn_transfer")
@@ -74,7 +74,7 @@ class Ui_cs_options_window(object):
 "     border:2px solid rgb(196, 218, 245);\n"
 "}")
         icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap("/Users/melike/Documents/GitHub/BankingApp_SQL/icons/transaction.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon1.addPixmap(QtGui.QPixmap("icons/transaction.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.optwdw_btn_banktr.setIcon(icon1)
         self.optwdw_btn_banktr.setIconSize(QtCore.QSize(50, 50))
         self.optwdw_btn_banktr.setObjectName("optwdw_btn_banktr")
@@ -98,7 +98,7 @@ class Ui_cs_options_window(object):
 "     border:2px solid rgb(196, 218, 245);\n"
 "}")
         icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap("/Users/melike/Documents/GitHub/BankingApp_SQL/icons/edit.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon2.addPixmap(QtGui.QPixmap("icons/edit.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.optwdw_btn_editinf.setIcon(icon2)
         self.optwdw_btn_editinf.setIconSize(QtCore.QSize(50, 50))
         self.optwdw_btn_editinf.setObjectName("optwdw_btn_editinf")

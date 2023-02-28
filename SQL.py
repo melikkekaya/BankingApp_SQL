@@ -54,7 +54,19 @@ ALTER TABLE IF EXISTS public.balance
     NOT VALID;
     
 CREATE INDEX IF NOT EXISTS "Balance_pkey"
-    ON public.balance(customer_id)"""
+    ON public.balance(customer_id);
+
+CREATE TABLE IF NOT EXISTS public.all_inf
+(
+    customer_id integer NOT NULL
+);
+
+CREATE MATERIALIZED VIEW allinformation AS
+SELECT *
+FROM all_inf i
+FULL OUTER JOIN customer c USING (customer_id)
+FULL OUTER JOIN balance b USING (customer_id)
+FULL OUTER JOIN all_transactions t USING (customer_id)"""
 
 
 conn = psycopg2.connect("dbname=BankingApp user = postgres password=1234")

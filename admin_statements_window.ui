@@ -131,8 +131,8 @@ QPushButton:hover {
    <widget class="QPushButton" name="ADstatementswdw_btn_search">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>290</y>
+      <x>200</x>
+      <y>260</y>
       <width>75</width>
       <height>23</height>
      </rect>
@@ -157,8 +157,8 @@ QPushButton:hover {
    <widget class="QLabel" name="ADstatementswdw_lbl_filter_date_Ttype">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>250</y>
+      <x>20</x>
+      <y>220</y>
       <width>101</width>
       <height>16</height>
      </rect>
@@ -170,8 +170,8 @@ QPushButton:hover {
    <widget class="QLabel" name="ADstatementswdw_lbl_filter_amount">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>220</y>
+      <x>250</x>
+      <y>190</y>
       <width>47</width>
       <height>14</height>
      </rect>
@@ -183,8 +183,8 @@ QPushButton:hover {
    <widget class="QLabel" name="ADstatementswdw_lbl_filter_name">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>190</y>
+      <x>260</x>
+      <y>160</y>
       <width>47</width>
       <height>14</height>
      </rect>
@@ -235,8 +235,8 @@ QPushButton:hover {
    <widget class="QLineEdit" name="ADstatementswdw_lnedit_amount">
     <property name="geometry">
      <rect>
-      <x>100</x>
-      <y>220</y>
+      <x>300</x>
+      <y>190</y>
       <width>113</width>
       <height>20</height>
      </rect>
@@ -245,8 +245,8 @@ QPushButton:hover {
    <widget class="QComboBox" name="ADstatementswdw_combobox_Ttype">
     <property name="geometry">
      <rect>
-      <x>140</x>
-      <y>250</y>
+      <x>130</x>
+      <y>220</y>
       <width>91</width>
       <height>22</height>
      </rect>
@@ -290,8 +290,8 @@ QPushButton:hover {
    <widget class="QLineEdit" name="ADstatementswdw_lnedit_name">
     <property name="geometry">
      <rect>
-      <x>100</x>
-      <y>190</y>
+      <x>300</x>
+      <y>160</y>
       <width>113</width>
       <height>20</height>
      </rect>
@@ -310,10 +310,10 @@ QPushButton:hover {
    <widget class="QTableWidget" name="ADstatementswdw_tableWidget">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>330</y>
+      <x>20</x>
+      <y>300</y>
       <width>531</width>
-      <height>192</height>
+      <height>211</height>
      </rect>
     </property>
     <column>
@@ -374,6 +374,29 @@ QPushButton:hover {
       <y>130</y>
       <width>110</width>
       <height>22</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="ADstatementswdw_lbl_filter_email">
+    <property name="geometry">
+     <rect>
+      <x>70</x>
+      <y>190</y>
+      <width>47</width>
+      <height>14</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Email:</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="ADstatementswdw_lnedit_email">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>190</y>
+      <width>113</width>
+      <height>20</height>
      </rect>
     </property>
    </widget>

@@ -194,45 +194,65 @@ class AD_Statements(QMainWindow, Ui_admin_statements_window):
     def __init__(self):
         super(AD_Statements, self).__init__()
         self.setupUi(self)
+        conn = psycopg2.connect("dbname=BankingApp user= postgres password=1234")
+        cur = conn.cursor()
+        cur.execute("REFRESH MATERIALIZED VIEW allinformation WITH DATA")
+        cur.close()
+        conn.commit()
+        conn.close()
+        
         self.ADstatementswdw_btn_back.clicked.connect(self.return_back)
         self.ADstatementswdw_dateEdit_start.setDate(QtCore.QDateTime.currentDateTime().date().addDays(-7))
         self.ADstatementswdw_dateEdit_end.setDate(QtCore.QDateTime.currentDateTime().date())
         self.ADstatementswdw_btn_search.clicked.connect(self.search)
-        # self.Name = self.ADstatementswdw_lnedit_name.text()
 
     def search(self):
         query = ""
         ID = ""
+        amnt = ""
+        nm = ""
+        eml = ""
         tType = self.ADstatementswdw_combobox_Ttype.currentText() 
         CustomerID = self.ADstatementswdw_lnedit_csid.text()
+        Amount = self.ADstatementswdw_lnedit_amount.text()
+        Name = self.ADstatementswdw_lnedit_name.text()
+        Email = self.ADstatementswdw_lnedit_email.text()
         if tType != 'All':
             query = f" AND transaction_type = '{tType}'"
         if CustomerID:
             ID = f"customer_id = '{CustomerID}' AND "
+        if Amount:
+            amnt = f"transaction_amount = '{Amount}' AND "
+        if Name:
+            nm = f"cs_name = '{Name}' AND "
+        if Email:
+            eml = f"cs_na = '{Email}' AND "
 
         start_time = self.ADstatementswdw_dateEdit_start.date().toString("yyyy-MM-dd")
         end_time = self.ADstatementswdw_dateEdit_end.date().toString("yyyy-MM-dd 23:59:59" )
         
-        # Amount = self.ADstatementswdw_lnedit_amount.text()
 
         conn = psycopg2.connect("dbname=BankingApp user= postgres password=1234")
         cur = conn.cursor() 
-        cur.execute(f"SELECT customer_id,transaction_amount,transaction_type,receiver_sender_id,transaction_date FROM all_transactions WHERE {ID}transaction_date >= '{start_time}' AND transaction_date <= '{end_time}' {query}")
+        cur.execute(f"SELECT customer_id,cs_name,cs_email,transaction_amount,transaction_type,receiver_sender_id,transaction_date,current_balance FROM allinformation WHERE {ID}{amnt}{nm}{eml}transaction_date >= '{start_time}' AND transaction_date <= '{end_time}' {query}")
         list = cur.fetchall()
         self.ADstatementswdw_tableWidget.setColumnWidth(2,200)
         self.ADstatementswdw_tableWidget.setRowCount(len(list))
         row = 0
         for tr in list:
             self.ADstatementswdw_tableWidget.setItem(row,0,QtWidgets.QTableWidgetItem(str(tr[0])))
-            self.ADstatementswdw_tableWidget.setItem(row,3,QtWidgets.QTableWidgetItem(str(tr[1])))
-            self.ADstatementswdw_tableWidget.setItem(row,4,QtWidgets.QTableWidgetItem(tr[2]))
-            self.ADstatementswdw_tableWidget.setItem(row,5,QtWidgets.QTableWidgetItem(str(tr[3])))
-            self.ADstatementswdw_tableWidget.setItem(row,6,QtWidgets.QTableWidgetItem(str(tr[4])))
+            self.ADstatementswdw_tableWidget.setItem(row,1,QtWidgets.QTableWidgetItem(tr[1]))
+            self.ADstatementswdw_tableWidget.setItem(row,2,QtWidgets.QTableWidgetItem(tr[2]))
+            self.ADstatementswdw_tableWidget.setItem(row,3,QtWidgets.QTableWidgetItem(str(tr[3])))
+            self.ADstatementswdw_tableWidget.setItem(row,4,QtWidgets.QTableWidgetItem(tr[4]))
+            self.ADstatementswdw_tableWidget.setItem(row,5,QtWidgets.QTableWidgetItem(str(tr[5])))
+            self.ADstatementswdw_tableWidget.setItem(row,6,QtWidgets.QTableWidgetItem(str(tr[6])))
+            self.ADstatementswdw_tableWidget.setItem(row,7,QtWidgets.QTableWidgetItem(str(tr[7])))
             row = row + 1
-
         cur.close()
         conn.commit()
         conn.close()
+
 
     
     def return_back(self):

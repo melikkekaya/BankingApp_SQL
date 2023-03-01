@@ -580,22 +580,22 @@ class CSMain(QMainWindow, Ui_customer_main_window):
     def close_w(self):
         sys.exit()  
 
-    def show_statement(self):
-        self.csstatement = CSinfo()
-        widget.addWidget(self.csstatement)
-        widget.setCurrentIndex(widget.currentIndex()+1)
-        file = resource_path(f"customer_database/{self.ID}.csv")
-        with open (file, "r") as f:
-            reader = csv.reader(f)
-            data = [row for row in reader]
-            self.csstatement.csstatementwdw_tbl_statement.setRowCount(len(data)-1)
-            self.csstatement.csstatementwdw_tbl_statement.setColumnCount(len(data[0]))
-            for i, row in enumerate(data[1:]):
-                for j, value in enumerate(row):
-                    self.csstatement.csstatementwdw_tbl_statement.setItem(i, j, QTableWidgetItem(value))
-        self.csstatement.show()
-        self.take_balance()
-        self.csstatement.csstatementwdw_lbl_balanceshow.setText(f"{self.balance} €")
+    # def show_statement(self):
+    #     self.csstatement = CSinfo()
+    #     widget.addWidget(self.csstatement)
+    #     widget.setCurrentIndex(widget.currentIndex()+1)
+    #     file = resource_path(f"customer_database/{self.ID}.csv")
+    #     with open (file, "r") as f:
+    #         reader = csv.reader(f)
+    #         data = [row for row in reader]
+    #         self.csstatement.csstatementwdw_tbl_statement.setRowCount(len(data)-1)
+    #         self.csstatement.csstatementwdw_tbl_statement.setColumnCount(len(data[0]))
+    #         for i, row in enumerate(data[1:]):
+    #             for j, value in enumerate(row):
+    #                 self.csstatement.csstatementwdw_tbl_statement.setItem(i, j, QTableWidgetItem(value))
+    #     self.csstatement.show()
+    #     self.take_balance()
+    #     self.csstatement.csstatementwdw_lbl_balanceshow.setText(f"{self.balance} €")
 
 class CSTransfer(QMainWindow, Ui_customer_transfer_window):
     def __init__(self):

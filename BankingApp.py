@@ -45,26 +45,29 @@ class ADPreLogin(QMainWindow, Ui_admin_window):
     def adafterlogin(self):
         AdminID = self.adminwdw_linedit_ADid.text()
         ADpassword = self.adminwdw_linedit_ADpassword.text()
-        if len(AdminID) == 0 or len(ADpassword) == 0:
-            self.adminwdw_lbl_warning.setText("Please fill the required fields!")
-        else:
-            conn = psycopg2.connect("dbname=BankingApp user= postgres password=1234")
-            cur = conn.cursor()
-            cur.execute(f"SELECT admin_password FROM admin WHERE admin_id={AdminID}")
-            password = cur.fetchone()[0]
-            if ADpassword == password:
-                print("Successfully logged in")
-                self.admin_opt = Admin_Opt()
-                widget.addWidget(self.admin_opt)
-                widget.setCurrentIndex(widget.currentIndex()+1)
-                self.admin_opt.show()
-                cur.close()
-                conn.commit()
-                conn.close()
-            
+        try:    
+            if len(AdminID) == 0 or len(ADpassword) == 0:
+                self.adminwdw_lbl_warning.setText("Please fill the required fields!")
             else:
-                self.adminwdw_lbl_warning.setText("Invalid ID or Password!")
-                print(password)
+                conn = psycopg2.connect("dbname=BankingApp user= postgres password=1234")
+                cur = conn.cursor()
+                cur.execute(f"SELECT admin_password FROM admin WHERE admin_id={AdminID}")
+                password = cur.fetchone()[0]
+                if ADpassword == password:
+                    print("Successfully logged in")
+                    self.admin_opt = Admin_Opt()
+                    widget.addWidget(self.admin_opt)
+                    widget.setCurrentIndex(widget.currentIndex()+1)
+                    self.admin_opt.show()
+                    cur.close()
+                    conn.commit()
+                    conn.close()
+                
+                else:
+                    self.adminwdw_lbl_warning.setText("Invalid Password!")
+                    print(password)
+        except:
+            self.adminwdw_lbl_warning.setText("Are you sure that you are an Admin because it seems everything wrong here..")
 
     def return_back(self):
         main = Main_Window()
@@ -233,13 +236,17 @@ class AD_Statements(QMainWindow, Ui_admin_statements_window):
         amnt = ""
         nm = ""
         eml = ""
+        query2 = ""
         tType = self.ADstatementswdw_combobox_Ttype.currentText() 
         CustomerID = self.ADstatementswdw_lnedit_csid.text()
         Amount = self.ADstatementswdw_lnedit_amount.text()
         Name = self.ADstatementswdw_lnedit_name.text()
         Email = self.ADstatementswdw_lnedit_email.text()
         if tType != 'All':
-            query = f" AND transaction_type = '{tType}'"
+            if tType == 'All excl. Login':
+                query2 = f" AND transaction_type != 'Login' "
+            else:
+                query = f" AND transaction_type = '{tType}'"
         if CustomerID:
             ID = f"customer_id = '{CustomerID}' AND "
         if Amount:
@@ -255,7 +262,7 @@ class AD_Statements(QMainWindow, Ui_admin_statements_window):
 
         conn = psycopg2.connect("dbname=BankingApp user= postgres password=1234")
         cur = conn.cursor() 
-        cur.execute(f"SELECT customer_id,cs_name,cs_email,transaction_amount,transaction_type,receiver_sender_id,transaction_date,current_balance FROM allinformation WHERE {ID}{amnt}{nm}{eml}transaction_date >= '{start_time}' AND transaction_date <= '{end_time}' {query}")
+        cur.execute(f"SELECT customer_id,cs_name,cs_email,transaction_amount,transaction_type,receiver_sender_id,transaction_date,current_balance FROM allinformation WHERE {ID}{amnt}{nm}{eml}transaction_date >= '{start_time}' AND transaction_date <= '{end_time}' {query2} {query}")
         list = cur.fetchall()
         self.ADstatementswdw_tableWidget.setColumnWidth(2,200)
         self.ADstatementswdw_tableWidget.setRowCount(len(list))

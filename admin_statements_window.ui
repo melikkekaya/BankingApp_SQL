@@ -400,6 +400,11 @@ QPushButton:hover {
     </item>
     <item>
      <property name="text">
+      <string>All excl. Login</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
       <string>Deposit Money</string>
      </property>
     </item>
@@ -415,7 +420,17 @@ QPushButton:hover {
     </item>
     <item>
      <property name="text">
+      <string>External Money Transfer</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
       <string>Money Received</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Login</string>
      </property>
     </item>
    </widget>
@@ -424,7 +439,7 @@ QPushButton:hover {
      <rect>
       <x>40</x>
       <y>90</y>
-      <width>341</width>
+      <width>394</width>
       <height>140</height>
      </rect>
     </property>
@@ -839,7 +854,7 @@ QPushButton:hover {
      <x>0</x>
      <y>0</y>
      <width>600</width>
-     <height>21</height>
+     <height>22</height>
     </rect>
    </property>
   </widget>

@@ -760,12 +760,11 @@ class CSinfo(QMainWindow, Ui_customer_statements_window):
         self.setupUi(self)
         self.dateEdit_start.setDate(QtCore.QDateTime.currentDateTime().date().addDays(-7))
         self.dateEdit_end.setDate(QtCore.QDateTime.currentDateTime().date())
-
+        self.CSstatementswdw_btn_back.clicked.connect(self.return_back)
 
         self.CSstatementswdw_btn_search.clicked.connect(self.search)
         
-        # self.csstatementwdw_btn_returnmain.clicked.connect(self.return_back)
-        # self.csstatementwdw_btn_exit.clicked.connect(self.close_w)
+       
     def search(self):
 
         query = ""
@@ -795,19 +794,11 @@ class CSinfo(QMainWindow, Ui_customer_statements_window):
         conn.close()
 
     def return_back(self):
-        csmain = CSMain()
-        widget.addWidget(csmain)
+        csoption = CSOptions()
+        widget.addWidget(csoption)
         widget.setCurrentIndex(widget.currentIndex()+1)
-        csmain.csmainwdw_lbl_CSID_show.setText(csmain.ID)
-        file = resource_path(f"customer_database/customers.json")
-        f = open(file)
-        data = json.load(f)
-        for customer in data:
-            if str(csmain.ID) in customer["Customer_ID"]:
-                csmain.csmainwdw_lbl_CSname_show.setText(customer["Name"])
-
-    def close_w(self):
-        sys.exit()  
+      
+   
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)

@@ -277,10 +277,23 @@ class AD_Statements(QMainWindow, Ui_admin_statements_window):
             self.ADstatementswdw_tableWidget.setItem(row,6,QtWidgets.QTableWidgetItem(str(tr[6])))
             self.ADstatementswdw_tableWidget.setItem(row,7,QtWidgets.QTableWidgetItem(str(tr[7])))
             row = row + 1
+        getsum = AD_Statements.get_sum(self)
+        self.ADstatementswdw_lbl_get_sum.setText(f"Sum of the balance:{getsum}")
         cur.close()
         conn.commit()
         conn.close()
-
+    
+    def get_sum(self):
+        seen_ids = set()
+        sum = 0
+        for row in range(self.ADstatementswdw_tableWidget.rowCount()):
+            id_value = self.ADstatementswdw_tableWidget.item(row, 0).text()
+            balance_value = float(self.ADstatementswdw_tableWidget.item(row, 7).text())
+            if id_value not in seen_ids:
+                seen_ids.add(id_value)
+                sum += balance_value
+        # print("Sum of unique balances is: {}".format(sum))
+        return sum
 
     
     def return_back(self):

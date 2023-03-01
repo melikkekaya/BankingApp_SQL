@@ -847,6 +847,19 @@ QPushButton:hover {
      </size>
     </property>
    </widget>
+   <widget class="QLabel" name="ADstatementswdw_lbl_get_sum">
+    <property name="geometry">
+     <rect>
+      <x>410</x>
+      <y>603</y>
+      <width>171</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>TextLabel</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

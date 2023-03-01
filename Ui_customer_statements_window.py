@@ -199,7 +199,7 @@ class Ui_customer_statements_window(object):
         self.CSstatements_Transection_Types_combo.setItemText(1, _translate("customer_statements_window", "Deposit Money"))
         self.CSstatements_Transection_Types_combo.setItemText(2, _translate("customer_statements_window", "Withdraw Money"))
         self.CSstatements_Transection_Types_combo.setItemText(3, _translate("customer_statements_window", "Internal Money Transfer"))
-        self.CSstatements_Transection_Types_combo.setItemText(4, _translate("customer_statements_window", "Money Received"))
+        self.CSstatements_Transection_Types_combo.setItemText(4, _translate("customer_statements_window", "External Money Transfer"))
         item = self.CSstatementswdw_tableWidget.horizontalHeaderItem(0)
         item.setText(_translate("customer_statements_window", "Transaction Type"))
         item = self.CSstatementswdw_tableWidget.horizontalHeaderItem(1)

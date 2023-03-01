@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file '/Users/melike/Documents/GitHub/BankingApp_SQL/customer_statements_window.ui'
+# Form implementation generated from reading ui file 'c:\Users\qwert\OneDrive\Masaüstü\DATA SCIENCE\PROJECTS\PROJECT-2\BankingApp_SQL\customer_statements_window.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.7
 #
@@ -70,6 +70,7 @@ class Ui_customer_statements_window(object):
         self.CSstatements_Transection_Types_combo.setGeometry(QtCore.QRect(170, 170, 131, 41))
         self.CSstatements_Transection_Types_combo.setStyleSheet("background-color: rgb(225, 229, 241);")
         self.CSstatements_Transection_Types_combo.setObjectName("CSstatements_Transection_Types_combo")
+        self.CSstatements_Transection_Types_combo.addItem("")
         self.CSstatements_Transection_Types_combo.addItem("")
         self.CSstatements_Transection_Types_combo.addItem("")
         self.CSstatements_Transection_Types_combo.addItem("")
@@ -173,13 +174,13 @@ class Ui_customer_statements_window(object):
 "     border:2px solid rgb(196, 218, 245);\n"
 "}")
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("icons/filter.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap("c:\\Users\\qwert\\OneDrive\\Masaüstü\\DATA SCIENCE\\PROJECTS\\PROJECT-2\\BankingApp_SQL\\icons/filter.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.CSstatementswdw_btn_search.setIcon(icon)
         self.CSstatementswdw_btn_search.setIconSize(QtCore.QSize(35, 35))
         self.CSstatementswdw_btn_search.setObjectName("CSstatementswdw_btn_search")
         customer_statements_window.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(customer_statements_window)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 600, 21))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 600, 26))
         self.menubar.setObjectName("menubar")
         customer_statements_window.setMenuBar(self.menubar)
         self.statusbar = QtWidgets.QStatusBar(customer_statements_window)
@@ -200,6 +201,7 @@ class Ui_customer_statements_window(object):
         self.CSstatements_Transection_Types_combo.setItemText(2, _translate("customer_statements_window", "Withdraw Money"))
         self.CSstatements_Transection_Types_combo.setItemText(3, _translate("customer_statements_window", "Internal Money Transfer"))
         self.CSstatements_Transection_Types_combo.setItemText(4, _translate("customer_statements_window", "External Money Transfer"))
+        self.CSstatements_Transection_Types_combo.setItemText(5, _translate("customer_statements_window", "Money Received"))
         item = self.CSstatementswdw_tableWidget.horizontalHeaderItem(0)
         item.setText(_translate("customer_statements_window", "Transaction Type"))
         item = self.CSstatementswdw_tableWidget.horizontalHeaderItem(1)

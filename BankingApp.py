@@ -200,20 +200,26 @@ class AD_CS_Edit(QMainWindow, Ui_Admin_infoEdit_window):
         email =self.ad_edit_wdw_cs_email_lnedit.text()
         AD_CS_edit = AD_CS_create()           
         password = AD_CS_edit.hash_password(self.ad_edit_wdw_cs_pw_lnedit.text())
+        try:
+            if name or email or password:
+                if len(name) != 0 and len(email) != 0 and len(password) != 0:
+                    conn = psycopg2.connect("dbname=BankingApp user= postgres password=1234")
+                    cur = conn.cursor()
+                    cur.execute("UPDATE customer SET cs_name= %s ,cs_email = %s, cs_password= %s WHERE customer_id = %s",(name,email,password,self.csid))
+                    conn.commit()
+                    cur.close()
+                    conn.close()
 
-        conn = psycopg2.connect("dbname=BankingApp user= postgres password=1234")
-        cur = conn.cursor()
-        cur.execute("UPDATE customer SET cs_name= %s ,cs_email = %s, cs_password= %s WHERE customer_id = %s",(name,email,password,self.csid))
-        conn.commit()
-        cur.close()
-        conn.close()
-
-        self.ad_edit_wdw_cs_name_lnedit.setText(name)
-        self.ad_edit_wdw_cs_email_lnedit.setText(email)
-        
-        self.ad_edit_wdw_warn_lbl.setStyleSheet("color: rgb(0, 84, 147);")
-        self.ad_edit_wdw_warn_lbl.setText("Successfully Saved")
-
+                    self.ad_edit_wdw_cs_name_lnedit.setText(name)
+                    self.ad_edit_wdw_cs_email_lnedit.setText(email)
+                    
+                    self.ad_edit_wdw_warn_lbl.setStyleSheet("color: rgb(0, 84, 147);")
+                    self.ad_edit_wdw_warn_lbl.setText("Successfully Saved")
+                else:
+                    self.ad_edit_wdw_warn_lbl.setText("Fields cannot be empty!")
+        except:
+            print("Invalid Entry!")
+                    
     
     def return_back(self):
             AD_opt = Admin_Opt()

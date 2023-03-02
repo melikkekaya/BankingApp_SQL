@@ -135,20 +135,22 @@ class AD_CS_create(QMainWindow, Ui_admin_CScreate_window):
         Email = self.admincswdw_linedit_email.text()
         Password = self.hash_password(self.admincswdw_linedit_CSpassword_2.text())
         CurrentBalance = int(self.admincswdw_spinBox_balance.text().split("€")[0])
-        if  len(Name) == 0 or len(Email) == 0 or len(Password) == 0:
-            self.admincswdw_lbl_result.setText("Please fill all the fields!")
-        elif Name and Email and Password:
-            conn = psycopg2.connect("dbname=BankingApp user= postgres password=1234")
-            cur = conn.cursor()
-            cur.execute("INSERT INTO customer VALUES(%s,%s,%s,%s)",(f"{Name}", f"{Email}", f"{Password}", f"{CurrentBalance}"))
-            cur.execute(f"SELECT MAX(customer_id) FROM customer")
-            CustomerID = cur.fetchone()[0]
-            cur.execute("INSERT INTO balance VALUES(%s,%s)",(f"{CustomerID}", f"{CurrentBalance}"))
-            cur.close()
-            conn.commit()
-            conn.close()
-            self.admincswdw_lbl_result.setText(f"New customer created:\n{CustomerID}")
-    
+        try:
+            if  len(Name) == 0 or len(Email) == 0 or len(Password) == 0:
+                self.admincswdw_lbl_result.setText("Please fill all the fields!")
+            elif Name and Email and Password:
+                conn = psycopg2.connect("dbname=BankingApp user= postgres password=1234")
+                cur = conn.cursor()
+                cur.execute("INSERT INTO customer VALUES(%s,%s,%s,%s)",(f"{Name}", f"{Email}", f"{Password}", f"{CurrentBalance}"))
+                cur.execute(f"SELECT MAX(customer_id) FROM customer")
+                CustomerID = cur.fetchone()[0]
+                cur.execute("INSERT INTO balance VALUES(%s,%s)",(f"{CustomerID}", f"{CurrentBalance}"))
+                cur.close()
+                conn.commit()
+                conn.close()
+                self.admincswdw_lbl_result.setText(f"New customer created:\n{CustomerID}")
+        except:
+            print("Invalid Entry!")
     def return_back(self):
             ADlogin = Admin_Opt()
             widget.addWidget(ADlogin)
@@ -328,47 +330,51 @@ class CsLogin(QMainWindow,Ui_customer_login_window):
     def csafterlogin(self):
         self.CsId = self.csloginwdw_linedit_ADid.text()
         self.CsPs = self.csloginwdw_linedit_ADpassword.text() 
+        a = []
         if len(str(self.CsId)) == 0 or len(str(self.CsPs)) == 0:
             self.csloginwdw_lbl_warning.setText("Please fill the required fields!")
         else:
-            #TODO BURAYA TRY GELECEK: YANLIŞ GİRİŞ YA DA OLMAYAN KULLANICIDA ATIYOR!!
-            conn = psycopg2.connect("dbname=BankingApp user= postgres password=1234")
-            cur = conn.cursor() 
-            cur.execute(f"SELECT cs_password FROM customer WHERE customer_id={int(self.CsId)}")
-            password = cur.fetchone()[0]
-            ad_CS_create = AD_CS_create ()           
-            hashed_password = ad_CS_create.hash_password(self.CsPs)
+            self.csloginwdw_lbl_warning.setText("")
+            try:
+                conn = psycopg2.connect("dbname=BankingApp user= postgres password=1234")
+                cur = conn.cursor() 
+                cur.execute(f"SELECT cs_password FROM customer WHERE customer_id={int(self.CsId)}")    
+                password = cur.fetchone()[0]
+                ad_CS_create = AD_CS_create ()           
+                hashed_password = ad_CS_create.hash_password(self.CsPs)
 
-            if hashed_password == password:
-                # try:
-                CSMain.ID = self.CsId
-                CSOptions.ID = self.CsId
-                CSTransfer.ID = self.CsId
-                CSEdit.ID = self.CsId
-                CSinfo.ID = self.CsId
-                print("Successfully logged in")
-                cur.execute("INSERT INTO all_transactions VALUES(%s,%s,%s)",(f"{str(self.CsId)}", 0, "Login"))
-                
-                # try:        #öncekinde burayı neden try bloğuna aldığımızı anlamadım 
-                self.csAfter = CSOptions()
-                widget.addWidget(self.csAfter)
-                widget.setCurrentIndex(widget.currentIndex()+1)
-                self.csAfter.show()
-                cur.execute(f"SELECT cs_name FROM customer WHERE customer_id={int(self.CsId)}")
-                name = cur.fetchone()[0]
-                self.csAfter.csoptwdw_lbl_showname.setText(f"Hello {name}")
-                # except:
-                #     print("error1")
+                if hashed_password == password:
+                    # try:
+                    CSMain.ID = self.CsId
+                    CSOptions.ID = self.CsId
+                    CSTransfer.ID = self.CsId
+                    CSEdit.ID = self.CsId
+                    CSinfo.ID = self.CsId
+                    print("Successfully logged in")
+                    cur.execute("INSERT INTO all_transactions VALUES(%s,%s,%s)",(f"{str(self.CsId)}", 0, "Login"))
+                    
+                    
+                    self.csAfter = CSOptions()
+                    widget.addWidget(self.csAfter)
+                    widget.setCurrentIndex(widget.currentIndex()+1)
+                    self.csAfter.show()
+                    cur.execute(f"SELECT cs_name FROM customer WHERE customer_id={int(self.CsId)}")
+                    name = cur.fetchone()[0]
+                    self.csAfter.csoptwdw_lbl_showname.setText(f"Hello {name}")
+                    # except:
+                    #     print("error1")
 
-                # self.csAfter.csmainwdw_lbl_CSname_show.setText(name)
-                # self.csAfter.csmainwdw_lbl_CSID_show.setText(str(self.CsId))
-                cur.close()
-                conn.commit()
-                conn.close()
-                # except:
-                #     print("error2")
-            else:
-                self.csloginwdw_lbl_warning.setText("Invalid ID or Password!")
+                    # self.csAfter.csmainwdw_lbl_CSname_show.setText(name)
+                    # self.csAfter.csmainwdw_lbl_CSID_show.setText(str(self.CsId))
+                    cur.close()
+                    conn.commit()
+                    conn.close()
+                    # except:
+                    #     print("error2")
+                else:
+                    self.csloginwdw_lbl_warning.setText("Invalid Password!")
+            except:
+                self.csloginwdw_lbl_warning.setText("Invalid Entry!")
 
     def return_back(self):
             main = Main_Window()

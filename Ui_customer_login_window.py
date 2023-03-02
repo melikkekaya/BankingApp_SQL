@@ -52,6 +52,10 @@ class Ui_customer_login_window(object):
 "     background-color: rgb(225, 229, 241);\n"
 "     border:2px solid rgb(196, 218, 245);\n"
 "}")
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap("icons/password.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.csloginwdw_btn_login.setIcon(icon)
+        self.csloginwdw_btn_login.setIconSize(QtCore.QSize(40, 40))
         self.csloginwdw_btn_login.setObjectName("csloginwdw_btn_login")
         self.csloginwdw_btn_returnmain = QtWidgets.QPushButton(self.centralwidget)
         self.csloginwdw_btn_returnmain.setGeometry(QtCore.QRect(110, 540, 180, 70))
@@ -74,6 +78,10 @@ class Ui_customer_login_window(object):
 "     background-color: rgb(225, 229, 241);\n"
 "     border:2px solid rgb(196, 218, 245);\n"
 "}")
+        icon1 = QtGui.QIcon()
+        icon1.addPixmap(QtGui.QPixmap("icons/back-arrow.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.csloginwdw_btn_returnmain.setIcon(icon1)
+        self.csloginwdw_btn_returnmain.setIconSize(QtCore.QSize(40, 40))
         self.csloginwdw_btn_returnmain.setObjectName("csloginwdw_btn_returnmain")
         self.csloginwdw_btn_exit = QtWidgets.QPushButton(self.centralwidget)
         self.csloginwdw_btn_exit.setGeometry(QtCore.QRect(310, 540, 180, 70))
@@ -96,6 +104,10 @@ class Ui_customer_login_window(object):
 "     background-color: rgb(225, 229, 241);\n"
 "     border:2px solid rgb(196, 218, 245);\n"
 "}")
+        icon2 = QtGui.QIcon()
+        icon2.addPixmap(QtGui.QPixmap("icons/log-out.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.csloginwdw_btn_exit.setIcon(icon2)
+        self.csloginwdw_btn_exit.setIconSize(QtCore.QSize(40, 40))
         self.csloginwdw_btn_exit.setObjectName("csloginwdw_btn_exit")
         self.layoutWidget = QtWidgets.QWidget(self.centralwidget)
         self.layoutWidget.setGeometry(QtCore.QRect(170, 150, 252, 251))
@@ -155,8 +167,8 @@ class Ui_customer_login_window(object):
         _translate = QtCore.QCoreApplication.translate
         customer_login_window.setWindowTitle(_translate("customer_login_window", "Customer Login Window"))
         self.csloginwdw_lbl_heading.setText(_translate("customer_login_window", "Customer Login "))
-        self.csloginwdw_btn_login.setText(_translate("customer_login_window", "LOGIN"))
-        self.csloginwdw_btn_returnmain.setText(_translate("customer_login_window", "Back"))
-        self.csloginwdw_btn_exit.setText(_translate("customer_login_window", "Exit"))
+        self.csloginwdw_btn_login.setText(_translate("customer_login_window", "  LOGIN"))
+        self.csloginwdw_btn_returnmain.setText(_translate("customer_login_window", "  Back"))
+        self.csloginwdw_btn_exit.setText(_translate("customer_login_window", "  Exit"))
         self.csloginwdw_lbl_ADid.setText(_translate("customer_login_window", "Customer ID:"))
         self.csloginwdw_lbl_ADpassword.setText(_translate("customer_login_window", "Password:"))

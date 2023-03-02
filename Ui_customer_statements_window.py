@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'c:\Users\qwert\OneDrive\Masaüstü\DATA SCIENCE\PROJECTS\PROJECT-2\BankingApp_SQL\customer_statements_window.ui'
+# Form implementation generated from reading ui file '/Users/melike/Documents/GitHub/BankingApp_SQL/customer_statements_window.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.7
 #
@@ -57,6 +57,10 @@ class Ui_customer_statements_window(object):
 "     background-color: rgb(225, 229, 241);\n"
 "     border:2px solid rgb(196, 218, 245);\n"
 "}")
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap("icons/back-arrow.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.CSstatementswdw_btn_back.setIcon(icon)
+        self.CSstatementswdw_btn_back.setIconSize(QtCore.QSize(30, 30))
         self.CSstatementswdw_btn_back.setObjectName("CSstatementswdw_btn_back")
         self.CSstatementswdw_lbl_filter_date_Ttype = QtWidgets.QLabel(self.centralwidget)
         self.CSstatementswdw_lbl_filter_date_Ttype.setGeometry(QtCore.QRect(40, 170, 121, 41))
@@ -173,14 +177,14 @@ class Ui_customer_statements_window(object):
 "     background-color: rgb(225, 229, 241);\n"
 "     border:2px solid rgb(196, 218, 245);\n"
 "}")
-        icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("c:\\Users\\qwert\\OneDrive\\Masaüstü\\DATA SCIENCE\\PROJECTS\\PROJECT-2\\BankingApp_SQL\\icons/filter.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.CSstatementswdw_btn_search.setIcon(icon)
+        icon1 = QtGui.QIcon()
+        icon1.addPixmap(QtGui.QPixmap("icons/filter.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.CSstatementswdw_btn_search.setIcon(icon1)
         self.CSstatementswdw_btn_search.setIconSize(QtCore.QSize(35, 35))
         self.CSstatementswdw_btn_search.setObjectName("CSstatementswdw_btn_search")
         customer_statements_window.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(customer_statements_window)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 600, 26))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 600, 21))
         self.menubar.setObjectName("menubar")
         customer_statements_window.setMenuBar(self.menubar)
         self.statusbar = QtWidgets.QStatusBar(customer_statements_window)
@@ -194,7 +198,7 @@ class Ui_customer_statements_window(object):
         _translate = QtCore.QCoreApplication.translate
         customer_statements_window.setWindowTitle(_translate("customer_statements_window", "Customer Bank Statement"))
         self.CSstatementswdw_lbl_heading.setText(_translate("customer_statements_window", "Statements"))
-        self.CSstatementswdw_btn_back.setText(_translate("customer_statements_window", "Back"))
+        self.CSstatementswdw_btn_back.setText(_translate("customer_statements_window", "  Back"))
         self.CSstatementswdw_lbl_filter_date_Ttype.setText(_translate("customer_statements_window", "Transaction Type"))
         self.CSstatements_Transection_Types_combo.setItemText(0, _translate("customer_statements_window", "All"))
         self.CSstatements_Transection_Types_combo.setItemText(1, _translate("customer_statements_window", "Deposit Money"))

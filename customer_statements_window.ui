@@ -114,7 +114,17 @@ QPushButton:hover {
 }</string>
     </property>
     <property name="text">
-     <string>Back</string>
+     <string>  Back</string>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>icons/back-arrow.png</normaloff>icons/back-arrow.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>30</width>
+      <height>30</height>
+     </size>
     </property>
    </widget>
    <widget class="QLabel" name="CSstatementswdw_lbl_filter_date_Ttype">
@@ -414,7 +424,7 @@ QPushButton:hover {
      <x>0</x>
      <y>0</y>
      <width>600</width>
-     <height>26</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>

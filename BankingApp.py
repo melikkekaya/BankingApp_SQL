@@ -831,6 +831,14 @@ class CSinfo(QMainWindow, Ui_customer_statements_window):
         csoption = CSOptions()
         widget.addWidget(csoption)
         widget.setCurrentIndex(widget.currentIndex()+1)
+        conn = psycopg2.connect("dbname=BankingApp user= postgres password=1234")
+        cur = conn.cursor() 
+        cur.execute(f"SELECT cs_name FROM customer WHERE customer_id={self.ID}")
+        name = cur.fetchone()[0]
+        csoption.csoptwdw_lbl_showname.setText(f"Hello {name}")
+        cur.close()
+        conn.commit()
+        conn.close()
       
    
 

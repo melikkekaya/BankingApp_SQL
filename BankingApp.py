@@ -310,7 +310,7 @@ class CsLogin(QMainWindow,Ui_customer_login_window):
         self.csloginwdw_btn_exit.clicked.connect(self.close_w)
 
     def csafterlogin(self):
-        self.CsId = int(self.csloginwdw_linedit_ADid.text()) 
+        self.CsId = self.csloginwdw_linedit_ADid.text()
         self.CsPs = self.csloginwdw_linedit_ADpassword.text() 
         if len(str(self.CsId)) == 0 or len(str(self.CsPs)) == 0:
             self.csloginwdw_lbl_warning.setText("Please fill the required fields!")
@@ -318,7 +318,7 @@ class CsLogin(QMainWindow,Ui_customer_login_window):
             #TODO BURAYA TRY GELECEK: YANLIŞ GİRİŞ YA DA OLMAYAN KULLANICIDA ATIYOR!!
             conn = psycopg2.connect("dbname=BankingApp user= postgres password=1234")
             cur = conn.cursor() 
-            cur.execute(f"SELECT cs_password FROM customer WHERE customer_id={self.CsId}")
+            cur.execute(f"SELECT cs_password FROM customer WHERE customer_id={int(self.CsId)}")
             password = cur.fetchone()[0]
             ad_CS_create = AD_CS_create ()           
             hashed_password = ad_CS_create.hash_password(self.CsPs)
@@ -331,14 +331,14 @@ class CsLogin(QMainWindow,Ui_customer_login_window):
                 CSEdit.ID = self.CsId
                 CSinfo.ID = self.CsId
                 print("Successfully logged in")
-                cur.execute("INSERT INTO all_transactions VALUES(%s,%s,%s)",(f"{self.CsId}", 0, "Login"))
+                cur.execute("INSERT INTO all_transactions VALUES(%s,%s,%s)",(f"{str(self.CsId)}", 0, "Login"))
                 
                 # try:        #öncekinde burayı neden try bloğuna aldığımızı anlamadım 
                 self.csAfter = CSOptions()
                 widget.addWidget(self.csAfter)
                 widget.setCurrentIndex(widget.currentIndex()+1)
                 self.csAfter.show()
-                cur.execute(f"SELECT cs_name FROM customer WHERE customer_id={self.CsId}")
+                cur.execute(f"SELECT cs_name FROM customer WHERE customer_id={int(self.CsId)}")
                 name = cur.fetchone()[0]
                 self.csAfter.csoptwdw_lbl_showname.setText(f"Hello {name}")
                 # except:

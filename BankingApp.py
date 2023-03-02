@@ -166,7 +166,7 @@ class AD_CS_Edit(QMainWindow, Ui_Admin_infoEdit_window):
         self.adeditwdw_btn_back.clicked.connect(self.return_back)
         self.adeditwdw_btn_getinfo.clicked.connect(self.get_info)
         self.adeditwdw_btn_save.clicked.connect(self.save)
-    def get_info(self, csid):
+    def get_info(self):
         self.csid = self.ad_edit_wdw_cs_id_lnedit.text()
         
         conn = psycopg2.connect("dbname=BankingApp user= postgres password=1234")
@@ -174,10 +174,8 @@ class AD_CS_Edit(QMainWindow, Ui_Admin_infoEdit_window):
         cur.execute("SELECT customer_id FROM customer")
         a = cur.fetchall()
         searchlist = []
-        self.ad_edit_wdw_warn_lbl.setText("")
         try: 
-            for i in a:
-                
+            for i in a:                
                 if int(self.csid) == i[0]:
                     cur.execute(f"SELECT cs_name FROM customer WHERE customer_id={self.csid}")
                     name = cur.fetchone()[0]
@@ -189,6 +187,7 @@ class AD_CS_Edit(QMainWindow, Ui_Admin_infoEdit_window):
                     self.ad_edit_wdw_cs_email_lnedit.setText(email)
                     # self.ad_edit_wdw_cs_pw_lnedit.setText(password) 
                     searchlist.append(i)
+                    self.ad_edit_wdw_warn_lbl.setText("")
                 if len(searchlist) == 0:
                     self.ad_edit_wdw_warn_lbl.setText("There is no customer as such!")
         except:
@@ -330,7 +329,6 @@ class CsLogin(QMainWindow,Ui_customer_login_window):
     def csafterlogin(self):
         self.CsId = self.csloginwdw_linedit_ADid.text()
         self.CsPs = self.csloginwdw_linedit_ADpassword.text() 
-        a = []
         if len(str(self.CsId)) == 0 or len(str(self.CsPs)) == 0:
             self.csloginwdw_lbl_warning.setText("Please fill the required fields!")
         else:

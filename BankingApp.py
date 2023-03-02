@@ -171,8 +171,11 @@ class AD_CS_Edit(QMainWindow, Ui_Admin_infoEdit_window):
         cur = conn.cursor()
         cur.execute("SELECT customer_id FROM customer")
         a = cur.fetchall()
+        searchlist = []
+        self.ad_edit_wdw_warn_lbl.setText("")
         try: 
             for i in a:
+                
                 if int(self.csid) == i[0]:
                     cur.execute(f"SELECT cs_name FROM customer WHERE customer_id={self.csid}")
                     name = cur.fetchone()[0]
@@ -182,7 +185,10 @@ class AD_CS_Edit(QMainWindow, Ui_Admin_infoEdit_window):
                     password = cur.fetchone()[0]
                     self.ad_edit_wdw_cs_name_lnedit.setText(name)
                     self.ad_edit_wdw_cs_email_lnedit.setText(email)
-                    # self.ad_edit_wdw_cs_pw_lnedit.setText(password)  
+                    # self.ad_edit_wdw_cs_pw_lnedit.setText(password) 
+                    searchlist.append(i)
+                if len(searchlist) == 0:
+                    self.ad_edit_wdw_warn_lbl.setText("There is no customer as such!")
         except:
             self.ad_edit_wdw_warn_lbl.setText("Invalid Entry!")
         cur.close()
@@ -243,7 +249,6 @@ class AD_Statements(QMainWindow, Ui_admin_statements_window):
         Name = self.ADstatementswdw_lnedit_name.text()
         Email = self.ADstatementswdw_lnedit_email.text()
         try:
-            
             if tType != 'All':
                 if tType == 'All excl. Login':
                     query2 = f" AND transaction_type != 'Login' "

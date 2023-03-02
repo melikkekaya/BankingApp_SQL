@@ -551,5 +551,70 @@ QPushButton:hover {
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>ad_edit_wdw_cs_id_lnedit</sender>
+   <signal>returnPressed()</signal>
+   <receiver>adeditwdw_btn_getinfo</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>445</x>
+     <y>102</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>417</x>
+     <y>190</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>ad_edit_wdw_cs_name_lnedit</sender>
+   <signal>returnPressed()</signal>
+   <receiver>adeditwdw_btn_save</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>502</x>
+     <y>281</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>489</x>
+     <y>611</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>ad_edit_wdw_cs_email_lnedit</sender>
+   <signal>returnPressed()</signal>
+   <receiver>adeditwdw_btn_save</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>403</x>
+     <y>368</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>417</x>
+     <y>600</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>ad_edit_wdw_cs_pw_lnedit</sender>
+   <signal>returnPressed()</signal>
+   <receiver>adeditwdw_btn_save</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>372</x>
+     <y>463</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>388</x>
+     <y>614</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

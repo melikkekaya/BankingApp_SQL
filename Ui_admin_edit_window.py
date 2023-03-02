@@ -257,6 +257,10 @@ class Ui_Admin_infoEdit_window(object):
         Admin_infoEdit_window.setStatusBar(self.statusbar)
 
         self.retranslateUi(Admin_infoEdit_window)
+        self.ad_edit_wdw_cs_id_lnedit.returnPressed.connect(self.adeditwdw_btn_getinfo.click)
+        self.ad_edit_wdw_cs_name_lnedit.returnPressed.connect(self.adeditwdw_btn_save.click)
+        self.ad_edit_wdw_cs_email_lnedit.returnPressed.connect(self.adeditwdw_btn_save.click)
+        self.ad_edit_wdw_cs_pw_lnedit.returnPressed.connect(self.adeditwdw_btn_save.click)
         QtCore.QMetaObject.connectSlotsByName(Admin_infoEdit_window)
 
     def retranslateUi(self, Admin_infoEdit_window):

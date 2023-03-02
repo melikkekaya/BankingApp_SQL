@@ -53,7 +53,7 @@ class Ui_customer_login_window(object):
 "     border:2px solid rgb(196, 218, 245);\n"
 "}")
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("c:\\Users\\musab\\OneDrive\\Belgeler\\GitHub\\BankingApp_SQL\\icons/password.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap("icons/password.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.csloginwdw_btn_login.setIcon(icon)
         self.csloginwdw_btn_login.setIconSize(QtCore.QSize(40, 40))
         self.csloginwdw_btn_login.setObjectName("csloginwdw_btn_login")
@@ -79,7 +79,7 @@ class Ui_customer_login_window(object):
 "     border:2px solid rgb(196, 218, 245);\n"
 "}")
         icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap("c:\\Users\\musab\\OneDrive\\Belgeler\\GitHub\\BankingApp_SQL\\icons/back-arrow.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon1.addPixmap(QtGui.QPixmap("icons/back-arrow.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.csloginwdw_btn_returnmain.setIcon(icon1)
         self.csloginwdw_btn_returnmain.setIconSize(QtCore.QSize(40, 40))
         self.csloginwdw_btn_returnmain.setObjectName("csloginwdw_btn_returnmain")
@@ -105,7 +105,7 @@ class Ui_customer_login_window(object):
 "     border:2px solid rgb(196, 218, 245);\n"
 "}")
         icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap("c:\\Users\\musab\\OneDrive\\Belgeler\\GitHub\\BankingApp_SQL\\icons/log-out.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon2.addPixmap(QtGui.QPixmap("icons/log-out.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.csloginwdw_btn_exit.setIcon(icon2)
         self.csloginwdw_btn_exit.setIconSize(QtCore.QSize(40, 40))
         self.csloginwdw_btn_exit.setObjectName("csloginwdw_btn_exit")

@@ -682,11 +682,9 @@ class CSTransfer(QMainWindow, Ui_customer_transfer_window):
                 cur.execute(f"SELECT customer_id FROM customer")
                 x = cur.fetchall()
                 receiver_list = [i[0] for i in x]
-                # TODO önce int bankada müşteri mi sonra uzunluk sorgula
                 if len(self.cstrfwdw_linedit_receivernumber.text())>0:
                     if self.cstrfwdw_radiobtn_inttrf.isChecked():
                         if int(self.cstrfwdw_linedit_receivernumber.text()) in receiver_list and int(self.cstrfwdw_linedit_receivernumber.text()) != self.ID:
-                            #TODO: buraya pop-up ile bu adrese göndermek istediğinize emin misiniz?
                             receiver_id = int(self.cstrfwdw_linedit_receivernumber.text())
                             d = self.balance - self.cstrfwdw_spinbox_money.value()
                             cur.execute("INSERT INTO all_transactions VALUES(%s,%s,%s,%s)",(f"{self.ID}", f"{int(self.cstrfwdw_spinbox_money.value())}", "Internal Money Transfer", f"{receiver_id}"))
@@ -722,9 +720,7 @@ class CSTransfer(QMainWindow, Ui_customer_transfer_window):
                     elif self.cstrfwdw_radiobtn_exttrf.isChecked():
                         receiver_id = int(self.cstrfwdw_linedit_receivernumber.text())
                         if len(str(receiver_id)) >= 8:
-                            #TODO: buraya pop-up ile bu adrese göndermek istediğinize emin misiniz?
-                            # self.show_popup()
-                            # if self.show_popup(QMessageBox.Ok):
+     
                             e = self.balance - self.cstrfwdw_spinbox_money.value()
                             conn = psycopg2.connect("dbname=BankingApp user= postgres password=1234")
                             cur = conn.cursor()
@@ -737,10 +733,6 @@ class CSTransfer(QMainWindow, Ui_customer_transfer_window):
                             self.cstrfwdw_lbl_resultmessage.setStyleSheet("color: rgb(0, 84, 147);")
                             self.cstrfwdw_lbl_resultmessage.setText("Successful money transfer")
 
-                            # elif self.show_popup(QMessageBox.Cancel):
-                            #     self.cstrfwdw_spinbox_money.cleanText()
-                            #     self.cstrfwdw_lbl_resultmessage.setStyleSheet("color: rgb(255, 0, 0);")
-                            #     self.cstrfwdw_lbl_resultmessage.setText("You've cancelled the transfer..")
                         else:
                             self.cstrfwdw_lbl_resultmessage.setStyleSheet("color: rgb(255, 0, 0);")
                             self.cstrfwdw_lbl_resultmessage.setText("Receiver number should be at least 8 characters..")

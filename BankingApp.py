@@ -699,7 +699,8 @@ class CSTransfer(QMainWindow, Ui_customer_transfer_window):
                             self.cstrfwdw_lbl_balanceshow.setText(f"{str(d)} €")
                             self.cstrfwdw_lbl_resultmessage.setStyleSheet("color: rgb(0, 84, 147);")
                             self.cstrfwdw_lbl_resultmessage.setText("Successful money transfer") # buraya adı çekilip yazılabilir to ...'s acoount şeklinde
-                                                
+                            self.cstrfwdw_spinbox_money.setValue(0)
+
                             cur.close()
                             conn.commit()
                             conn.close()
@@ -732,6 +733,7 @@ class CSTransfer(QMainWindow, Ui_customer_transfer_window):
                             self.cstrfwdw_lbl_balanceshow.setText(f"{str(e)} €")
                             self.cstrfwdw_lbl_resultmessage.setStyleSheet("color: rgb(0, 84, 147);")
                             self.cstrfwdw_lbl_resultmessage.setText("Successful money transfer")
+                            self.cstrfwdw_spinbox_money.setValue(0)
 
                         else:
                             self.cstrfwdw_lbl_resultmessage.setStyleSheet("color: rgb(255, 0, 0);")

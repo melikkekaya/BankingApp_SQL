@@ -37,7 +37,7 @@ class Ui_admin_statements_window(object):
         self.ADstatementswdw_lbl_heading.setObjectName("ADstatementswdw_lbl_heading")
         self.ADstatementswdw_btn_back = QtWidgets.QPushButton(self.centralwidget)
         self.ADstatementswdw_btn_back.setEnabled(True)
-        self.ADstatementswdw_btn_back.setGeometry(QtCore.QRect(210, 590, 180, 60))
+        self.ADstatementswdw_btn_back.setGeometry(QtCore.QRect(50, 590, 180, 60))
         self.ADstatementswdw_btn_back.setMinimumSize(QtCore.QSize(180, 60))
         self.ADstatementswdw_btn_back.setMaximumSize(QtCore.QSize(180, 60))
         font = QtGui.QFont()
@@ -328,7 +328,8 @@ class Ui_admin_statements_window(object):
         self.ADstatementswdw_btn_search.setIconSize(QtCore.QSize(35, 35))
         self.ADstatementswdw_btn_search.setObjectName("ADstatementswdw_btn_search")
         self.ADstatementswdw_lbl_get_sum = QtWidgets.QLabel(self.centralwidget)
-        self.ADstatementswdw_lbl_get_sum.setGeometry(QtCore.QRect(410, 603, 171, 41))
+        self.ADstatementswdw_lbl_get_sum.setGeometry(QtCore.QRect(240, 590, 331, 51))
+        self.ADstatementswdw_lbl_get_sum.setText("")
         self.ADstatementswdw_lbl_get_sum.setObjectName("ADstatementswdw_lbl_get_sum")
         admin_statements_window.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(admin_statements_window)
@@ -340,6 +341,11 @@ class Ui_admin_statements_window(object):
         admin_statements_window.setStatusBar(self.statusbar)
 
         self.retranslateUi(admin_statements_window)
+        self.ADstatementswdw_lnedit_csid.returnPressed.connect(self.ADstatementswdw_btn_search.click)
+        self.ADstatementswdw_lnedit_name.returnPressed.connect(self.ADstatementswdw_btn_search.click)
+        self.ADstatementswdw_lnedit_amount.returnPressed.connect(self.ADstatementswdw_btn_search.click)
+        self.ADstatementswdw_lnedit_email.returnPressed.connect(self.ADstatementswdw_btn_search.click)
+        self.ADstatementswdw_combobox_Ttype.currentTextChanged['QString'].connect(self.ADstatementswdw_btn_search.click)
         QtCore.QMetaObject.connectSlotsByName(admin_statements_window)
 
     def retranslateUi(self, admin_statements_window):
@@ -383,4 +389,3 @@ class Ui_admin_statements_window(object):
         self.ADstatementswdw_lbl_filter_name.setText(_translate("admin_statements_window", "Name"))
         self.ADstatementswdw_lbl_filter_csid.setText(_translate("admin_statements_window", "Customer ID"))
         self.ADstatementswdw_btn_search.setText(_translate("admin_statements_window", "  SEARCH"))
-        self.ADstatementswdw_lbl_get_sum.setText(_translate("admin_statements_window", "TextLabel"))

@@ -74,7 +74,7 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>210</x>
+      <x>50</x>
       <y>590</y>
       <width>180</width>
       <height>60</height>
@@ -850,14 +850,14 @@ QPushButton:hover {
    <widget class="QLabel" name="ADstatementswdw_lbl_get_sum">
     <property name="geometry">
      <rect>
-      <x>410</x>
-      <y>603</y>
-      <width>171</width>
-      <height>41</height>
+      <x>240</x>
+      <y>590</y>
+      <width>331</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="text">
-     <string>TextLabel</string>
+     <string/>
     </property>
    </widget>
   </widget>
@@ -874,5 +874,86 @@ QPushButton:hover {
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>ADstatementswdw_lnedit_csid</sender>
+   <signal>returnPressed()</signal>
+   <receiver>ADstatementswdw_btn_search</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>418</x>
+     <y>130</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>498</x>
+     <y>268</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>ADstatementswdw_lnedit_name</sender>
+   <signal>returnPressed()</signal>
+   <receiver>ADstatementswdw_btn_search</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>410</x>
+     <y>159</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>470</x>
+     <y>263</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>ADstatementswdw_lnedit_amount</sender>
+   <signal>returnPressed()</signal>
+   <receiver>ADstatementswdw_btn_search</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>404</x>
+     <y>192</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>530</x>
+     <y>253</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>ADstatementswdw_lnedit_email</sender>
+   <signal>returnPressed()</signal>
+   <receiver>ADstatementswdw_btn_search</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>412</x>
+     <y>227</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>553</x>
+     <y>249</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>ADstatementswdw_combobox_Ttype</sender>
+   <signal>currentTextChanged(QString)</signal>
+   <receiver>ADstatementswdw_btn_search</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>303</x>
+     <y>276</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>416</x>
+     <y>281</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

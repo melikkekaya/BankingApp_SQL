@@ -55,7 +55,7 @@
     </property>
     <property name="font">
      <font>
-      <family>Bahnschrift SemiBold</family>
+      <family>Arial</family>
       <pointsize>16</pointsize>
       <weight>75</weight>
       <bold>true</bold>
@@ -99,7 +99,7 @@ QPushButton:hover {
     </property>
     <property name="font">
      <font>
-      <family>Bahnschrift SemiBold</family>
+      <family>Arial</family>
       <pointsize>16</pointsize>
       <weight>75</weight>
       <bold>true</bold>
@@ -143,7 +143,7 @@ QPushButton:hover {
     </property>
     <property name="font">
      <font>
-      <family>Bahnschrift SemiBold</family>
+      <family>Arial</family>
       <pointsize>16</pointsize>
       <weight>75</weight>
       <bold>true</bold>
@@ -187,7 +187,7 @@ QPushButton:hover {
     </property>
     <property name="font">
      <font>
-      <family>Bahnschrift SemiBold</family>
+      <family>Arial</family>
       <pointsize>16</pointsize>
       <weight>75</weight>
       <bold>true</bold>
@@ -231,7 +231,7 @@ QPushButton:hover {
     </property>
     <property name="font">
      <font>
-      <family>Bahnschrift SemiBold</family>
+      <family>Arial</family>
       <pointsize>16</pointsize>
       <weight>75</weight>
       <bold>true</bold>
@@ -275,7 +275,7 @@ QPushButton:hover {
     </property>
     <property name="font">
      <font>
-      <family>Bahnschrift SemiBold</family>
+      <family>Arial</family>
       <pointsize>16</pointsize>
       <weight>75</weight>
       <bold>true</bold>
